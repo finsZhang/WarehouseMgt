@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0;}
+body{font:12px "微软雅黑";color:#333333;background:#a3a3a3;}
+
+/*弹出框 begin*/
+.tanchu{width:500px;height:auto;margin:0 auto;border-radius:5px;background:#ffffff;
+-moz-box-shadow:3px 3px 4px #777777;
+-webkit-box-shadow:3px 3px 4px #777777;
+box-shadow:3px 3px 4px #777777;
+-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#777777')";/*for ie8*/
+filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#777777');/*for ie6-7*/
+}
+.tanc-top{width:500px;height:45px;float:left;border-radius:5px 5px 0 0;border-bottom:1px solid #d3e3e0;font:16px/45px "微软雅黑";color:#555555;background:#f1f6f5;}
+.tanc-top span{display:block;height:45px;float:left;padding-left:20px;}
+.tanc-chahao{display:block;width:12px;height:12px;float:right;margin:16px 20px 0 0;background:url(../images/tanchu_chahao.png) no-repeat scroll 0 0 transparent;}
+.tanc-chahao:hover{background:url(../images/tanchu_chahao.png) no-repeat scroll 0 -12px transparent;}
+.tanc-main{width:500px;height:auto;float:left;}
+.tanc-one{width:500px;height:auto;margin-top:20px;text-align:center;}
+.tanc-xbt{display:inline-block;height:30px;font:14px/30px "微软雅黑";*font:14px/24px "微软雅黑";color:#666666;}
+.tanc-input{border:0;display:inline-block;width:220px;height:28px;line-height:28px;padding-left:10px;border-radius:3px;border:1px solid #cccccc;}
+.tanc-bottom{width:500px;height:56px;float:left;margin-top:30px;border-radius:0 0 5px 5px;border-top:1px solid #d3e3e0;background:#f1f6f5;text-align:center;}
+.tanc-que{display:inline-block;width:100px;height:30px;margin-top:13px;border-radius:3px;text-align:center;font:14px/30px "宋体";background:#14a17f;color:#ffffff;text-decoration:none;}
+.tanc-que:hover{background:#0c785e;color:#ffffff;text-decoration:none;}
+.tanc-xiao{display:inline-block;width:100px;height:30px;margin-top:13px;margin-left:20px;border-radius:3px;text-align:center;font:14px/30px "宋体";background:#c6c6c6;color:#333333;text-decoration:none;}
+.tanc-xiao:hover{background:#a5a5a5;color:#333333;text-decoration:none;}
+/*弹出框 over*/
