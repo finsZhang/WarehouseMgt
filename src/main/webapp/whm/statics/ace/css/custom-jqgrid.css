@@ -1,0 +1,50 @@
+.opt-list {
+    height: 30px;
+    line-height: 30px;
+}
+.title-bottom {
+    display: none;
+    margin-top: -4px;
+}
+.action-buttons a:hover {
+    text-decoration: none!important;
+    -moz-transform: none!important;
+    -webkit-transform: none!important;
+    -o-transform: none!important;
+    -ms-transform: none!important;
+    transform: none!important;
+    opacity: .85!important;
+}
+
+.opt-list > a {
+    width: 27px;
+}
+.ui-jqgrid tr.ui-row-ltr td.opt, .ui-jqgrid tr.ui-row-rtl td.opt {
+    padding-top: 4px;
+    padding-bottom: 0;
+}
+
+span [class^="ide-icon-"] {
+    margin-right: 15px;
+}
+.ui-jqgrid tr.ui-row-ltr td.very-long, .ui-jqgrid tr.ui-row-rtl td.very-long {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ui-jqgrid .ui-jqgrid-view, .ui-jqgrid .ui-paging-info, .ui-jqgrid .ui-pg-table, .ui-jqgrid .ui-pg-selbox {
+    font-size: 12px
+}
+
+.ide-table .ui-jqgrid tr.ui-row-ltr td, .ide-table .ui-jqgrid tr.ui-row-rtl td {
+    padding-top: 10px;
+    padding-bottom: 1px;
+    padding-left: 7px;
+    height:40px;
+}
+
+.ide-table .table thead > tr > th, .ide-table .table tbody > tr > th,
+.ide-table .table tfoot > tr > th, .ide-table .table thead > tr > td,
+.ide-table .table tbody > tr > td, .ide-table .table tfoot > tr > td {
+    line-height: 20px;
+}
