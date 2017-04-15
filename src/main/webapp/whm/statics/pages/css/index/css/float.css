@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*弹出框*/
+.fM_box_w600{width:600px;}
+.fM_box_floatBox{ margin:0 auto; border-radius:5px; -webkit-border-radius:5px; overflow:hidden; border:1px solid #ddd; box-shadow:1px 1px 2px 2px #eee; -webkit-box-shadow:1px 1px 2px 2px #dedede;  -moz-box-shadow:1px 1px 2px 2px #dedede; padding-bottom:20px; background:#fff;}
+.fM_box_floatTitleBg{ background:#43c8bf; height:35px; line-height:35px; color:#fff; text-indent:10px;  }
+.fM_box_floatTitleBg h2{ font-size:15px; }
+.fM_box_floatTitleBg .fM_box_close{ margin-top:6px; margin-right:10px;}
+.fM_box_floatContent{ margin:10px auto; width:95%; font-size:14px; color:#444; line-height:200%; }
+

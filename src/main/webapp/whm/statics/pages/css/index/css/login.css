@@ -1,0 +1,65 @@
+
+.loginTopBg{ height:100px;background:url(../images/food_topBg.jpg) no-repeat scroll center 0 transparent;}
+.loginTopBg img{margin-top:23px;}
+
+.loginContent{ background:url(../images/loginContentBg.jpg) repeat-x top left;}
+.loginContent .leftAdver{ width:510px;}
+
+.loginContent .loginList{ background:#fff; border:1px solid #d5e7e2; width:420px; margin-top:50px; height:350px; }
+.loginContent .loginList h5{ background: url(../images/l-icon3.png) no-repeat #6ac2b2 10px 10px; height:45px; line-height:45px; text-indent:40px; font-weight:500; font-size:16px; color:#fff;  }
+.prompt i {
+    background: url("/ecard/statics/common/images/cancel.gif") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 17px;
+}
+.prompt {
+    color: #f60;
+    font-size: 15px;
+}
+.loginList ul.prompt {
+	/*float:left;*/
+    width: 90%;
+    position: relative;
+}
+
+.loginContent .loginList ul{margin-top:20px; margin-left:55px; }
+.loginContent .loginList ul li{ margin-bottom:15px; position:relative; height:50px;text-align: -webkit-match-parent;}
+.loginContent .loginList ul li span{ position:absolute; z-index:2; top:10px; left:40px; font-size:16px; color:#999;}
+.loginContent .loginList ul li i{ position:absolute; left:10px; z-index:2; top:10px; }
+.loginContent .loginList ul li img{ float: left;margin-left: 15px;vertical-align: middle; }
+.login_input{ height:41px; border:1px solid #9ecbbf;font-size:16px; border-radius:3px; background: url(../images/inputBg.jpg) repeat-x; overflow:hidden; position:absolute; z-index:1; text-indent:40px;}
+.loginContent .loginList input{ border-radius: 6px;
+    border: solid 1px #d3d3d3;
+    width: 310px;
+    height: 40px;
+    float: left;
+    line-height: 40px;}
+.login_txt {
+    font-size: 18px;
+    color: #a8a8a8;
+    padding-left: 10px;
+}
+
+.loginContent .loginList .btn { text-align:center; padding-top:15px;}
+.loginContent .loginList .btn button{ border:none;clear:both;width:131px;height:43px; border-radius:5px; font-size:18px;  color:#fff;margin-right:10px;cursor:pointer;text-align:center; outline:none;background:url(../images/login_Btn_bg.jpg) repeat-x 0 0; overflow:hidden;}
+.loginContent .loginList .btn button:hover{ background:url(../images/login_Btn_bg.jpg) repeat-x 0 -43px;}
+
+.copyright { text-align:center; color:#999;  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

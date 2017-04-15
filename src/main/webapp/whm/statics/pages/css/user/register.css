@@ -1,0 +1,78 @@
+.ret_error_msg {
+    color: #f60;
+    line-height:42px;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.ret_error_msg1 {
+    color: #f60;
+    font-size: 12px;
+    float:left;
+    margin-left: 20px;
+}
+
+.ret_span{
+	color : #ff8a15;
+}
+.weak{  
+	background:#F79100;  
+	float:left;
+	font-size: 14px;
+	display:block;
+	margin-top:5px;
+	margin-left:10px;
+	text-align:center;
+	width:60px; 
+	color:#FFFFFF;
+}
+.mid{
+	background:#F79100;  
+	float:left;
+	font-size: 14px;
+	display:block;
+	margin-top:5px;
+	margin-left:3px;
+	text-align:center;
+	width:60px; 
+	color:#FFFFFF;
+}
+
+.mid_gray{
+	background:#C4C4C4;  
+	float:left;
+	font-size: 14px;
+	display:block;
+	margin-top:5px;
+	margin-left:3px;
+	text-align:center;
+	width:60px; 
+	color:#FFFFFF;
+}
+
+.strong{
+	background:#F79100;  
+	float:left;
+	font-size: 14px;
+	display:block;
+	margin-top:5px;
+	margin-left:3px;
+	text-align:center;
+	color:#FFFFFF;
+	width:60px; 
+}
+
+.strong_gray{
+	background:#C4C4C4;  
+	float:left;
+	font-size: 14px;
+	display:block;
+	margin-top:5px;
+	margin-left:3px;
+	text-align:center;
+	color:#FFFFFF;
+	width:60px; 
+}
+
+.updatepwdLevel{float:left;}
+

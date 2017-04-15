@@ -1,0 +1,23 @@
+/*登陆失败-start*/
+.prompt i {
+    background: url("/ecard/statics/common/images/cancel.gif") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 17px;
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 17px;
+}
+
+.prompt {
+    color: #f60;
+    font-size: 15px;
+}
+
+.login_borderMain ul.prompt {
+	float:left;
+    margin: 10px auto;
+    width: 90%;
+    position: relative;
+    height: 20px;
+}
+/*登陆失败-end*/

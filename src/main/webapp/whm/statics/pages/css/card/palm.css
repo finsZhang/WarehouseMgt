@@ -1,0 +1,460 @@
+@charset "utf-8";
+body,html{background:#fff;}
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend{margin:0;padding:0;}
+body,button,input,select,textarea{ font-family: arial,"Microsoft Yahei","Hiragino Sans GB",sans-serif; font-size: 62.5%;}
+h1,h2,h3,h4,h5,h6{font-size:200%;}
+ul,ol,dl{list-style:none;}
+a{text-decoration:none;}
+.fl{ float:left; }
+.fr{ float:right;}
+.clear{ clear:both;}
+.input20{ width:20px; height:20px; vertical-align:middle;}
+.ash{ color:#c0c0c0;}
+.666{ color:#666;}
+.f60{ color:#f60;}
+.999{ color:#999;}
+input,button{ outline:none;}
+button{ cursor:pointer;}
+.m-t-89{ margin-top:89px;}
+.m-t-59{ margin-top:59px;}
+.m-t-150{ margin-top:150px;}
+.p-t-150{ padding-top:150px;}
+.m-t-30{ margin-top:30px;}
+.p-b-100{ padding-bottom:100px;}
+.m-b-100{ margin-bottom:100px;}
+.w-b-1{ width:10%;}
+.w-b-2{ width:20%;}
+.w-b-3{ width:30%;}
+.w-b-4{ width:40%;}
+.w-b-5{ width:50%;}
+.w-b-6{ width:60%;}
+.w-b-7{ width:70%;}
+.w-b-7{ width:70%;}
+.w-b-7{ width:70%;}
+
+
+/*按钮*/
+.btn_1 {width:90%; margin:3rem auto 0 auto; }
+.btn_1 button{ display:block; background:#efa530; border-radius:0.2rem;  border:none; line-height:4rem; color:#fff; font-size:3em; width:100%;  padding:0;}
+.btn_2 {width:90%; margin:3rem auto 0 auto; }
+.btn_2 button{ display:block; background:#29c2bd; border-radius:0.2rem;  border:none; line-height:3rem; color:#fff; font-size:1.2em; width:100%;  padding:0;}
+
+.btn_3 {width:100%; margin:3rem auto 0 auto; }
+.btn_3 button{ display:block; background:#fff; border-radius:0.2rem;  border:none; line-height:2rem; color:#666; font-size:18px; width:100%;  padding:0; border:1px solid #ddd; }
+
+.btn-fixed-bottom {width:90%; margin:2rem auto 0 auto; position: fixed; bottom:90px; left:5%;  }
+.btn-fixed-bottom button{ display:block; background:#efa530; border-radius:0.2rem;  border:none; line-height:4rem; color:#fff; font-size:3em; width:100%;  padding:0;}
+
+
+/*满意度调查*/
+
+section#survey{ border-bottom:5px solid #ddd; padding-bottom:15px;}
+section#survey h5{ font-size:1.4rem; text-indent:10px; height:3rem; line-height:3rem;  color:#333; font-weight:500;  width:100%; }
+section#survey h5 span{ color:#f60;}
+section#survey ul{  width:100%; margin: 0 auto;}
+section#survey ul li{ font-size:1.2rem; line-height:180%; color:#666; clear:both;}
+section#survey ul li label{ width:100px; text-align:right; display:inline-block; color:#666; margin-right:10px;}
+section#survey dl{ font-size:1.2rem; width:95%; margin: 0 auto; padding:15px 0; clear:both;}
+section#survey dl dt{ float:left; color:#666; width:100px;}
+section#survey dl dd { float:left; color:#666; margin-right:10px; width:70%;}
+
+.btn_4 {width:100%; margin:10px auto 0 auto;  }
+.btn_4 a{  background:#29c2bd; border-radius:0.2rem;  border:none; line-height:2rem; color:#fff; font-size:1.1rem; padding:10px 30px; margin-right:20px; margin-left:20px; }
+
+
+section#doctorInfo .head{ display:table; width:100%; }
+section#doctorInfo .head a{ text-align:center; vertical-align:middle; display:table-cell; width:33%; position:relative; font-size:1.2rem; color:#666;}
+section#doctorInfo .head i{ font-size:2.8rem; position: absolute;;  bottom:0; right:10px; color:#29c2bd;}
+
+.floatBox .fillin{ padding:30px 20px; line-height:220%; color:#666;}
+.floatBox .fillin textarea{width:100%; display:block; border:none; line-height:180%;  text-indent:10px; font-size:1.6rem; border:1px solid #ddd;  border-radius:0.2rem;}
+.floatBox .btn_4{ text-align:center; }
+
+/*头部*/
+header#header{ height:60px; background:#29c2bd; width:100%; position:fixed; top:0; left:0; z-index:100000; _position:absolute; _top:expression(eval(document.documentElement.scrollTop));}
+header#header .logo{ position:absolute; left:10px; bottom:5px; }
+header#header .name{ position:absolute;  bottom:5px; right:10px; font-size:1.4rem; color:#fff; }
+header#header .name button{ display: inline-block ; background:#0695cb; border-radius:0.2rem;  border:none; line-height:1rem; color:#fff; height:2.3rem; font-size:1em; width:4rem; padding:0; box-shadow: 5px 5px 5px #058cc5 inset;}
+header#header .back{ position:absolute;font-size:3.6rem; padding-right:2rem; left:10px; bottom:0; color:#fff; z-index:3;  }
+header#header .city{ position:absolute;font-size:1.6rem; padding-right:2rem; left:10px; bottom:10px; color:#fff; z-index:3;  }
+header#header .city i{ font-size:2rem; margin-left:10px;}
+header#header .set{ position:absolute; right:10px; bottom:10px;}
+header#header button{  background: none; border:none; padding:0; margin:0; }
+header#header h3{ position:absolute; width:100%; text-align:center; font-size:1.6rem; color:#fff; bottom:1rem; font-weight:500; z-index:1;}
+header#header h3 a{ color:#fff;}
+header#header h3 i{font-size:2rem; margin-left:10px;}
+header#header .exit{ position:absolute; right:10px; bottom:10px;}
+header#header .exit button{ display: inline-block ; background:#0695cb; border-radius:0.2rem;  border:none; line-height:1rem; color:#fff; height:2.8rem; font-size:2em; width:4rem; padding:0; box-shadow: 5px 5px 5px #058cc5 inset;}
+
+header#headerSearch{ height:88px; background:#29c2bd; width:100%; position:fixed; top:0; left:0; z-index:100000; _top:expression(eval(document.documentElement.scrollTop));}
+header#headerSearch a{ color:#fff; font-size:1.6rem; position:absolute; right:20px; bottom:10px;}
+header#headerSearch input{ width:80%; height:3rem; bottom:10px; border: none; border-radius:8px; font-size:1.4rem; text-indent:70px; color:#666; position:absolute; left:20px; z-index:1;}
+header#headerSearch i{ color:#29c2bd; font-size:2rem; position:absolute; left:40px; bottom:20px; z-index:2; }
+
+header#header .search{ position:absolute; right:10px; bottom:10px; z-index:2;}
+header#header .search a{ color:#fff; font-size:1.8rem; padding:5px 20px;  }
+
+/*底部*/
+footer#footer{ height:80px; background:#eee; width:100%; position:fixed; bottom:0; left:0; z-index:10; _top:expression(eval(document.documentElement.scrollTop)); display:table; border-top:1px solid #ddd;}
+footer#footer a{ display:table-cell; font-size:1.2rem; color:#666; text-align:center; vertical-align:middle; }
+/*footer#footer a:hover,*/
+footer#footer a.current{ color:#05736f; background:#fafafa;}
+footer#footer h3{ font-size:1.3rem; width:100%; text-align:center; margin-top:20px; }
+footer#footer button{  background:#efa530; border-radius:0.2rem;  border:none; color:#fff; padding:6px 8px; font-size:1.4rem; }
+
+
+/*首页*/
+section#home-adver{ position:relative; width:100%; height:200px; overflow:hidden;}
+section#home-adver ul{ position:absolute; z-index:1;}
+section#home-adver ol{ position:absolute; z-index:2; bottom:10px; width:100%; text-align:center;}
+section#home-adver ol a{ color:#fff; font-size:1.2rem; margin-right:5px;}
+section#home-adver ol i.current{ color:#00aca6;}
+
+
+section#title{ height:3.8rem; line-height:3.8rem; border-bottom:1px solid #ddd; }
+section#title h1{font-size:1.6rem; font-weight:500; color:#009e99;}
+section#title h1 .jt{ margin-top:10px; margin-right:20px; font-size:2.2rem;}
+section#h-btn-nav{}
+section#h-btn-nav ul{ width:100%; display:table; margin:20px 0; }
+section#h-btn-nav ul li{ display:table-cell; width:33%; text-align:center;  }
+section#h-btn-nav ul li a{font-size:1.4rem; color:#666; }
+
+/*搜索列表页*/
+section#searchList{ width:90%; margin: 0 auto;}
+section#searchList ul{}
+section#searchList ul li{ border-bottom:1px solid #ddd; height:3.2rem; line-height:3.2rem; font-size:1.4rem;}
+section#searchList ul li a{ color:#666; display:block; width:100%; text-indent:10px;}
+section#searchList ul li:hover{ background:#eee;}
+section#searchList dl{ border-bottom:8px solid #eee;}
+section#searchList dl dt { line-height:3rem; width:100%; border-bottom:1px solid #ddd; font-size:1.6rem; color:#333;}
+section#searchList dl dd { height:3rem; line-height:3rem; width:95%; margin: 0 auto; border-bottom:1px solid #ddd; margin-bottom:5px;   }
+section#searchList dl dd a{color:#666; font-size:1.4rem; display:block; width:100%; text-indent:10px;}
+section#searchList dl dd:hover{ background:#eee; }
+section#searchList dl dd strong{ color:#f60; font-weight:500;}
+section#searchList dl dd span{ font-size:1.2rem; margin-left:10px;}
+
+/*登录*/
+section#login{ padding-top:3rem; }
+section#login ul{ margin-top:2rem; width:100%; margin:0 auto;}
+section#login ul li{ margin-bottom:1rem;}
+section#login ul li input{width:100%; border:none; line-height:5rem;  position:relative; text-indent:70px; font-size:1.6rem; border:1px solid #ddd;  }
+section#login dl{width:90%; margin:30px auto; color:#989898; font-size:1.4rem;}
+section#login dl dt{ float:left;}
+section#login dl dd{ float:right;}
+section#login dl a{ color:#666;}
+section#login aside{width:90%; margin:3rem auto 0 auto; }
+section#login aside button{ display:block; background:#efa530; border-radius:0.2rem;  border:none; line-height:4rem; color:#fff; font-size:3em; width:100%;  padding:0;}
+
+
+
+
+/*注册*/
+section#reg{ padding-top:3rem; }
+section#reg ul{ margin-top:2rem; width:100%; margin:0 auto;}
+section#reg ul li{ margin-bottom:1rem;}
+section#reg ul li input{width:100%; border:none; line-height:5rem;  position:relative; text-indent:70px; font-size:1.6rem; border:1px solid #ddd;  }
+section#reg ul p{ text-align:center; font-size:1.4rem; color:#009e99;}
+section#reg ol{ text-align:center; margin-top:3rem; font-size:1.4rem; }
+section#reg ol a{ color:#009e99;}
+section#reg dl{ text-align:center; font-size:1.4rem; line-height:180%; color:#333; }
+section#reg dl strong{ font-size:3rem; color:#f60; font-weight:normal; line-height:220%;}
+section#reg aside{width:90%; margin:3rem auto 0 auto; }
+section#reg aside button{ display:block; background:#efa530; border-radius:0.2rem;  border:none; line-height:4rem; color:#fff; font-size:3em; width:100%;  padding:0;}
+
+
+/*忘记密码*/
+section#forget{ padding-top:3rem; }
+section#forget ul{ margin-top:2rem; width:100%; margin:0 auto;}
+section#forget ul li{ margin-bottom:1rem;}
+section#forget ul li input{width:100%; border:none; line-height:5rem;  position:relative; text-indent:70px; font-size:1.6rem; border:1px solid #ddd;  }
+section#forget ul p{ text-align:center; font-size:1.4rem; color:#009e99;}
+section#forget ol{ text-align:center; margin-top:3rem; font-size:1.4rem; }
+section#forget ol a{ color:#009e99;}
+section#forget dl{ text-align:center; font-size:1.4rem; }
+section#forget aside{width:90%; margin:3rem auto 0 auto; }
+section#forget aside button{ display:block; background:#efa530; border-radius:0.2rem;  border:none; line-height:4rem; color:#fff; font-size:3em; width:100%;  padding:0;}
+
+
+/*当日挂号*/
+header#search{ height:4rem; background:#ddd; width:100%; position: fixed; top:89px; }
+header#search a{ color:#666; font-size:1.6rem; position:absolute; right:20px; top:15px;}
+header#search input{ width:80%; height:3rem; top:5px; border: none; border-radius:8px; font-size:1.4rem; text-indent:60px; color:#666; position:absolute; left:20px; z-index:1;}
+header#search i{ color:#29c2bd; font-size:2rem; position:absolute; left:33px; top:13px; z-index:2; }
+
+
+section#registerList{ padding-top:10px;}
+section#registerList dl{}
+section#registerList dl dt { height:3rem; line-height:3rem; width:100%; background:#ddd; }
+section#registerList dl dt a{color:#666; font-size:1.6rem;}
+section#registerList dl dd { height:3rem; line-height:3rem; width:95%; margin: 0 auto; border-bottom:1px solid #ddd; margin-bottom:5px;   }
+section#registerList dl dd a{color:#666; font-size:1.4rem; display:block; width:100%; text-indent:10px;}
+section#registerList dl dd:hover{ background:#eee; }
+
+
+/*城市*/
+section#cityList{}
+section#cityList .province{ width:40%;} 
+section#cityList ul.province li{ height:3rem; line-height:3rem; width:100%; background:#eee; border-bottom:1px solid #ddd; text-align:center; }
+section#cityList ul.province li a{color:#666; font-size:1.4rem; width:100%; display:block;}
+section#cityList ul.province li a.current{ background:#fff; color:#29c2bd;}
+section#cityList .cityShow{ width:60%;} 
+section#cityList ol.cityShow li{ height:3rem; line-height:3rem; width:100%;  border-bottom:1px solid #ddd; text-align:left; text-indent:20px;  }
+section#cityList ol.cityShow li a{color:#666; font-size:1.4rem;}
+section#cityList ol.cityShow li:hover{ background:#ddd;}
+
+
+
+
+/*医院选择*/
+header#headerResult{ background:#eee; text-align:center; font-size:1.4rem; height:3rem; line-height:3rem; color:#666; position:fixed; top:89px; width:100%; }
+header#headerResult strong{ color:#009e99; font-weight:500; }
+
+section#hospitalList{ width:95%; margin:0 auto;}
+section#hospitalList dl{ margin:20px 0; border-bottom:1px solid #ddd; padding:10px 0;}
+section#hospitalList dl dt{ float:left;}
+section#hospitalList dl dd{ float:left; font-size:1.3rem; line-height:130%; margin-left:10px;}
+section#hospitalList dl dd span{ font-size:1.2rem; color:#666;}  
+section#hospitalList a{ color:#333;}
+section#hospitalList dl:hover{ background:#eee;}
+
+
+/*二级标签*/
+header#subNav{ height:4.2rem; background:#ddd; width:100%; position: fixed; top:89px; }
+header#subNav ul{ width:60%; display:table; margin: 0 auto; height:3rem; line-height:3rem; background:#fff; border-radius:5px; overflow:hidden; margin-top:10px;}
+header#subNav ul li{ display:table-cell; text-align:center; vertical-align:middle;}
+header#subNav ul a{ font-size:1.4rem; color:#666; display:block;}
+header#subNav ul a:hover,header#subNav ul a.current{ background:#29c2bd; color:#fff;}
+
+
+
+header#subNav_3{ height:4.2rem;  width:100%; }
+header#subNav_3 ul{ width:93%; display:table; margin: 0 auto; height:3rem; line-height:3rem; background:#eee; border-radius:5px; overflow:hidden; margin-top:10px;}
+header#subNav_3 ul li{ display:table-cell; text-align:center; vertical-align:middle;}
+header#subNav_3 ul a{ font-size:1.4rem; color:#666; display:block;}
+header#subNav_3 ul a:hover,header#subNav_3 ul a.current{ background:#29c2bd; color:#fff;}
+
+
+/*预约挂号*/
+
+/*按医生*/
+section#booking_doctor{ padding-top:4px; border-bottom:6px solid #ddd; padding-bottom:5px;}
+section#booking_doctor dl{ margin:20px auto; border-bottom:1px solid #ddd; padding:10px 0; width:95%;}
+section#booking_doctor dl dt{ float:left; width:90px;}
+section#booking_doctor dl dt img{ border:1px solid #ddd;}
+section#booking_doctor dl dd{ float:left; width:80%;}
+section#booking_doctor dl dd h5{ font-size:1.3rem; font-weight:500; margin-bottom:10px; color:#333;}
+section#booking_doctor dl dd h5 strong{ color:#efa530; font-weight:500;}
+section#booking_doctor dl dd h5 button{ background:#efa530; color:#fff; border:none; border-radius:3px; padding:2px 8px; font-size:1.2rem;}
+section#booking_doctor dl dd p{ font-size:1.2rem; color:#666; line-height:150%;}
+section#booking_doctor dl dd .scheduling{ margin-top:15px;}
+section#booking_doctor dl dd .scheduling h4{ text-align:right; font-weight:500; }
+section#booking_doctor dl dd .scheduling h4 a{ font-size:1.2rem; color:#29c2bd; margin-left:10px;}
+section#booking_doctor dl dd .scheduling h4 a.current{ color:#efa530;}
+
+section#booking_doctor1{ padding-top:4px; border-bottom:6px solid #ddd; padding-bottom:5px;}
+section#booking_doctor1 dl{ margin:20px auto; border-bottom:1px solid #ddd; padding:10px 0; width:95%;}
+section#booking_doctor1 dl dt{ float:left; width:90px;}
+section#booking_doctor1 dl dt img{ border:1px solid #ddd;}
+section#booking_doctor1 dl dd{ float:left; width:80%;}
+section#booking_doctor1 dl dd h5{ font-size:1.3rem; font-weight:500; margin-bottom:10px; color:#333;}
+section#booking_doctor1 dl dd h5 strong{ color:#efa530; font-weight:500;}
+section#booking_doctor1 dl dd h5 button{ background:#efa530; color:#fff; border:none; border-radius:3px; padding:2px 8px; font-size:1.2rem;}
+section#booking_doctor1 dl dd p{ font-size:1.2rem; color:#666; line-height:150%;}
+
+.schedulingList{ border-collapse:collapse;}
+.schedulingList table{border-bottom:1px solid #ddd; border-right:1px solid #ddd; font-size:1.2rem; line-height:150%;}
+.schedulingList th{ font-weight:500; padding:8px 0; background:#eee; color:#333; text-align:center;}
+.schedulingList td{ padding:8px 0; color:#666; border-left:1px solid #ddd;border-top:1px solid #ddd; text-align:center;}
+.schedulingList .orange{ background:#efa530;color:#fff;}
+.schedulingList .grey{ background:#ddd; }
+.schedulingList .green{ background:#29c2bd; color:#fff;}
+
+/*按时间*/
+section#booking_time{ padding-top:15px; padding-bottom:5px; border-collapse:collapse; width:95%; margin:0 auto; line-height:280%;}
+section#booking_time table{border-bottom:1px solid #ddd; border-right:1px solid #ddd; font-size:1.2rem;}
+section#booking_time th{ font-weight:500; padding:8px 0; background:#eee; color:#333; text-align:center;}
+section#booking_time td{ padding:8px 0; color:#666; border-left:1px solid #ddd;border-top:1px solid #ddd; text-align:center;}
+section#booking_time a{color:#009e99;}
+
+
+/*医生信息*/
+section#doctorInfo{ padding-top:4px; padding-bottom:5px;}
+section#doctorInfo dl{ margin:20px auto; border-bottom:1px solid #ddd; padding:10px 0; width:95%;}
+section#doctorInfo dl dt{ float:left; width:90px;}
+section#doctorInfo dl dt img{ border:1px solid #ddd;}
+section#doctorInfo dl dd{ float:left; width:80%;}
+section#doctorInfo dl dd h5{ font-size:1.3rem; font-weight:500;  color:#333;}
+section#doctorInfo dl dd h5 strong{ color:#efa530; font-weight:500;}
+section#doctorInfo dl dd h5 button{ background:none; color:#666; border:none; border-radius:3px; padding:2px 8px; font-size:1.2rem;}
+section#doctorInfo dl dd h5 button i,section#doctorInfo dl dd h5 button strong{ color:#efa530; font-weight:500; font-size:1.4rem;}
+section#doctorInfo dl dd p{ font-size:1.2rem; color:#666; line-height:180%;}
+
+section#doctorInfo .doctorShow{ width:93%; margin:0 auto;}
+section#doctorInfo .doctorShow h3{ border-bottom:1px solid #ddd; height:3.5rem; line-height:3.5rem; font-size:1.4rem; font-weight:500; color:#333;}
+section#doctorInfo .doctorShow h3 strong{ font-weight:500; color:#efa530;}
+section#doctorInfo .doctorShow h2{ border-bottom:1px solid #ddd; height:3.5rem; line-height:3.5rem; font-size:1.2rem; font-weight:500; color:#666;}
+
+section#doctorInfo .doctorShow p{ font-size:1.18rem; padding-top:10px; color:#666; line-height:180%;}
+section#doctorInfo .doctorShow ol{ font-size:1.2rem; line-height:180%; color:#666; margin-top:10px; border-bottom:5px solid #ddd; padding-bottom:10px;}
+section#doctorInfo .doctorShow ol dt{ width:85%; float:left; }
+section#doctorInfo .doctorShow ol dt span{ margin-right:50px;}
+section#doctorInfo .doctorShow ol dd{ width:15%;float:left;}
+section#doctorInfo .doctorShow ol .orange{ color:#efa530;}
+section#doctorInfo .doctorShow ol dd{ margin-top:10px;}
+section#doctorInfo .doctorShow ol dd a{ background:#efa530; color:#fff; padding:5px 10px; border-radius:5px;}
+
+
+/*预约确认单*/
+section#booking_confirm{}
+section#booking_confirm ul{width:95%; padding-bottom:10px; margin:0 auto; border-bottom:5px solid #ddd; }
+section#booking_confirm ul li span{ width:100px; text-align:right; display:inline-block; color:#666; margin-right:10px;}
+section#booking_confirm ul li{ border-bottom:1px solid #ddd; height:3.2rem; line-height:3.2rem; font-size:1.4rem;}
+section#booking_confirm ul li a{ color:#666; display:block; width:98%; margin:0 auto; }
+section#booking_confirm ul li:hover{ background:#eee;}
+section#booking_confirm ol{ width:95%; padding-top:10px; margin:0 auto; }
+section#booking_confirm ol li{ height:3rem; line-height:3rem; width:100%; background:#fff; border-bottom:1px solid #ddd; clear:both;  color:#333; font-size:1.2rem; text-indent:15px; }
+section#booking_confirm ol a{ color:#333;}
+section#booking_confirm ol li i{ margin-top:10px;}
+
+
+.thickdiv{position:fixed !important;_position:absolute;top:0;left:0;width:100%;background:#000;border:0;opacity:0.20;filter:alpha(opacity=20);}
+
+.order_detail{ line-height:200%; color:#666; font-size:1.2rem;   background:#eee; border-top:1px solid #ddd; border-bottom:1px solid #ddd; padding:20px; margin:0 auto;}
+/*浮动窗*/
+.floatBox{ width:90%; margin:0 auto; border-radius:10px; border:1px solid #ddd; font-size:1.2rem; overflow:hidden; padding-bottom:10px; background:#fff;}
+.floatBox .title{ background:#29c2bd; text-indent:10px; color:#fff; font-weight:500; line-height:3rem; font-size:1.3rem;}
+
+.floatBox ul{ width:95%;margin:10px auto 0 auto; }
+.floatBox ul li{ height:3rem; line-height:3rem; width:100%; background:#fff; border-bottom:1px solid #ddd; clear:both;  color:#333; font-size:1.2rem; text-indent:15px; }
+.floatBox ul a{ color:#333;}
+.floatBox ul li i{ margin-top:10px;}
+.floatBox .pay{ width:90%; margin:0 auto; }
+.floatBox .pay img{padding:10px 0; display:block; text-align:center;}
+
+
+
+/*医院导航*/
+section#hospitalNavigation{}
+section#hospitalNavigation h5{ font-size:1.4rem; text-align:center; height:3rem; line-height:3rem; font-weight:normal; color:#333; margin-top:10px; }
+section#hospitalNavigation p{ font-size:1.2rem; text-align:center; line-height:2rem; font-weight:normal; color:#666; width:90%; margin: 0 auto; }
+section#hospitalNavigation ul{ width:90%; margin:0 auto;}
+section#hospitalNavigation ul li{line-height:3rem; width:100%; background:#fff; border-bottom:1px solid #ddd; color:#666; font-size:1.2rem; text-indent:15px; }
+section#hospitalNavigation ul li span{ width:40px; font-weight:700; color:#333;}
+section#hospitalNavigation ul a{ color:#666;  display:block; padding:5px;}
+section#hospitalNavigation h3{ padding-top:30px; font-size:1.6rem; text-align:center; height:3rem; line-height:3rem;  color:#333; margin-top:10px; font-weight:700; }
+section#hospitalNavigation h3 a{ color:#009e99; font-size:2.6rem; padding:0 10px;}
+section#hospitalNavigation .show{ font-size:0.9rem; width:95%; margin: 0 auto; color:#666; padding-top:20px; line-height:230%;}
+
+
+
+/*报告查询*/
+section#reportSearch { padding:20px 0; width:95%; margin:0 auto;}
+section#reportSearch h6{ font-size:1.2rem; text-align:left; font-weight:normal; color:#666;  }
+section#reportSearch h5{ margin-top:20px;font-size:1.4rem; text-indent:10px; height:3rem; line-height:3rem;  color:#333; font-weight:500; background:#eee; color:b
+; }
+section#reportSearch h5 a{ color:#009e99; font-size:1.2rem; padding:5px 10px; margin-right:5px; border-radius:3px;}
+section#reportSearch h5 a.current{ background:#009e99; color:#fff; }
+section#reportSearch ul{  width:95%; margin: 10px auto;}
+section#reportSearch ul li{ font-size:1.2rem; line-height:180%; color:#666; clear:both;}
+section#reportSearch .xx{ margin-top:8px;  border-top:6px solid #ddd; }
+
+section#reportSearch2 { padding:20px 0; width:95%; margin:0 auto;}
+section#reportSearch2 h6{ font-size:1.2rem; text-align:left; font-weight:normal; color:#666;  }
+section#reportSearch2 h5{ margin-top:20px;font-size:1.4rem; text-indent:10px; height:3rem; line-height:3rem;  color:#333; font-weight:500; background:#eee; color:b
+; }
+section#reportSearch2 h5 a{ color:#009e99; font-size:1.2rem; padding:5px 10px; margin-right:5px; border-radius:3px;}
+section#reportSearch2 h5 a.current{ background:#009e99; color:#fff; }
+section#reportSearch2 ul{  width:95%; margin: 10px auto;}
+section#reportSearch2 ul li{ font-size:1.2rem; line-height:180%; color:#666; clear:both;}
+section#reportSearch2 .xx{ margin-top:8px;  border-top:6px solid #ddd; }
+
+/*意见反馈*/
+section#feedback{padding-top:10px; text-align:center; }
+section#feedback textarea{width:90%; margin:0 auto; border:1px solid #ddd; font-size:1.4rem; height:300px; text-indent:10px;  padding:10px 0;}
+
+/*病因*/
+section#virus{}
+section#virus h3{ font-size:1.6rem; text-indent:10px; height:3rem; line-height:3rem;  color:#333; font-weight:500;  width:100%; border-bottom:1px solid #ddd;}
+section#virus .show{ font-size:0.9rem; width:95%; margin: 0 auto; color:#666; padding-top:20px; line-height:230%;}
+
+/*健康知识*/
+section#lifeStyle{}
+section#lifeStyle ul{ width: 90%; margin: 0 auto;}
+section#lifeStyle ul li{ border-bottom: 1px solid #ddd; padding:10px 0; font-size: 1.4rem; display: block;}
+section#lifeStyle ul li input{ width: 25px; height: 25px;}
+section#lifeStyle dl{ width: 95%; margin: 0 auto;}
+section#lifeStyle dl dt{ float: left;}
+section#lifeStyle dl dd{ float: left; width: 60%; line-height: 130%; color: #666; margin-left:10px; font-size: 1.3rem;}
+section#lifeStyle dl dd a{ color: #333;}
+section#lifeStyle dl dd strong{ display: block;}
+section#lifeStyle ol{ width:95%; padding-top:10px; margin:0 auto; }
+section#lifeStyle ol li{ height:3rem; line-height:3rem; width:100%; display: block; border-bottom:1px solid #ddd;   }
+section#lifeStyle ol li a{ background:#fff; color:#333; font-size:1.2rem; text-indent:10px; padding:10px 0; }
+
+.menu{ position:fixed; top:88px; background:#fff; width: 100%;}
+.menu ul{  width:80%; border-bottom:3px solid #9fa0a0;  }
+.menu ul li{ height:50px; float: left; border-right: 1px solid #ddd; border-left: 1px solid #ddd; padding:0 10px;}
+.menu ul li a{ display: block; font-size:1.5rem;  color:#333; height::50px; line-height:50px; padding:0 5px; }
+.menu ul li a.current{ color:#f60; border-bottom:3px solid #f60; }
+.menu ol{  width: 10%; text-align: center; font-size: 30px; line-height: 50px; border-bottom:3px solid #9fa0a0; }
+.menu ol a{ color: #999; }
+.menu ol a:hover,.menu ol a.current{ color: #f60;}
+
+
+/*健康指南*/
+section#guide{}
+section#guide .guide-photo{ position: relative; width: 100%;}
+section#guide .guide-photo .person{ position: absolute;  width: 100%; z-index: 1;}
+section#guide .guide-photo .guide-btn{ position: absolute; right:0; top:5%; z-index: 2;}
+section#guide .guide-photo .btn_4{ width: auto;}
+section#guide .guide-photo .btn_4 a.bg-pink{ background: #e170c2;}
+section#guide .province{ width:40%;}
+section#guide ul.province li{ height:3rem; line-height:3rem; width:100%; background:#eee; border-bottom:1px solid #ddd; text-align:center; }
+section#guide ul.province li a{color:#666; font-size:1.4rem; width:100%; display:block;}
+section#guide ul.province li a.current{ background:#fff; color:#29c2bd;}
+section#guide .cityShow{ width:60%;}
+section#guide ol.cityShow li{ height:3rem; line-height:3rem; width:100%;  border-bottom:1px solid #ddd; text-align:left; text-indent:20px;  }
+section#guide ol.cityShow li a{color:#666; font-size:1.4rem;}
+section#guide ol.cityShow li:hover{ background:#ddd;}
+
+/*自测结果*/
+section#self-testing{}
+section#self-testing .self-testing-list{ width: 100%; margin: 10px auto; border-bottom: 1px solid #ddd; padding:0 0 10px 0;}
+section#self-testing .self-testing-list .title{ font-weight: 700; line-height: 40px; font-size: 1.4rem; background: #f7f7f7; text-indent: 20px; color: #333; }
+section#self-testing .self-testing-list .title a{ margin-right: 20px;  color: #0b644f;}
+section#self-testing .self-testing-list p{ font-size: 1.2rem; line-height: 200%; color: #666; width: 95%; margin: 5px auto;}
+section#self-testing .self-testing-list p a{ color: #333;}
+section#self-testing .self-testing-list .department{ font-weight: 500;  line-height: 30px; font-size: 1.2rem;; margin-top:10px; text-indent: 20px; color: #999;}
+section#self-testing .self-testing-list .department a{ margin-right: 10px;  color: #0b644f; margin-left: 10px; font-weight: 500;}
+
+
+
+
+
+/*我的订单*/
+section#myorder{}
+.p_t_70{padding-top:70px;}
+.p_b_70{padding-bottom:70px;}
+/*section#myorder header{ position:fixed;top:90px;}*/
+section#myorder dl{ width:95%; margin: 10px auto; font-size:1.3rem; line-height:200%; color:#666; border:1px solid #ddd; padding-bottom:15px; }
+section#myorder dl h5{ font-size:1.4rem; text-indent:10px; height:3rem; line-height:3rem;  color:#333; font-weight:500; background:#eee; width:100%; margin-bottom:10px; }
+section#myorder dl h5 i{ margin-right:10px; font-size:2.4rem; color:#999; margin-top:5px;}
+section#myorder dl dt{ padding-left:10px; float:left; width:75%; }
+section#myorder dl dd{ float:right; color:#f00; font-weight:700; width:20%; text-align:center;}
+section#myorder dl dd i{margin-right:10px; font-size:2.4rem; color:#999; margin-top:5px;} 
+/*section#myorder .btn_1{ position:fixed;bottom:90px; left:5%;  }*/
+section#myorder ol{width:95%; padding-bottom:10px; margin:0 auto; border-bottom:5px solid #ddd; }
+section#myorder ol li span{ width:100px; text-align:right; display:inline-block; color:#666; margin-right:10px;}
+section#myorder ol li{ border-bottom:1px solid #ddd; height:3.2rem; line-height:3.2rem; font-size:1.4rem;}
+section#myorder ol li a{ color:#666; display:block; width:98%; margin:0 auto; }
+section#myorder ol li:hover{ background:#eee;}
+
+.select-w-80{width:90%; height:3rem;margin:0 auto; line-height:3rem; border-radius:3px; border:1px solid #ddd; text-indent:5px;font-size:1.4rem;}
+.floatBox .selectBox{width:100%; text-align:center; margin-top:15px;}
+.floatBox ul li input{ width:80%;line-height:2rem; font-size:1.2rem; 
+.thickdiv{position: fixed; top:0;left:0;z-index:9999999;width:100%;background:#000;border:0;background:transparent;background-color:rgba(0,0,0,0.55); height:100%;}
+
+
+
+
+

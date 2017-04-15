@@ -1,0 +1,23 @@
+
+/*登录页图标*/
+.login_icon1{width:22px; height:22px; background:url(../images/food_user.png) no-repeat; display:block;}
+.login_icon2{width:22px; height:22px; background:url(../images/food_password.png) no-repeat;  display:block;}
+.login_icon{ background:url(../images/l-icon2.png) no-repeat; width:20px; height:16px; display:block; margin:6px 0 0 20px; float:left;}
+.reset_icon{ background:url(../images/l-icon1.png) no-repeat; width:21px; height:21px; display:block; margin:3px 0 0 20px; float:left;}
+.prompt_icon{ background:url(../images/marking1.gif) no-repeat; width:18px; height:17px; display:block; float:left; margin-top:6px; margin-right:10px; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

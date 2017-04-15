@@ -1,0 +1,55 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*食药监主体右侧内容 begin*/
+.fM_right_one{position:relative;width:90%;min-height:130px;float:left;margin-top:40px;border:1px solid #c4dad4;border-radius:5px;background:#ffffff;}
+.fM_right_jd{position:absolute;height:32px;padding:0 14px;line-height:32px;text-align:center;left:20px;top:-16px;border:1px solid #c4dad4;border-radius:5px;background:#ffffff;font-size:18px;}
+.fM_right_one ul{display:block;width:100%;padding-top:22px;}
+.fM_right_one ul li{display:inline-block;height:80px;float:left;margin:10px 0 10px 36px;text-align:center;}
+.fM_right_one ul li p{text-align:center;margin-top:4px;color:#1d4a4b;}
+
+.fM_right_two{width:90%;float:left;margin-top:30px;}
+.fM_rt_top{width:100%;height:36px;float:left;line-height:36px;border-bottom:3px solid #b6d1cb;font-size:16px;color:#0a4938;}
+.fM_rt_top span{display:block;float:left;border-bottom:3px solid #396e62;}
+.fM_rt_main{width:100%;height:auto;float:left;}
+.fM_rt_main_yw01{width:100%;float:left;margin-top:10px;padding-bottom:10px;border-bottom:1px solid #d6ebe5;}
+.fM_rt_mainLeft{width:14%;float:left;font-size:14px;}
+.fM_rt_mainLeft p{padding-left:16px;margin-top:6px;}
+.fM_rt_mainLeft p a{color:#ff6600;text-decoration:underline;}
+.fM_m1{color:#1d4a4b;font-weight:700;}
+.fM_rt_mainRight{width:80%;float:left;}
+.fM_rt_mainRight ul{display:block;float:left;}
+.fM_rt_mainRight ul li{display:block;height:26px;float:left;line-height:24px;margin:6px 0 6px 36px;color:#666666;}
+.fM_rt_bK{display:block;padding:0 10px;float:left;background:#ffffff;border:1px solid #b6d1cb;}
+.fM_rt_mainRight ul li a{color:#666666;}
+.fM_rt_bK span{display:block;float:left;}
+.fM_rt_dG{width:15px;height:15px;float:left;margin-left:6px;margin-top:3px;background:url(../images/fM_right_icon11.png) no-repeat;}
+.fM_rt_main_yw02{width:100%;float:left;margin-top:20px;padding-bottom:10px;text-align:center;}
+.fM_rt_main_yw02 button{border:0;width:146px;height:40px;margin-right:20px;color:#ffffff;background:#009094;border-radius:5px;font-size:16px;cursor:pointer;}
+.fM_rt_main_yw02 button img{float:left;margin:10px 10px 0 34px;}
+.fM_rt_main_yw02 button span{display:block;height:40px;line-height:40px;float:left;}
+
+/*我的桌面选项卡 begin*/
+.fM_right_three{width:90%;float:left;margin-top:30px;}
+.fM_content .right .tab{line-height:36px;width:100%;border-bottom:3px solid #b6d1cb; }
+.fM_content .right .tab li{ float:left;  /*+width:12%;*/margin-left:14px; border-radius:5px 5px 0 0;background:#ffffff;border:1px solid #b6d1cb;border-bottom:0;  padding:0 30px;  display:block; position:relative;}
+.fM_content .right .tab a{ padding-right:6px;font-size:16px; color:#1d4a4b; }
+.fM_content .right .tab li:hover,.fM_content .right .tab .current {background:#b6d1cb; color:#1d4a4b;}
+.fM_content .right .tab button{ border:0; background:url(../images/close.png) no-repeat; height:19px; width:19px; display:inline-block; margin-left:15px; cursor:pointer; outline:none; }
+.fM_content .right .tab .menuClose{ position:absolute; right:5px;top:9px;  background:url(../images/fM_right_icon14.png) no-repeat; height:20px; width:20px; display: block;}
+/*我的桌面选项卡 over*/
+
+/*A计划选项卡 begin*/
+.fM_right_four{width:90%;float:left;margin-top:30px;padding-bottom:200px;}
+.fM_right_four ul{display:table;width:98%;height:36px;line-height:36px;margin:0 auto;background:#ffffff;border:1px solid #009094;border-radius:5px;overflow:hidden;font-size:18px;}
+.fM_right_four ul li{display:table-cell;width:33%;height:36px;*float:left;text-align:center;vertical-align:middle;border-left:1px solid #009094;}
+.fM_right_four ul li a{display:block;color:#666666;}
+.fM_right_four ul li a:hover{background:#b6d1cb;color:#1d4a4b;}
+.fM_right_four ul li a.current{background:#b6d1cb;color:#1d4a4b;}
+/*A计划选项卡 over*/
+/*食药监主体右侧内容 over*/
+
+.fM_content{position:relative;}
+.fM_content .right{width:100%; padding-left:250px;}
+.fM_content .left{position:absolute; left:0px;margin-bottom:0px;padding-bottom:0px; width:240px; height:100%; overflow-y:auto;}
+.fM_content .l_close{position:absolute; left:240px; width:13px;}

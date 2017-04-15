@@ -1,0 +1,174 @@
+@charset "utf-8";
+
+
+/*个人中心*/
+header#mycenter_head{ padding-top:8px; border-bottom:solid 2px #dddddd; }
+header#mycenter_head p{ margin:0 auto; padding:0;width:110px; height:110px; -moz-border-radius:50%;-webkit-border-radius:50%;border-radius: 50%; border:1px #CCC solid; background:#ffffff;overflow: hidden;}
+header#mycenter_head p img{   width:120px; height:120px;}
+header#mycenter_head h5{ text-align:center; font-size:1.6rem; color:#666666; line-height:60px;}
+section#mycenter{line-height:5rem;}
+section#mycenter h1{font-size:1.6rem; font-weight:500; color:#666666; border-bottom:1px solid #ddd; }
+section#mycenter h1 span{ margin-left:10px;}
+section#mycenter h1 .jt{ margin-top:23px; margin-right:20px; font-size:2.2rem;}
+
+
+
+/*个人信息*/
+section#mycenter_info{}
+section#mycenter_info ul{width:95%; padding-bottom:10px; margin:0 auto; }
+section#mycenter_info ul li span{ width:100px; text-align:right; display:inline-block; color:#666; margin-right:10px;}
+section#mycenter_info ul li{ border-bottom:1px solid #ddd; height:3.2rem; line-height:3.2rem; font-size:1.4rem;}
+section#mycenter_info ul li a{ color:#666; display:block; width:98%; margin:0 auto; }
+section#mycenter_info ul li:hover{ background:#eee;}
+
+/*个人信息-2015.05.15*/
+section#mycenterInfo{}
+section#mycenterInfo ul{width:95%; padding-bottom:10px; margin:0 auto; }
+section#mycenterInfo ul li span{ width:100px; text-align:right; display:inline-block; color:#666; margin-right:10px; float:left; }
+
+section#mycenterInfo ul li{ border-bottom:1px solid #ddd;line-height:3.2rem; font-size:1.4rem; text-align:right;}
+section#mycenterInfo ul li a{ color:#666; display:block; width:98%; margin:0 auto; }
+section#mycenterInfo ul li:hover{ background:#eee;}
+section#mycenterInfo ul li i{ margin-left:10px;}
+
+header#mycenter_info_head{ height:100px;  margin-left:10px; margin-right:10px; padding-top:14px; border-bottom:solid 2px #dddddd;}
+/*header#mycenter_info_head p{ float:right;width:80px; height:80px; -moz-border-radius:50%;-webkit-border-radius:50%;border-radius: 50%; border:1px #CCC solid; background:#ffffff;}
+header#mycenter_info_head p img{ margin:12px 0px 20px 16px; width:50px; height:50px;}
+*/header#mycenter_info_head h5{ float:left; text-align:center; font-size:1.6rem; color:#666666; line-height:100px;}
+
+.infoarrow{ margin-top:10px;margin-right:20px; font-size:1.8rem;}
+.infoarrow01{ margin-top:20px;margin-right:20px; margin-left:10px; font-size:2.5rem;color:#666;}
+
+
+/*设置头像--file*/
+/*.file{ float:left; width:100%;position:relative;height:3rem; line-height:3rem;}
+.file span{ position:absolute; top:0; left:0; text-align:center;  }
+.file input{opacity: 0; filter:alpha(opacity=0); display:block;position:absolute; left:0; top:0; z-index:10;}*/
+
+.file{ float:right; width:120px; height:100%; position:relative; text-align:center; color:#666; margin-right:15px;}
+.file span{ position:absolute; top:0; left:0; text-align:center; width:120px;  font-size:1.8rem;}
+.file span p{ width:80px; height:80px; -moz-border-radius:50%;-webkit-border-radius:50%;border-radius: 50%; border:1px #CCC solid; background:#ffffff;overflow: hidden;}
+.file span p img{width:80px; height:80px;}
+.file input{opacity: 0; filter:alpha(opacity=0); display:block; width:120px; height:80px; position:absolute; left:0; top:0; z-index:10;}
+.filea{ font-size:2.5rem; margin-top:20px;}
+
+.file01{/*width:80px; */ height:3rem; line-height:3rem;position:relative; text-align:center;}
+.file01 span{ position:absolute; top:0; left:0; text-align:center; width:80px;}
+.file01 input{opacity: 0; filter:alpha(opacity=0); display:block; width:80px; height:50px; position:absolute; left:0; top:0; z-index:10;}
+.file01 p{ float:right;width:80px; height:80px; -moz-border-radius:50%;-webkit-border-radius:50%;border-radius: 50%; border:1px #CCC solid; background:#ffffff;}
+.file01 p img{ margin:12px 0px 20px 0px; width:50px; height:50px;}
+
+
+
+
+/*就诊人管理*/
+
+section#mycenter_patient .doctorShow{ width:93%; margin:0 auto;}
+section#mycenter_patient .doctorShow h3{ border-bottom:5px solid #ddd;  line-height:2.5rem; font-size:1.2rem; font-weight:500; color:#333;}
+section#mycenter_patient .doctorShow h3 strong{ font-weight:500; color:#efa530;}
+section#mycenter_patient .doctorShow h2{ border-bottom:1px solid #ddd; height:3.5rem; line-height:3.5rem; font-size:1.2rem; font-weight:500; color:#666;}
+
+section#mycenter_patient .doctorShow p{ font-size:1.18rem; padding-top:10px; color:#666; line-height:180%;}
+section#mycenter_patient .doctorShow ol{ font-size:1.4rem; /*line-height:180%;*/ line-height:50px; color:#666; margin-top:10px; border-bottom:1px solid #ddd; padding-bottom:10px;}
+section#mycenter_patient .doctorShow ol dt{ width:90%; float:left; }
+section#mycenter_patient .doctorShow ol dt span{ margin-right:30px;}
+section#mycenter_patient .doctorShow ol dd{ width:10%;float:left;margin-top:10px;}
+section#mycenter_patient .doctorShow ol .orange{ color:#efa530;}
+.patient{ margin-top:8px;margin-right:20px;  font-size:1.4rem;color:#666;}
+.patient01{margin-right:20px;  font-size:1.4rem;color:#666;}
+section#mycenter_patient p{ line-height:50px; text-align:center; font-size:1.4rem;}
+
+
+/*添加就诊人*/
+section#mycenter_patient_add{} 
+section#mycenter_patient_add dl{ margin-left:10px; margin-right:10px; line-height:4rem;font-size:1.2rem; font-weight:500; color:#666666; border-bottom:1px solid #ddd;}
+section#mycenter_patient_add dl dt{ float:left; width:24%;}
+section#mycenter_patient_add dl dd{ float:left; width:76%;}   
+section#mycenter_patient_add dl dd input{}
+.patient_add_input{  width:80%; line-height:2rem; font-size:1.2rem; }
+
+
+/*编辑就诊人*/
+section#mycenter_patient_edit{}
+section#mycenter_patient_edit ul{width:95%; padding-bottom:10px; margin:0 auto; }
+section#mycenter_patient_edit ul li span{ width:100px; text-align:right; display:inline-block; color:#666; margin-right:10px;}
+section#mycenter_patient_edit ul li{ border-bottom:1px solid #ddd; height:3.2rem; line-height:3.2rem; font-size:1.4rem;}
+section#mycenter_patient_edit ul li input{ height:18px; line-height:18px; width:70%; font-size:1.2rem;  color:#666666; text-indent:6px;}
+section#mycenter_patient_edit ul li select{ height:2rem; line-height:2rem; width:20%;  font-size:1.2rem; color:#666666; text-indent:6px; margin-right:10px;}
+section#mycenter_patient_edit ul li a{ color:#666; display:block; width:98%; margin:0 auto; }
+section#mycenter_patient_edit .borderNo{ border:0px;}
+
+
+/*就诊卡管理*/
+section#mycenter_card .doctorShow{ width:93%; margin:0 auto;border-bottom:5px solid #ddd;}
+section#mycenter_card .doctorShow h3{ border-bottom:1px solid #ddd;  line-height:3.5rem; font-size:1.6rem; font-weight:500; color:#333;}
+section#mycenter_card .doctorShow h3 strong{ font-weight:500; color:#efa530;}
+
+section#mycenter_card .doctorShow ol{ font-size:1.4rem; /*line-height:180%;*/ line-height:50px; color:#666; margin-top:10px; border-bottom:1px solid #ddd; padding-bottom:10px;}
+section#mycenter_card .doctorShow ol dt{ width:90%; float:left; }
+section#mycenter_card .doctorShow ol dt span{ margin-right:30px;}
+section#mycenter_card .doctorShow ol dd{ width:10%;float:left;margin-top:10px;}
+section#mycenter_card .doctorShow ol .orange{ color:#efa530;}
+
+/*添加就诊卡*/
+section#mycenter_card_add{ margin-left:10px; margin-right:10px;}
+section#mycenter_card_add h6{  height:3rem; line-height:3rem; font-size:1.2rem; color:#666666; }
+section#mycenter_card_add h3{  height:3rem; line-height:3rem; font-size:1.4rem; color:#333333;border-bottom:solid 1px #999999;}
+section#mycenter_card_add h4{  height:3rem; line-height:3rem; font-size:1.4rem; color:#333333;}
+section#mycenter_card_add .input{ width:100%; height:30px; line-height:30px; border:solid 1px #dddddd; }
+section#mycenter_card_add .input01{ margin-top:15px; }
+
+
+/*我的关注*/
+section#mycenter_focus{ padding-top:4px; padding-bottom:5px;}
+section#mycenter_focus dl{ margin:20px auto; border-bottom:1px solid #ddd; padding:10px 0; width:95%;}
+section#mycenter_focus dl dt{ float:left; width:90px;}
+section#mycenter_focus dl dt img{ border:1px solid #ddd;}
+section#mycenter_focus dl dd{ float:left; width:80%;}
+section#mycenter_focus dl dd h5{ font-size:1.3rem; font-weight:500;  color:#333;}
+section#mycenter_focus dl dd h5 strong{ color:#efa530; font-weight:500;}
+section#mycenter_focus dl dd h5 button{ background:none; color:#666; border:none; border-radius:3px; padding:2px 8px; font-size:1.2rem;}
+section#mycenter_focus button{ background:#efa530; color:#fff; border:none; border-radius:3px; padding:2px 8px; font-size:1.2rem; margin-left:10px;}
+section#mycenter_focus dl dd h5 button i,section#doctorInfo dl dd h5 button strong{ color:#efa530; font-weight:500; font-size:1.4rem;}
+section#mycenter_focus dl dd p{ font-size:1.2rem; color:#666; line-height:180%;}
+
+
+/*我的预约挂号*/
+section#mycenter_booking{ padding-top:4px; padding-bottom:5px;}
+section#mycenter_booking dl{ margin:20px auto; border-bottom:1px solid #ddd; padding-left:10px; width:95%;}
+section#mycenter_booking dl dt{ float:left; width:90px;}
+section#mycenter_booking dl dt img{ border:1px solid #ddd;}
+section#mycenter_booking dl dd{ float:left; width:80%;}
+section#mycenter_booking dl dd h5{ font-size:1.3rem; font-weight:500;  color:#333;}
+section#mycenter_booking dl dd h5 font{ color:#F00; font-size:30px;}
+section#mycenter_booking dl dd h5 strong{ color:#efa530; font-weight:500;}
+section#mycenter_booking dl dd h5 button{ background:none; color:#666; border:none; border-radius:3px; padding:2px 8px; font-size:1.2rem;}
+section#mycenter_booking button{ background:#efa530; color:#fff; border:none; border-radius:3px; padding:2px 8px; font-size:1.2rem; margin-left:10px;}
+section#mycenter_booking dl dd h5 button i,section#doctorInfo dl dd h5 button strong{ color:#efa530; font-weight:500; font-size:1.4rem;}
+section#mycenter_booking dl dd p{ font-size:1.2rem; color:#666; line-height:180%;}
+section#mycenter_booking h6{ font-size:1.3rem; font-weight:500; color:#333; margin-left:10px;}
+section#mycenter_booking p{font-size:1.3rem; font-weight:500; color:#333; margin-left:10px; margin-right:10px; line-height:40px; border-bottom:1px solid #ddd;}
+section#mycenter_booking p span{ float:right;}
+section#mycenter_booking .line01{border-bottom:5px solid #ddd;}
+
+
+
+/*预约订单*/
+
+header#mycenter_booking_details{ margin:0 auto; text-align:center;  padding:0px; display:block; background:#efa530;  border:none; line-height:3rem; color:#fff; font-size:2.4em;  }
+
+
+/*设置*/
+section#mycenter_set{}
+section#mycenter_set ul{width:95%; padding-bottom:10px; margin:0 auto; } 
+section#mycenter_set ul li a{ color:#666; display:block; width:98%; margin:0 auto; }
+section#mycenter_set ul li:hover{ background:#eee;}
+section#mycenter_set .set{ margin-top:10px;margin-left:10px; font-size:1.8rem;}
+section#mycenter_set .b_border{border-bottom:5px solid #ddd;}
+
+section#mycenter_set ul li span{ text-align:right; display:inline-block; color:#666; margin-right:15px;}
+section#mycenter_set ul li{ border-bottom:1px solid #ddd;  line-height:3.2rem; font-size:1.4rem;}
+
+/*备注文字*/
+.beizhu{height:3.2rem; line-height:3.2rem; font-size:1.2rem; color:#999999;}
+

@@ -1,0 +1,201 @@
+html,body,.fM_content{height:95%;}
+
+/* CSS Document */
+body,html{background:#fff;}
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend{margin:0;padding:0;}
+body,button,input,select,textarea{font: 12px/1.5 arial,"Microsoft Yahei","黑体","Hiragino Sans GB",sans-serif;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+ul,ol{list-style:none;}
+a{ color: #666; text-decoration: none; }
+a:hover { color: #f60;  }
+.wrap100 {  margin: 0 auto;  }
+.wrap { width: 1000px; margin: 0 auto;   }
+.wrapindex { width: 1400px; margin: 0 auto;   }
+img { border:0;}
+.fl { float:left;}
+.fr { float:right;}
+.cl{ clear:both;}
+
+/*背景颜色*/
+.b-green{background-color: #68bb47;}
+.b-red{background-color: #f00;}
+.b-blue{ background-image: url(../images/food_topBg.jpg); background-repeat: repeat-x;}
+
+
+/** top nav begin **/
+.header {
+    height: 55px;
+    position: relative;
+    padding: 0 20px;
+}
+.header h1 {
+    font-size: 25px;
+    margin-top:5px;
+}
+.header a {
+    color: #fff;
+}
+.header a:hover,
+.header a:active,
+.header a:visited {
+    text-decoration: none;
+}
+.header .head-nav {
+    height: 55px;
+    line-height: 55px;
+    position: absolute;
+    left: 40%;
+    margin-left: -165px;
+    top: 0px;
+    width: 700px;
+    text-align: center;
+    display: block;
+}
+.header .caret{
+    height: 20px\9;
+    width: 20px\9;
+    background-image: url(../images/sj.gif)\9;
+    background-repeat:no-repeat\9;
+    background-position: 0 8px\9;
+    border-top-style:none\9;
+}
+.header .head-nav .nav-item {
+    color: #fff;
+    display: inline-block;
+    font-size: 16px;
+    float: left;
+    width: 110px;
+    text-align: center;
+}
+.header .head-nav .nav-item a:active {
+    background: #494948;
+}
+.header .head-nav .nav-item.active {
+    background-color: #02A5F3;
+}
+.header .head-nav.head-navcreate .nav-item {
+    width: 160px;
+}
+.header .head-nav.head-navcreate .nav-item:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    width: 31px;
+    height: 30px;
+    margin-right: 5px;
+}
+.header .head-nav .create:before {
+    background: url("../images/t-icon1.png") no-repeat;
+}
+.header .head-nav .refer:before {
+    background: url("../images/t-icon2.png") no-repeat;
+}
+.header .head-nav .copy:before {
+    background: url("../images/t-icon3.png") no-repeat;
+}
+.header .head-mem {
+    position: absolute;
+    top: 10px;
+    right: 45px;
+}
+.header .checklist {
+    top: 50px;
+}
+.header .back {
+    display: inline-block;
+    width: 146px;
+    height: 71px;
+    background: #5b5b5b url('../images/back.png') no-repeat 30px 24px;
+    position: absolute;
+    left: 0px;
+    color: #fff;
+    text-decoration: none;
+    top: 0px;
+    line-height: 71px;
+    padding-left: 80px;
+    font-size: 18px;
+}
+/** top nav end **/
+
+
+
+/*食药监主体,左侧导航 begin*/
+.fM_content{background:#f4fdfb;overflow:hidden;}
+
+/*左侧*/
+.fM_content .left{ width:16%;margin-bottom:-300000px; padding-bottom:300000px;background:#e2f3ef; }
+.fM_content .left dl{} 
+.fM_content .left dl h5{background:#e2f3ef; line-height:48px; font-weight:500; height:48px;font-size:18px; border-bottom:1px solid #c0d6d1;}
+.fM_content .left dl h5 a{ color:#333; display:block;}
+.fM_content .left dl h5 i{ font-style:normal;}
+/*左侧图标*/
+.fM-l-icon1{ background-image:url(../images/fM_left_icon01.png); background-repeat:no-repeat; line-height:48px; height:48px; width:100%; display:block; float:left; text-indent:50px; background-position:20px 13px;font-size:16px;}
+.fM-l-icon1:hover,.fM-l-icon1.current{ background-image:url(../images/fM_left_icon01.png); background-repeat:no-repeat; /*background-color:#43c8bf;*/ color:#1d4a4b;}
+.fM-l-icon2{ background-image:url(../images/arrow-bottom.png); background-repeat:no-repeat; line-height:48px; height:48px; width:100%; display:block; float:left; text-indent:50px; background-position:20px 13px;font-size:16px; }
+.showicon2{ background-image:url(../images/arrow-right.png); background-repeat:no-repeat; line-height:48px; height:48px; width:100%; display:block; float:left; text-indent:50px; background-position:20px 13px;font-size:16px; }
+.fM-l-icon3{ background-image:url(../images/fM_left_icon03.png); background-repeat:no-repeat; line-height:48px; height:48px; width:100%; display:block; float:left; text-indent:50px; background-position:20px 13px;font-size:16px; }
+.fM-l-icon3:hover,.fM-l-icon3.current{ background-image:url(../images/fM_left_icon03.png); background-repeat:no-repeat; background-color:#e2f3ef; color:#1d4a4b;}
+.fM-l-icon4{ background-image:url(../images/fM_left_icon04.png); background-repeat:no-repeat; line-height:48px; height:48px; width:100%; display:block; float:left; text-indent:50px; background-position:20px 10px;font-size:16px;}
+.fM-l-icon4:hover,.fM-l-icon4.current{ background-image:url(../images/fM_left_icon04.png); background-repeat:no-repeat; background-color:#e2f3ef; color:#1d4a4b;}
+.fM-l-icon5{ background-image:url(../images/fM_left_icon05.png); background-repeat:no-repeat; line-height:48px; height:48px; width:100%; display:block; float:left; text-indent:50px; background-position:20px 10px;font-size:16px;}
+.fM-l-icon5:hover,.fM-l-icon5.current{ background-image:url(../images/fM_left_icon05.png); background-repeat:no-repeat; background-color:#e2f3ef; color:#1d4a4b;}
+.fM-l-icon6{ background-image:url(../images/fM_left_icon06.png); background-repeat:no-repeat; line-height:48px; height:48px; width:100%; display:block; float:left; text-indent:50px; background-position:20px 10px;font-size:16px;}
+.fM-l-icon6:hover,.fM-l-icon6.current{ background-image:url(../images/fM_left_icon06.png); background-repeat:no-repeat; background-color:#e2f3ef; color:#1d4a4b;}
+.fM-l-icon7{ background-image:url(../images/fM_left_icon07.png); background-repeat:no-repeat; line-height:48px; height:48px; width:100%; display:block; float:left; text-indent:50px; background-position:20px 10px;font-size:16px;}
+.fM-l-icon7:hover,.fM-l-icon7.current{ background-image:url(../images/fM_left_icon07.png); background-repeat:no-repeat; background-color:#e2f3ef; color:#1d4a4b;}
+.fM_content .left dl dt a{ display:block; width:100%; border-bottom:1px solid #dbdbdb; color:#333; background: url(../images/fM_left_marking1.png) no-repeat 48px 12px #eff7f5; height:34px; font-size:14px; line-height:34px; text-indent:60px; color:#666;}
+.fM_content .left dl dt a:hover,.fM_content .left dl dt a.current{ background:url(../images/fM_left_marking1.png) no-repeat 48px 12px #ffffff;}
+/*.fM_content .left dl dd a{ display:block; width:100%; border-bottom:1px solid #dbdbdb; color:#333; background: url(../images/fM-marking3.png) no-repeat 60px 12px; height:34px; font-size:14px; line-height:34px; text-indent:80px; color:#999;}
+.fM_content .left dl dd a:hover,.fM_content .left dl dd a.current{ background:url(../images/fM-marking3.png) no-repeat 60px 12px #eeeeee;}*/
+
+.fM_content .l_close{ background:#dae8e4; width:1%; margin-bottom:-9999px;padding-bottom:9999px;}
+.fM_content .l_close img{margin-top:200px;}
+/*食药监主体,左侧导航 over*/
+/*食药监右侧 begin*/
+.fM_content .right{ width:83%;}
+.all_content{ width:99%;}
+/*食药监右侧 over*/
+.nav01 img {
+	float:left;
+	padding:12px 10px;
+}
+.nav01 a:hover {
+	text-decoration: none;
+	color:#e3ffff;
+	background-color:#1b7e7b;
+}
+.nav ul li {
+	float:left;
+	width:148px;
+	overflow:hidden;
+	height:54px;
+	border-right:1px #3fbab8 solid;
+}
+.nav02 a {
+	color:#e3ffff;
+	font-size:16px;
+	line-height:54px;
+	display: block;
+	text-decoration: none;
+	background-color:#1b7e7b;
+}
+.nav02 a:hover {
+	text-decoration: none;
+	color:#e3ffff;
+}
+.nav01 a{color: #e3ffff;font-size: 16px;line-height: 54px;display: block;text-decoration: none;}
+
+.profile-nav {
+    height: 100%;
+    margin: 0!important;
+    padding-left: 0;
+    list-style: none;
+}
+
+
+
+
+
+
+
+

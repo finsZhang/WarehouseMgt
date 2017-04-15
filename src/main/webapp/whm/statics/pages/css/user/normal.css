@@ -1,0 +1,7 @@
+/**
+ * 
+ * @author hejm
+ * @since 2015-3-4
+ */
+.timer{background: none repeat scroll 0 0 #ccc;color: #fff;float: left;font-size: 16px;height: 40px;margin-left: 15px;width: 100px;}
+label.error{font-size:14px;color:red;position:relative;left:10px;}
