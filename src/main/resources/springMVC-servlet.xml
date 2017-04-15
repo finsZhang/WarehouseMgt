@@ -1,0 +1,72 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <context:property-placeholder location="classpath:*.properties"/>
+    <context:component-scan base-package="com.zx.whm">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+    <context:annotation-config/>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- REST中根据URL后缀自动判定Content-Type及相应的View -->
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="mediaTypes">
+            <value>
+                json=application/json
+                xml=application/xml
+            </value>
+        </property>
+    </bean>
+
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
+        <mvc:message-converters register-defaults="true">
+            <!-- 将StringHttpMessageConverter的默认编码设为UTF-8 -->
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
+            </bean>
+            <!-- 将Jackson2HttpMessageConverter的默认格式化输出设为true -->
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+            </bean>
+        </mvc:message-converters>
+
+    </mvc:annotation-driven>
+<!--<mvc:interceptors>
+    <mvc:interceptor>
+        <mvc:mapping path="/cashbox/**"/>
+        <mvc:mapping path="/cashdeliver/**"/>
+        <mvc:mapping path="/cashInter/**"/>
+        <mvc:mapping path="/prettycashApply/**"/>
+        <mvc:mapping path="/cashReport/**"/>
+        <mvc:mapping path="/recharge/**"/>
+        <mvc:mapping path="/common/**"/>
+        <mvc:mapping path="/comserver/**"/>
+
+        &lt;!&ndash;排除jsp等资源&ndash;&gt;
+        <mvc:exclude-mapping path="/WEB-INF/**"/>
+        <mvc:exclude-mapping path="/common/*.jsp"/>
+        &lt;!&ndash;排除js,css等静态资源&ndash;&gt;
+        <mvc:exclude-mapping path="/ecard/statics/**"/>
+        &lt;!&ndash;排除登录页面&ndash;&gt;
+        <mvc:exclude-mapping path="/ecard/login.html"/>
+
+        <bean class="com.zx.whm.web.interceptor.LoginInterceptor">
+            <property name="appCode" value="${appCode}"/>
+            <property name="domain" value="${whm.domain.name}"/>
+        </bean>
+    </mvc:interceptor>
+</mvc:interceptors>-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="maxUploadSize" value="104857600"/>
+    </bean>
+</beans>

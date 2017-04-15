@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:property-placeholder location="classpath:*.properties"/>
+    <!-- 1.配置 C3P0 数据源 -->
+    <bean id="dataSourceWhm" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <constructor-arg>
+            <bean class="com.zaxxer.hikari.HikariConfig">
+                <constructor-arg>
+                    <props>
+                        <prop key="dataSource.url">${whm.jdbc.jdbcUrl}</prop>
+                        <prop key="dataSource.user">${whm.jdbc.user}</prop>
+                        <prop key="dataSource.password">${whm.jdbc.password}</prop>
+                    </props>
+                </constructor-arg>
+                <property name="dataSourceClassName" value="${whm.dataSourceClassName}" />
+                <!--关闭连接时，是否提交未提交的事务，默认为true，即关闭连接，回滚未提交的事务 -->
+                <property name="autoCommit" value="${jdbc.autoCommit}"/>
+                <!-- 等待连接池分配连接的最大时长（毫秒），超过这个时长还没可用的连接则发生SQLException， 缺省:30秒 -->
+                <property name="connectionTimeout" value="${jdbc.connectionTimeout}" />
+                <!-- 一个连接idle状态的最大时长（毫秒），超时则被释放（retired），缺省:10分钟 -->
+                <property name="idleTimeout" value="${jdbc.maxIdleTime}" />
+                <!-- 一个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），缺省:30分钟，建议设置比数据库超时时长少30秒，参考MySQL
+                    wait_timeout参数（show variables like '%timeout%';） -->
+                <property name="maxLifetime" value="${jdbc.maxLifetime}" />
+                <!-- 连接只读数据库时配置为true， 保证安全 -->
+                <property name="readOnly" value="${jdbc.readOnly}" />
+                <!-- 连接池中允许的最大连接数。缺省值：10；推荐的公式：((core_count * 2) + effective_spindle_count) -->
+                <property name="maximumPoolSize" value="${jdbc.maxPoolSize}" />
+                <property name="minimumIdle" value="${jdbc.minimumIdle}"/>
+                <property name="poolName" value="${whm.poolName}"/>
+                <!-- This property controls the maximum amount of time that a connection will be tested for aliveness. -->
+                <property name="validationTimeout" value="${jdbc.validationTimeout}"/>
+                <property name="connectionTestQuery" value="${jdbc.connectionTestQuery}"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+    <!-- 2.配置 EntityManagerFactory -->
+    <bean id="entityManagerFactoryWhm" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSourceWhm"/>
+        <property name="persistenceProvider">
+            <bean class="org.hibernate.jpa.HibernatePersistenceProvider"/>
+        </property>
+        <property name="jpaDialect">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
+        </property>
+        <!-- 配置 JPA 提供商的适配器. 可以通过内部 bean 的方式来配置 -->
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+        </property>
+        <!-- 配置实体类所在的包 -->
+        <property name="packagesToScan" value="com.zx.whm.domain"/>
+        <!-- 配置 JPA 的基本属性. 例如 JPA 实现产品的属性 -->
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.connection.release_mode">AFTER_TRANSACTION</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+            </props>
+        </property>
+    </bean>
+    <!-- 3.配置 JPA 使用的事务管理器 -->
+    <bean id="transactionManagerWhm" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactoryWhm"/>
+    </bean>
+    <!-- 4.配置支持基于注解是事务配置 -->
+    <tx:annotation-driven transaction-manager="transactionManagerWhm"/>
+    <!-- 5.配置Spring data -->
+    <jpa:repositories base-package="com.zx.whm.dao"
+                      repository-impl-postfix="Impl"
+                      entity-manager-factory-ref="entityManagerFactoryWhm"
+                      transaction-manager-ref="transactionManagerWhm"/>
+</beans>
