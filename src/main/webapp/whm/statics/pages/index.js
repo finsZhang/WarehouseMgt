@@ -10,58 +10,64 @@ $(function () {
     divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="01"><a href="javascript:void(0)" onclick="queryMenuByParent(\'01\',\'01\')">出货记录管理</a></div></li></ul></div>');
     queryMenuByParent('01','01');
     divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="02"><a href="javascript:void(0)" onclick="queryMenuByParent(\'02\',\'02\')">出货报表管理</a></div></li></ul></div>');
-	/*$.ajax({
+    queryMenuByParent('02','02');
+    divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="03"><a href="javascript:void(0)" onclick="queryMenuByParent(\'03\',\'03\')">用户管理</a></div></li></ul></div>');
+    queryMenuByParent('03','03');
+    divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="04"><a href="javascript:void(0)" onclick="queryMenuByParent(\'04\',\'04\')">基础管理</a></div></li></ul></div>');
+
+
+    /*$.ajax({
         type: "POST",
         async: false,
-		cache:false,
+        cache:false,
         url:GLOBAL.WEBROOT +  '/whm/getMenus.ajax',
         dataType:'json',
         success:function(data){
-            	menus = eval(data.menus);
-            	if (menus) {
-		        var parentId;
-		        var topId;
-		        //find header topId;
-		        for (var i = 0; i < menus.length; i++) {
-		            parentId = menus[i].parentMenuId;
-		            if (parentId == '0') {
-		                topId = menus[i].menuId;
-		                break;
-		            }
-		        }
-		        var divMenuHeader = $("#menuHeader");
-		        var j = 0;
-		        for (var i = 0; i < menus.length; i++) {
-		            parentId = menus[i].parentMenuId;
-		            if (parentId == topId) {
-		                divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="pmenuId_'+menus[i].menuId+'"><a href="javascript:void(0)" onclick="queryMenuByParent('+parentId+','+menus[i].menuId+')">' + menus[i].menuName + '</a></div></li></ul></div>');
-		                if (j == 0) {
-		                    loadMenuTree(menus[i].menuId);
-		                    $("#pmenuId_"+menus[i].menuId).attr("class","nav02"); 
-		                    j++;
-		                }
-		            }
-		        }
-		    }
-		    var target = $("#menuTree").find("a")[0].target;
-			if(target=="view_frame"){
-				$("#menuTree").find("a")[0].click();
-			}else{
-				$("#menuTree").find("a")[1].click();
-			}
+                menus = eval(data.menus);
+                if (menus) {
+                var parentId;
+                var topId;
+                //find header topId;
+                for (var i = 0; i < menus.length; i++) {
+                    parentId = menus[i].parentMenuId;
+                    if (parentId == '0') {
+                        topId = menus[i].menuId;
+                        break;
+                    }
+                }
+                var divMenuHeader = $("#menuHeader");
+                var j = 0;
+                for (var i = 0; i < menus.length; i++) {
+                    parentId = menus[i].parentMenuId;
+                    if (parentId == topId) {
+                        divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="pmenuId_'+menus[i].menuId+'"><a href="javascript:void(0)" onclick="queryMenuByParent('+parentId+','+menus[i].menuId+')">' + menus[i].menuName + '</a></div></li></ul></div>');
+                        if (j == 0) {
+                            loadMenuTree(menus[i].menuId);
+                            $("#pmenuId_"+menus[i].menuId).attr("class","nav02");
+                            j++;
+                        }
+                    }
+                }
+            }
+            var target = $("#menuTree").find("a")[0].target;
+            if(target=="view_frame"){
+                $("#menuTree").find("a")[0].click();
+            }else{
+                $("#menuTree").find("a")[1].click();
+            }
         }
     });
 
-	$.ajax({
-		type: "POST",
-		async: false,
-		cache:false,
-		url:GLOBAL.WEBROOT +  '/whm/getRootOrg.ajax',
-		dataType:'json',
-		success:function(data){
-			initParam(data);
-		}
-	});*/
+    $.ajax({
+        type: "POST",
+        async: false,
+        cache:false,
+        url:GLOBAL.WEBROOT +  '/whm/getRootOrg.ajax',
+        dataType:'json',
+        success:function(data){
+            initParam(data);
+        }
+    });*/
 });
 
 function initParam(data){
@@ -101,8 +107,12 @@ function loadMenuTree(topId){
     menuTree.html('');
     if(topId=='01')
     	menuTree.append("<dl><h5><a href='shipmentMgt/page/list.html' target='view_frame'><i class='fM-l-icon2'>出货记录管理</i></a></h5><dl>");
-    else{
+    else if(topId=='02'){
         menuTree.append("<dl><h5><a href='shipmentMgt/page/list.html' target='view_frame'><i class='fM-l-icon2'>出货报表管理管理</i></a></h5><dl>");
+	}else if(topId=='03'){
+        menuTree.append("<dl><h5><a href='userMgt/page/list.html' target='view_frame'><i class='fM-l-icon2'>用户管理</i></a></h5><dl>");
+    }else if(topId=='04'){
+        menuTree.append("<dl><h5><a href='dictMgt/page/list.html' target='view_frame'><i class='fM-l-icon2'>字典管理</i></a></h5><dl>");
 	}
    /* for(var i=0;i<menus.length;i++){
         //直接子节点

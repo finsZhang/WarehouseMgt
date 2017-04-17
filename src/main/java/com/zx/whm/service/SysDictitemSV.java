@@ -1,6 +1,8 @@
 package com.zx.whm.service;
 
+import com.zx.whm.common.domain.ResultDTO;
 import com.zx.whm.domain.SysDictitem;
+import com.zx.whm.vo.SysDictitemVo;
 
 import java.util.List;
 
@@ -16,4 +18,6 @@ public interface SysDictitemSV {
     SysDictitem[] findByDictName(String dictName);
 
     List<SysDictitem> findAll();
+
+    ResultDTO queryPageList(final SysDictitemVo sysDictitemVo, ResultDTO<SysDictitem> resultDTO) throws Exception;
 }
