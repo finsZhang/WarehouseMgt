@@ -1,8 +1,11 @@
 package com.zx.whm.web.controller;
 
+import com.mysql.jdbc.StringUtils;
 import com.zx.whm.common.domain.ResultDTO;
 import com.zx.whm.common.util.AjaxUtil;
+import com.zx.whm.common.util.MD5;
 import com.zx.whm.domain.ShipmentRecord;
+import com.zx.whm.domain.SysDictitem;
 import com.zx.whm.domain.SysUser;
 import com.zx.whm.service.ShipmentRecordSV;
 import com.zx.whm.service.SysUserSV;
@@ -13,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,11 +29,25 @@ public class UserController {
 
     @Autowired
     private SysUserSV sysUserSV;
-    @RequestMapping(value = "/page/{one}.html")
-    public String getPage(@PathVariable String one, @RequestParam(value="id",required=false) String id, Map map) {
-        map.put("id",id);
-        return "userMgt/" + one;
+
+
+    @RequestMapping("list.html")
+    public String init() {
+        return "userMgt/list";
     }
+
+
+    @RequestMapping("edit.html")
+    public String edit(@RequestParam(value="id",required=false)String id, Map map)throws Exception {
+        if(!StringUtils.isNullOrEmpty(id)){
+            SysUser sysUser = sysUserSV.findUserById(Long.parseLong(id));
+            if (sysUser!=null){
+                map.put("bean",sysUser);
+            }
+        }
+        return "userMgt/edit";
+    }
+
 
     @RequestMapping("/querySysUserList.ajax")
     @ResponseBody
@@ -44,11 +62,14 @@ public class UserController {
 
     @RequestMapping("/saveUser.ajax")
     @ResponseBody
-    public Map saveTerminal(@RequestBody SysUser bean) {
+    public Map saveTerminal(@RequestBody SysUser bean,@RequestParam String isUpdatePwd) {
         Map<String, String> map = new HashMap();
         map.put("ERRCODE", "0");
-        bean.setStatus(0);//00有效01无效
         try {
+            if("0".equals(isUpdatePwd)){
+                bean.setPassword(MD5.toMD5(bean.getPassword()));
+            }
+            bean.setCreateDate(new Timestamp(System.currentTimeMillis()));
             sysUserSV.saveUser(bean);
         } catch (Exception e) {
             map.put("ERRCODE","1");
@@ -62,6 +83,16 @@ public class UserController {
     public Map userDel(@RequestParam long id) throws Exception {
         Map map = new HashMap();
         sysUserSV.deleteUserById(id);
+        map.put("ERRCODE", 0);
+        return map;
+    }
+
+    @RequestMapping("/getUserById.ajax")
+    @ResponseBody
+    public Map getUserById(@RequestParam long id) throws Exception {
+        Map map = new HashMap();
+        SysUser bean = sysUserSV.findUserById(id);
+        map.put("bean",bean);
         map.put("ERRCODE", 0);
         return map;
     }

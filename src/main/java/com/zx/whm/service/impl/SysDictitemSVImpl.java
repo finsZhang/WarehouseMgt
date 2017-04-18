@@ -58,9 +58,11 @@ public class SysDictitemSVImpl  implements SysDictitemSV {
         sysDictitemDao.save(bean);
     }
 
-
     public void delete(SysDictitemPK pk)throws Exception{
         sysDictitemDao.delete(pk);
     }
 
+    public SysDictitem findByDictByPk(SysDictitemPK pk)throws Exception{
+       return sysDictitemDao.findOne(pk);
+    }
 }

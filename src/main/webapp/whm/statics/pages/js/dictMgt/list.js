@@ -11,36 +11,18 @@ $(function () {
 
 function resetCondition() {
     com.ai.bdx.util.reset('searchForm');
-    if (userStation == 'EMM_ADMIN') {
-        com.ai.bdx.util.ztreeComp("orgNames", true, top.optionForMulti, callFuncForOrgNames);
-    } else {
-        $('#orgCodes').val(orgCode);
-        $('#orgNames').val(orgName);
-    }
     reloadGrid();
 }
-function callFuncForOrgNames(zTree) {
-    var nodes = zTree.getCheckedNodes(true);
-    var v = "";
-    var n = "";
-    for (var i = 0, l = nodes.length; i < l; i++) {
-        v += nodes[i].orgCode + ",";
-        n += nodes[i].orgName + ",";
-    }
-    if (v.length > 0) v = v.substring(0, v.length - 1);
-    if (n.length > 0) n = n.substring(0, n.length - 1);
-    $('#orgCodes').val(v);
-    $('#orgNames').val(n);
-}
+
 function reloadGrid(){
     var data = $("#searchForm").serializeObject();
-	$("#makeCard").jqGrid('setGridParam', {postData: data,page:1,pageSize:10}).trigger("reloadGrid");
+	$("#dict_table").jqGrid('setGridParam', {postData: data,page:1,pageSize:10}).trigger("reloadGrid");
 }
 
 //查询列表
 function selectList() {
-	var grid_selector = "#shipment";
-    var pager_selector = "#shipment_pager";
+	var grid_selector = "#dict_table";
+    var pager_selector = "#dict_pager";
     var data = $("#searchForm").serializeObject();
 	$(grid_selector).jqGrid({
         url: GLOBAL.WEBROOT + "/dictMgt/querySysDictList.ajax",
@@ -48,16 +30,29 @@ function selectList() {
         datatype: "json",
         height: '100%',
         width : '100%',
-        colNames: ['字典名称','项目名','项目编号','父项目编码', '序号', '状态', '项目描述','创建时间','操作'],
+        colNames: ['字典名称','字典项名称','字典值','父字典值', '字典值顺序', '状态', '字典项描述','创建时间','操作'],
         colModel: [
             {name: 'dictName', index: 'dictName', sortable: false,fixed:false,width:130,align:'center'},
             {name: 'itemName', index: 'itemName', sortable: false,align:'center',resizable:true,fixed:false ,width:80},
             {name: 'itemNo', index: 'itemNo', sortable: false,resizable:true,fixed:false,width:80,align:'center'},
             {name: 'parentItemNo', index: 'parentItemNo',  sortable: false,align:'center',resizable:true,fixed:false,width:150},
             {name: 'itemOrder', index: 'itemOrder', sortable: false,align:'center',resizable:true,fixed:false ,width:80},
-            {name: 'itemState', index: 'itemState', sortable: false,width:100},
+            {name: 'itemState', index: 'itemState', sortable: false,width:100,formatter:function (param1, param2, recode) {
+                if('1'==recode.itemState){
+                    return '可用';
+                }else{
+                    return '禁用';
+                }
+            }},
             {name: 'itemDesc', index: 'itemDesc',  sortable: false,align:'right' ,width:80 },
-            {name: 'createDate', index: "createDate", sortable: false,align:'right',width:100}
+            {name: 'createDate', index: "createDate", sortable: false,align:'right',width:100},
+            {name: 'dictName', index: "dictName",  sortable: false,width:100,align:'center'
+                ,formatter: function (param1, param2, recode) {
+                var dictName =recode.dictName;
+                var itemNo = recode.itemNo;
+                return '<a class="blue" href="javascript:void(0)" onclick="addDict(\''+dictName +'\',\''+itemNo+'\')" title="修改"><i class="icon-edit bigger-120"></i></a>&nbsp;' +
+                    '<a class="red" href="javascript:void(0)" onclick="dictDel(\''+dictName + '\',\''+ itemNo+'\')" title="删除"><i class="icon-trash bigger-120"></i></a>' ;
+            }}
             ],
         viewrecords: false,
         rowNum:10,
@@ -84,15 +79,35 @@ function closeSubLayer(name){
 }
 
 
-function addDict(){
+function addDict(dictName,itemNo){
     layer.open({
         type: 2,
         title:"字典编辑",
         area: ['700px', '250px'],
         fix: false, //不固定
         maxmin: true,
-        content: GLOBAL.WEBROOT + "/dictMgt/page/edit.html",
+        content: GLOBAL.WEBROOT + "/dictMgt/edit.html?dictName="+dictName+"&itemNo="+itemNo,
         closeBtn:0
+    });
+}
+
+function dictDel(dictName,itemNo){
+    layerConfirm('是否删除当前选中记录',function() {
+        $.ajax({
+            type: "GET",
+            async: true,
+            url: GLOBAL.WEBROOT + "/dictMgt/dictDel.ajax?dictName="+dictName+"&itemNo="+itemNo,
+            dataType: 'json',
+            success: function (data) {
+                if (data.ERRCODE == "0") {
+                    infoSuccess('温馨提示', '删除成功');
+                    reloadGrid();
+                }
+                else {
+                    info('温馨提示', data.ERRINFO);
+                }
+            }
+        });
     });
 }
 

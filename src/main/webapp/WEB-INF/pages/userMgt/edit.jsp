@@ -17,39 +17,67 @@
     <div class="page-content min_style">
         <div class="row">
             <div class="col-xs-12">
-                <form class="form-horizontal" role="form" id="editForm">
 
+                <form class="form-horizontal" role="form" id="editForm">
+                    <input type="hidden" id="id" name="id" class="inputW150" value="${bean.id}"/>
                     <div class="form-group">
                         <label class="col-xs-2 control-label no-padding-right"> 用户名： </label>
                         <div class="col-xs-4">
-                            <input id="userName" name="userName" class="inputW150" value="${bean.terminalCode}"/>
+                            <input id="userName" name="userName" class="inputW150" value="${bean.userName}"/>
                         </div>
                         <label class="col-xs-2 control-label no-padding-right"> 用户密码： </label>
                         <div class="col-xs-4">
-                            <input id="password" name="password" class="inputW150" value="${bean.terminalName}"/>
+                            <input id="_password" type="hidden" class="inputW150" value="${bean.password}"/>
+                            <input id="password" type="password" name="password" class="inputW150" value="${bean.password}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-xs-2 control-label no-padding-right"> 用户姓名： </label>
                         <div class="col-xs-4">
-                            <input id="name" name="name" class="inputW150" value="${bean.terminalCode}"/>
+                            <input id="name" name="name" class="inputW150" value="${bean.name}"/>
                         </div>
                         <label class="col-xs-2 control-label no-padding-right"> 性别： </label>
                         <div class="col-xs-4">
-                            <input id="sex" name="sex" class="inputW150" value="${bean.terminalName}"/>
+                            <input id="_sex" type="hidden" class="inputW150" value="${bean.sex}"/>
+                            <select name="sex" id="sex" class="inputW150">
+                                <option value="1">男</option>
+                                <option value="2">女</option>
+                            </select>
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label no-padding-right"> 角色： </label>
+                        <div class="col-xs-4">
+                            <input id="_roleCode" type="hidden"  class="inputW150" value="${bean.roleCode}"/>
+                            <select name="roleCode" id="roleCode" class="inputW150">
+                                <option value="MANAGER">管理员</option>
+                                <option value="COMMON_TELLER">业务员</option>
+                            </select>
+                        </div>
+                        <label class="col-xs-2 control-label no-padding-right"> 状态： </label>
+                        <div class="col-xs-4">
+                            <input id="_status" type="hidden"  class="inputW150" value="${bean.status}"/>
+                            <select name="status" id="status" class="inputW150">
+                                <option value="1">可用</option>
+                                <option value="0">禁用</option>
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label class="col-xs-2 control-label no-padding-right"> 岗位： </label>
                         <div class="col-xs-4">
-                            <input id="stationCode" name="stationCode" class="inputW150" value="${bean.terminalCode}"/>
+                            <input id="_stationCode" type="hidden"  class="inputW150" value="${bean.stationCode}"/>
+                            <select name="stationCode" id="stationCode" class="inputW150">
+                                <option value="MANAGER">管理员</option>
+                                <option value="COMMON_TELLER">业务员</option>
+                            </select>
                         </div>
                         <label class="col-xs-2 control-label no-padding-right"> 备注： </label>
                         <div class="col-xs-4">
-                            <input id="comment" name="comment" class="inputW150" value="${bean.terminalName}"/>
+                            <input id="comment" name="comment" class="inputW150" value="${bean.comment}"/>
                         </div>
                     </div>
 

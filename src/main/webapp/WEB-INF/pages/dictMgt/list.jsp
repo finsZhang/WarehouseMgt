@@ -45,9 +45,9 @@
         <ul class="breadcrumb" style="margin-top: 8px;">
             <li>
                 <i class="icon-home home-icon"></i>
-                <a href="${ctx}/makeCardDataMgt/page/list.html">出货记录管理</a>
+                <a href="${ctx}/dictMgt/list.html">字典管理</a>
             </li>
-            <li class="active">出货记录查询</li>
+            <li class="active">字典管理查询</li>
         </ul>
         <!-- .breadcrumb -->
     </div>
@@ -57,9 +57,9 @@
             <form id="searchForm" action="#">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                        <th width="13%" class="r">创建人姓名：</th>
+                        <th width="13%" class="r">字典名称：</th>
                         <td width="13%">
-                            <input name=creatorName" id="creatorName" class="inputW160"/>
+                            <input name=dictName" id="dictName" class="inputW160"/>
                         </td>
                     </tr>
                 </table>
@@ -85,10 +85,10 @@
         </div>
         <!--交易记录查询条件 end-->
         <div>
-            <table id="shipment" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <table id="dict_table" width="100%" border="0" cellspacing="0" cellpadding="0">
 
             </table>
-            <div id="shipment_pager"></div>
+            <div id="dict_pager"></div>
         </div>
     </div>
 </div>

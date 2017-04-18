@@ -7,22 +7,17 @@ import java.sql.Timestamp;
  * Created by Walter on 2017/4/17.
  */
 public class SysUserVo {
+
     private long id;
-    private String dayNo;
-    private String type;
-    private String prodDetail;
-    private BigDecimal amount;
-    private Integer lineNum;
-    private String payType;
-    private String custInfo;
-    private String comment;
-    private String dispatchClerk;
-    private String modifyConent;
+    private String name;
+    private Integer sex;
+    private String userName;
+    private String password;
+    private Integer status;
+    private String stationCode;
+    private String roleCode;
     private Timestamp createDate;
-    private String weekNo;
-    private String creatorName;
-    private String creatorUserName;
-    private Timestamp modifyDate;
+    private String comment;
 
     public long getId() {
         return id;
@@ -32,84 +27,60 @@ public class SysUserVo {
         this.id = id;
     }
 
-    public String getDayNo() {
-        return dayNo;
+    public String getName() {
+        return name;
     }
 
-    public void setDayNo(String dayNo) {
-        this.dayNo = dayNo;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public Integer getSex() {
+        return sex;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setSex(Integer sex) {
+        this.sex = sex;
     }
 
-    public String getProdDetail() {
-        return prodDetail;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setProdDetail(String prodDetail) {
-        this.prodDetail = prodDetail;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
+    public String getPassword() {
+        return password;
     }
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public Integer getLineNum() {
-        return lineNum;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setLineNum(Integer lineNum) {
-        this.lineNum = lineNum;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
-    public String getPayType() {
-        return payType;
+    public String getStationCode() {
+        return stationCode;
     }
 
-    public void setPayType(String payType) {
-        this.payType = payType;
+    public void setStationCode(String stationCode) {
+        this.stationCode = stationCode;
     }
 
-    public String getCustInfo() {
-        return custInfo;
+    public String getRoleCode() {
+        return roleCode;
     }
 
-    public void setCustInfo(String custInfo) {
-        this.custInfo = custInfo;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public String getDispatchClerk() {
-        return dispatchClerk;
-    }
-
-    public void setDispatchClerk(String dispatchClerk) {
-        this.dispatchClerk = dispatchClerk;
-    }
-
-    public String getModifyConent() {
-        return modifyConent;
-    }
-
-    public void setModifyConent(String modifyConent) {
-        this.modifyConent = modifyConent;
+    public void setRoleCode(String roleCode) {
+        this.roleCode = roleCode;
     }
 
     public Timestamp getCreateDate() {
@@ -120,35 +91,15 @@ public class SysUserVo {
         this.createDate = createDate;
     }
 
-    public String getWeekNo() {
-        return weekNo;
+    public String getComment() {
+        return comment;
     }
 
-    public void setWeekNo(String weekNo) {
-        this.weekNo = weekNo;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
-    public String getCreatorName() {
-        return creatorName;
-    }
 
-    public void setCreatorName(String creatorName) {
-        this.creatorName = creatorName;
-    }
 
-    public String getCreatorUserName() {
-        return creatorUserName;
-    }
 
-    public void setCreatorUserName(String creatorUserName) {
-        this.creatorUserName = creatorUserName;
-    }
-
-    public Timestamp getModifyDate() {
-        return modifyDate;
-    }
-
-    public void setModifyDate(Timestamp modifyDate) {
-        this.modifyDate = modifyDate;
-    }
 }

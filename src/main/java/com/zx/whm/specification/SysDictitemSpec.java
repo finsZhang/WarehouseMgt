@@ -33,8 +33,8 @@ public class SysDictitemSpec implements Specification<SysDictitem> {
 
     public Predicate toPredicate(Root<SysDictitem> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
         List<Predicate> predicates = new ArrayList<Predicate>();
-        if(StringUtils.isNotBlank(sysDictitemVo.getCreatorName())){
-            predicates.add(cb.like(root.get("creatorName").as(String.class), "%"+sysDictitemVo.getCreatorName().trim()+"%"));
+        if(StringUtils.isNotBlank(sysDictitemVo.getDictName())){
+            predicates.add(cb.like(root.get("dict_name").as(String.class), "%"+sysDictitemVo.getDictName().trim()+"%"));
         }
         Predicate[] p = new Predicate[predicates.size()];
         return cb.and(predicates.toArray(p));

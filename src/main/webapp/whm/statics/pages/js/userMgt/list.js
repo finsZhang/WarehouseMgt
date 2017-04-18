@@ -11,36 +11,18 @@ $(function () {
 
 function resetCondition() {
     com.ai.bdx.util.reset('searchForm');
-    if (userStation == 'EMM_ADMIN') {
-        com.ai.bdx.util.ztreeComp("orgNames", true, top.optionForMulti, callFuncForOrgNames);
-    } else {
-        $('#orgCodes').val(orgCode);
-        $('#orgNames').val(orgName);
-    }
     reloadGrid();
 }
-function callFuncForOrgNames(zTree) {
-    var nodes = zTree.getCheckedNodes(true);
-    var v = "";
-    var n = "";
-    for (var i = 0, l = nodes.length; i < l; i++) {
-        v += nodes[i].orgCode + ",";
-        n += nodes[i].orgName + ",";
-    }
-    if (v.length > 0) v = v.substring(0, v.length - 1);
-    if (n.length > 0) n = n.substring(0, n.length - 1);
-    $('#orgCodes').val(v);
-    $('#orgNames').val(n);
-}
+
 function reloadGrid(){
     var data = $("#searchForm").serializeObject();
-	$("#makeCard").jqGrid('setGridParam', {postData: data,page:1,pageSize:10}).trigger("reloadGrid");
+    $("#user_table").jqGrid('setGridParam', {postData: data,page:1,pageSize:10}).trigger("reloadGrid");
 }
 
 //查询列表
 function selectList() {
-	var grid_selector = "#shipment";
-    var pager_selector = "#shipment_pager";
+	var grid_selector = "#user_table";
+    var pager_selector = "#user_pager";
     var data = $("#searchForm").serializeObject();
 	$(grid_selector).jqGrid({
         url: GLOBAL.WEBROOT + "/userMgt/querySysUserList.ajax",
@@ -48,25 +30,47 @@ function selectList() {
         datatype: "json",
         height: '100%',
         width : '100%',
-        colNames: ['用户ID','用户姓名','用户性别','用户名', '用户密码', '状态', '岗位编码','角色编码','创建时间','备注'],
+        colNames: ['用户ID','用户姓名','用户性别','用户名', '状态', '岗位编码','角色编码','创建时间','备注','操作'],
         colModel: [
             {name: 'id', index: 'id', sortable: false,fixed:false,width:130,align:'center'},
             {name: 'name', index: 'name', sortable: false,align:'center',resizable:true,fixed:false ,width:80},
-            {name: 'sex', index: 'sex', sortable: false,resizable:true,fixed:false,width:80,align:'center'},
+            {name: 'sex', index: 'sex', sortable: false,resizable:true,fixed:false,width:80,align:'center',formatter:function (param1, param2, recode) {
+                if('1'==recode.sex){
+                    return '男';
+                }else{
+                    return '女';
+                }
+            }},
             {name: 'userName', index: 'userName',  sortable: false,align:'center',resizable:true,fixed:false,width:150},
-            {name: 'password', index: 'password', sortable: false,align:'center',resizable:true,fixed:false ,width:80},
-            {name: 'status', index: 'status', sortable: false,width:100},
-            {name: 'stationCode', index: 'stationCode',  sortable: false,align:'right' ,width:80 },
-            {name: 'roleCode', index: 'roleCode',  sortable: false,align:'right',width:80 },
+            {name: 'status', index: 'status', sortable: false,width:100,formatter:function (param1, param2, recode) {
+                if('1'==recode.status){
+                    return '可用';
+                }else{
+                    return '禁用';
+                }
+            }},
+            {name: 'stationCode', index: 'stationCode',  sortable: false,align:'right' ,width:80,formatter:function (param1, param2, recode) {
+                if('MANAGER'==recode.stationCode){
+                    return '管理员';
+                }else{
+                    return '业务员';
+                }
+            }},
+            {name: 'roleCode', index: 'roleCode',  sortable: false,align:'right',width:80,formatter:function (param1, param2, recode) {
+                if('MANAGER'==recode.roleCode){
+                    return '管理员';
+                }else{
+                    return '业务员';
+                }
+            }  },
             {name: 'createDate', index: "createDate", sortable: false,align:'right',width:100},
             {name: 'comment', index: "comment", sortable: false,align:'right',width:80},
             {name: 'id', index: "id",  sortable: false,width:100,align:'center'
                 ,formatter: function (param1, param2, recode) {
-                var id =recode.id;
-                return '<a class="blue" href="javascript:void(0)" onclick="edit(\'' + id + '\')" title="修改"><i class="icon-edit bigger-120"></i></a>&nbsp;' +
-                    '<a class="blue" href="javascript:void(0)" onclick="view(\'' + id + '\')" title="查看"><i class="icon-search bigger-120"></i></a>&nbsp;' +
-                    '<a class="red" href="javascript:void(0)" onclick="del(\'' + id + '\')" title="删除"><i class="icon-trash bigger-120"></i></a>' ;
-            }}
+                    var id =recode.id;
+                    return '<a class="blue" href="javascript:void(0)" onclick="addUser(\'' + id + '\')" title="修改"><i class="icon-edit bigger-120"></i></a>&nbsp;' +
+                        '<a class="red" href="javascript:void(0)" onclick="del(\'' + id + '\')" title="删除"><i class="icon-trash bigger-120"></i></a>' ;
+                }}
             ],
         viewrecords: false,
         rowNum:10,
@@ -92,14 +96,14 @@ function closeSubLayer(name){
     layer.close(index);
 }
 
-function addUser(){
+function addUser(id){
     layer.open({
         type: 2,
         title:"用户编辑",
         area: ['700px', '250px'],
         fix: false, //不固定
         maxmin: true,
-        content: GLOBAL.WEBROOT + "/userMgt/page/edit.html",
+        content: GLOBAL.WEBROOT + "/userMgt/edit.html?id="+id,
         closeBtn:0
     });
 }

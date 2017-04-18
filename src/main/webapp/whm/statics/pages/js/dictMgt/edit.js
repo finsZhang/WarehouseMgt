@@ -1,10 +1,6 @@
-var operatorCode = top.user.operatorCode;
-var userStation =top.userStation;
-var orgCode = parent.org.orgCode;
-var orgName = parent.org.orgName;
-
 $(function () {
-    $("select").select2();
+    var itemState = $("#_itemState").val();
+    $("#itemState").val(itemState);
 });
 
 function saveSuccess(){

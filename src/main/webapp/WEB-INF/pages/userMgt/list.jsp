@@ -45,9 +45,9 @@
         <ul class="breadcrumb" style="margin-top: 8px;">
             <li>
                 <i class="icon-home home-icon"></i>
-                <a href="${ctx}/makeCardDataMgt/page/list.html">出货记录管理</a>
+                <a href="${ctx}/userMgt/list.html">用户管理</a>
             </li>
-            <li class="active">出货记录查询</li>
+            <li class="active">用户信息查询</li>
         </ul>
         <!-- .breadcrumb -->
     </div>
@@ -57,9 +57,9 @@
             <form id="searchForm" action="#">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                        <th width="13%" class="r">创建人姓名：</th>
+                        <th width="13%" class="r">用户名：</th>
                         <td width="13%">
-                            <input name=creatorName" id="creatorName" class="inputW160"/>
+                            <input name=userName" id="userName" class="inputW160"/>
                         </td>
                     </tr>
                 </table>
@@ -76,7 +76,7 @@
                         <a href="javascript:void(0)" onclick="resetCondition()"
                            class="fm-button ui-state-default ui-corner-all fm-button-icon-left ui-search btn btn-sm btn-gray"><span
                                 class="icon-retweet"></span>重 置</a>
-                        <a href="javascript:void(0)" onclick="addUser()"
+                        <a href="javascript:void(0)" onclick="addUser('')"
                            class="fm-button ui-state-default ui-corner-all fm-button-icon-left ui-search btn btn-sm btn-gray"><span
                                 class="icon-retweet"></span>新 曾</a>
                     </th>
@@ -85,10 +85,10 @@
         </div>
         <!--交易记录查询条件 end-->
         <div>
-            <table id="shipment" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <table id="user_table" width="100%" border="0" cellspacing="0" cellpadding="0">
 
             </table>
-            <div id="shipment_pager"></div>
+            <div id="user_pager"></div>
         </div>
     </div>
 </div>

@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="cache-control" content="no-cache">
     <%@ include file="/common/meta.jsp" %>
-    <title>用户编辑</title>
+    <title>字典编辑</title>
     <script type="text/javascript" src="${ctx}/whm/statics/common/js/jquery-easyui/jquery.easyui.min.js"></script>
     <link type="text/css" rel="stylesheet" href="${ctx}/whm/statics/common/js/jquery-easyui/themes/default/easyui.css"/>
     <script type="text/javascript" src="${ctx}/whm/statics/ace/plugins/select2-3.4.1/select2.js"></script>
@@ -18,45 +18,47 @@
         <div class="row">
             <div class="col-xs-12">
                 <form class="form-horizontal" role="form" id="editForm">
-
                     <div class="form-group">
-                        <label class="col-xs-2 control-label no-padding-right"> 字典名： </label>
+                        <label class="col-xs-2 control-label no-padding-right"> 字典名称： </label>
                         <div class="col-xs-4">
-                            <input id="dictName" name="dictName" class="inputW150" value="${bean.terminalCode}"/>
+                            <input id="dictName" name="dictName" class="inputW150" value="${bean.dictName}"/>
                         </div>
-                        <label class="col-xs-2 control-label no-padding-right"> 项目名： </label>
+                        <label class="col-xs-2 control-label no-padding-right"> 字典项名称： </label>
                         <div class="col-xs-4">
-                            <input id="itemName" name="itemName" class="inputW150" value="${bean.terminalName}"/>
+                            <input id="itemName" name="itemName" class="inputW150" value="${bean.itemName}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-xs-2 control-label no-padding-right"> 项目编号： </label>
+                        <label class="col-xs-2 control-label no-padding-right"> 字典值： </label>
                         <div class="col-xs-4">
-                            <input id="itemNo" name="itemNo" class="inputW150" value="${bean.terminalCode}"/>
+                            <input id="itemNo" name="itemNo" class="inputW150" value="${bean.itemNo}"/>
                         </div>
-                        <label class="col-xs-2 control-label no-padding-right"> 项目描述： </label>
+                        <label class="col-xs-2 control-label no-padding-right"> 字典项描述： </label>
                         <div class="col-xs-4">
-                            <input id="itemDesc" name="itemDesc" class="inputW150" value="${bean.terminalName}"/>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label class="col-xs-2 control-label no-padding-right"> 状态： </label>
-                        <div class="col-xs-4">
-                            <input id="itemState" name="itemState" class="inputW150" value="${bean.terminalCode}"/>
-                        </div>
-                        <label class="col-xs-2 control-label no-padding-right"> 父项目编号： </label>
-                        <div class="col-xs-4">
-                            <input id="parentItemNo" name="parentItemNo" class="inputW150" value="${bean.terminalName}"/>
+                            <input id="itemDesc" name="itemDesc" class="inputW150" value="${bean.itemDesc}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-xs-2 control-label no-padding-right"> 项目序号： </label>
+                        <label class="col-xs-2 control-label no-padding-right"> 字典项状态： </label>
                         <div class="col-xs-4">
-                            <input id="itemOrder" name="itemOrder" class="inputW150" value="${bean.terminalCode}"/>
+                            <input id="_itemState" type="hidden" class="inputW150" value="${bean.itemState}"/>
+                            <select name="itemState" id="itemState" class="inputW150">
+                                <option value="1">可用</option>
+                                <option value="0">禁用</option>
+                            </select>
+                        </div>
+                        <label class="col-xs-2 control-label no-padding-right"> 父字典值： </label>
+                        <div class="col-xs-4">
+                            <input id="parentItemNo" name="parentItemNo" class="inputW150" value="${bean.parentItemNo}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label no-padding-right"> 字典值顺序： </label>
+                        <div class="col-xs-4">
+                            <input id="itemOrder" name="itemOrder" class="inputW150" value="${bean.itemOrder}"/>
                         </div>
                     </div>
 

@@ -1,5 +1,6 @@
 package com.zx.whm.web.controller;
 
+import com.mysql.jdbc.StringUtils;
 import com.zx.whm.common.domain.ResultDTO;
 import com.zx.whm.common.util.AjaxUtil;
 import com.zx.whm.domain.SysDictitem;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,10 +28,11 @@ public class SysMgtContoller {
 
     @Autowired
     private SysDictitemSV sysDictitemSV;
-    @RequestMapping(value = "/page/{one}.html")
-    public String getPage(@PathVariable String one, @RequestParam(value="id",required=false) String id, Map map) {
-        map.put("id",id);
-        return "dictMgt/" + one;
+
+
+    @RequestMapping("list.html")
+    public String init() {
+        return "dictMgt/list";
     }
 
     @RequestMapping("/querySysDictList.ajax")
@@ -44,13 +47,27 @@ public class SysMgtContoller {
     }
 
 
+    @RequestMapping("edit.html")
+    public String edit(@RequestParam(value="dictName",required=false)String dictName,@RequestParam(value="itemNo",required=false)String itemNo, Map map)throws Exception {
+        if(!(StringUtils.isNullOrEmpty(itemNo)||StringUtils.isNullOrEmpty(dictName))){
+            SysDictitemPK pk = new SysDictitemPK();
+            pk.setDictName(dictName);
+            pk.setItemNo(itemNo);
+            SysDictitem dictBean = sysDictitemSV.findByDictByPk(pk);
+            if (dictBean!=null){
+                map.put("bean",dictBean);
+            }
+        }
+        return "dictMgt/edit";
+    }
+
     @RequestMapping("/saveDict.ajax")
     @ResponseBody
     public Map saveDict(@RequestBody SysDictitem bean) {
         Map<String, String> map = new HashMap();
         map.put("ERRCODE", "0");
-        bean.setItemState("0");//00有效01无效
         try {
+            bean.setCreateDate(new Timestamp(System.currentTimeMillis()));
             sysDictitemSV.saveDict(bean);
         } catch (Exception e) {
             map.put("ERRCODE","1");
@@ -61,10 +78,15 @@ public class SysMgtContoller {
 
     @RequestMapping("/dictDel.ajax")
     @ResponseBody
-    public Map dictDel(@RequestBody SysDictitemPK pk) throws Exception {
+    public Map dictDel(@RequestParam String dictName,@RequestParam String itemNo) throws Exception {
         Map map = new HashMap();
+        SysDictitemPK pk = new SysDictitemPK();
+        pk.setItemNo(itemNo);
+        pk.setDictName(dictName);
         sysDictitemSV.delete(pk);
         map.put("ERRCODE", 0);
         return map;
     }
+
+
 }

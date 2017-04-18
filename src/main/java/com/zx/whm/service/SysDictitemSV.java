@@ -23,4 +23,6 @@ public interface SysDictitemSV {
     ResultDTO queryPageList(final SysDictitemVo sysDictitemVo, ResultDTO<SysDictitem> resultDTO) throws Exception;
     public void saveDict(SysDictitem bean)throws Exception;
     public void delete(SysDictitemPK pk)throws Exception;
+
+    public SysDictitem findByDictByPk(SysDictitemPK pk)throws Exception;
 }

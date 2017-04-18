@@ -11,6 +11,7 @@ public interface SysUserSV {
     public ResultDTO queryPageList(final SysUserVo shipmentRecordVo, ResultDTO<SysUser> resultDTO) throws Exception;
     public void saveUser(SysUser bean)throws Exception;
     public void deleteUserById(long id)throws Exception;
+    public SysUser findUserById(long id)throws Exception;
     SysUser findSysUserByUserName(String userName);
     void save(SysUser sysUser);
 }

@@ -1,6 +1,5 @@
 package com.zx.whm.vo;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 /**
@@ -12,109 +11,69 @@ import java.sql.Timestamp;
  * Email:zhangfz3@asiainfo.com
  */
 public class SysDictitemVo {
-    private long id;
-    private String dayNo;
-    private String type;
-    private String prodDetail;
-    private BigDecimal amount;
-    private Integer lineNum;
-    private String payType;
-    private String custInfo;
-    private String comment;
-    private String dispatchClerk;
-    private String modifyConent;
+    private String dictName;
+    private String itemName;
+    private String itemNo;
+    private String parentItemNo;
+    private Integer itemOrder;
+    private String itemState;
+    private String itemDesc;
     private Timestamp createDate;
-    private String weekNo;
-    private String creatorName;
-    private String creatorUserName;
-    private Timestamp modifyDate;
 
-    public long getId() {
-        return id;
+    public String getDictName() {
+        return dictName;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setDictName(String dictName) {
+        this.dictName = dictName;
     }
 
-    public String getDayNo() {
-        return dayNo;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setDayNo(String dayNo) {
-        this.dayNo = dayNo;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
-    public String getType() {
-        return type;
+    public String getItemNo() {
+        return itemNo;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setItemNo(String itemNo) {
+        this.itemNo = itemNo;
     }
 
-    public String getProdDetail() {
-        return prodDetail;
+    public String getParentItemNo() {
+        return parentItemNo;
     }
 
-    public void setProdDetail(String prodDetail) {
-        this.prodDetail = prodDetail;
+    public void setParentItemNo(String parentItemNo) {
+        this.parentItemNo = parentItemNo;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
+    public Integer getItemOrder() {
+        return itemOrder;
     }
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
+    public void setItemOrder(Integer itemOrder) {
+        this.itemOrder = itemOrder;
     }
 
-    public Integer getLineNum() {
-        return lineNum;
+    public String getItemState() {
+        return itemState;
     }
 
-    public void setLineNum(Integer lineNum) {
-        this.lineNum = lineNum;
+    public void setItemState(String itemState) {
+        this.itemState = itemState;
     }
 
-    public String getPayType() {
-        return payType;
+    public String getItemDesc() {
+        return itemDesc;
     }
 
-    public void setPayType(String payType) {
-        this.payType = payType;
-    }
-
-    public String getCustInfo() {
-        return custInfo;
-    }
-
-    public void setCustInfo(String custInfo) {
-        this.custInfo = custInfo;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public String getDispatchClerk() {
-        return dispatchClerk;
-    }
-
-    public void setDispatchClerk(String dispatchClerk) {
-        this.dispatchClerk = dispatchClerk;
-    }
-
-    public String getModifyConent() {
-        return modifyConent;
-    }
-
-    public void setModifyConent(String modifyConent) {
-        this.modifyConent = modifyConent;
+    public void setItemDesc(String itemDesc) {
+        this.itemDesc = itemDesc;
     }
 
     public Timestamp getCreateDate() {
@@ -125,35 +84,5 @@ public class SysDictitemVo {
         this.createDate = createDate;
     }
 
-    public String getWeekNo() {
-        return weekNo;
-    }
 
-    public void setWeekNo(String weekNo) {
-        this.weekNo = weekNo;
-    }
-
-    public String getCreatorName() {
-        return creatorName;
-    }
-
-    public void setCreatorName(String creatorName) {
-        this.creatorName = creatorName;
-    }
-
-    public String getCreatorUserName() {
-        return creatorUserName;
-    }
-
-    public void setCreatorUserName(String creatorUserName) {
-        this.creatorUserName = creatorUserName;
-    }
-
-    public Timestamp getModifyDate() {
-        return modifyDate;
-    }
-
-    public void setModifyDate(Timestamp modifyDate) {
-        this.modifyDate = modifyDate;
-    }
 }

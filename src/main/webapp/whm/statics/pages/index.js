@@ -110,9 +110,9 @@ function loadMenuTree(topId){
     else if(topId=='02'){
         menuTree.append("<dl><h5><a href='shipmentMgt/page/list.html' target='view_frame'><i class='fM-l-icon2'>出货报表管理管理</i></a></h5><dl>");
 	}else if(topId=='03'){
-        menuTree.append("<dl><h5><a href='userMgt/page/list.html' target='view_frame'><i class='fM-l-icon2'>用户管理</i></a></h5><dl>");
+        menuTree.append("<dl><h5><a href='userMgt/list.html' target='view_frame'><i class='fM-l-icon2'>用户管理</i></a></h5><dl>");
     }else if(topId=='04'){
-        menuTree.append("<dl><h5><a href='dictMgt/page/list.html' target='view_frame'><i class='fM-l-icon2'>字典管理</i></a></h5><dl>");
+        menuTree.append("<dl><h5><a href='dictMgt/list.html' target='view_frame'><i class='fM-l-icon2'>字典管理</i></a></h5><dl>");
 	}
    /* for(var i=0;i<menus.length;i++){
         //直接子节点

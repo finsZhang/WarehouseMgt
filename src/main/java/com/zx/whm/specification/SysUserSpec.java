@@ -33,8 +33,8 @@ public class SysUserSpec implements Specification<SysUser> {
 
     public Predicate toPredicate(Root<SysUser> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
         List<Predicate> predicates = new ArrayList<Predicate>();
-        if(StringUtils.isNotBlank(userVo.getCreatorName())){
-            predicates.add(cb.like(root.get("creatorName").as(String.class), "%"+userVo.getCreatorName().trim()+"%"));
+        if(StringUtils.isNotBlank(userVo.getUserName())){
+            predicates.add(cb.like(root.get("USER_NAME").as(String.class), "%"+userVo.getUserName().trim()+"%"));
         }
         Predicate[] p = new Predicate[predicates.size()];
         return cb.and(predicates.toArray(p));
