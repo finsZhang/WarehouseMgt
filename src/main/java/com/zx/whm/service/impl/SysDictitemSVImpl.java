@@ -4,6 +4,8 @@ import com.zx.whm.common.domain.ResultDTO;
 import com.zx.whm.dao.SysDictitemDao;
 import com.zx.whm.domain.ShipmentRecord;
 import com.zx.whm.domain.SysDictitem;
+import com.zx.whm.domain.SysDictitemPK;
+import com.zx.whm.domain.SysUser;
 import com.zx.whm.service.SysDictitemSV;
 import com.zx.whm.specification.ShipmentRecordSpec;
 import com.zx.whm.specification.SysDictitemSpec;
@@ -49,6 +51,16 @@ public class SysDictitemSVImpl  implements SysDictitemSV {
         resultDTO.setRows(page.getContent());
         resultDTO.setRecords((int)page.getTotalElements());
         return resultDTO;
+    }
+
+
+    public void saveDict(SysDictitem bean)throws Exception{
+        sysDictitemDao.save(bean);
+    }
+
+
+    public void delete(SysDictitemPK pk)throws Exception{
+        sysDictitemDao.delete(pk);
     }
 
 }

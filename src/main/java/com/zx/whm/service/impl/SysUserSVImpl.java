@@ -33,6 +33,14 @@ public class SysUserSVImpl implements SysUserSV{
         resultDTO.setRecords((int)page.getTotalElements());
         return resultDTO;
     }
+    public void saveUser(SysUser bean)throws Exception{
+        userDao.save(bean);
+    }
+
+    public void deleteUserById(long id)throws Exception{
+        userDao.delete(id);
+    }
+
     @Override
     public SysUser findSysUserByUserName(String userName){
         return userDao.findSysUserByUserName(userName);

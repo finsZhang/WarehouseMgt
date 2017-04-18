@@ -48,7 +48,7 @@ function selectList() {
         datatype: "json",
         height: '100%',
         width : '100%',
-        colNames: ['字典名称','项目名','项目编号','父项目编码', '序号', '状态', '项目描述','创建时间'],
+        colNames: ['字典名称','项目名','项目编号','父项目编码', '序号', '状态', '项目描述','创建时间','操作'],
         colModel: [
             {name: 'dictName', index: 'dictName', sortable: false,fixed:false,width:130,align:'center'},
             {name: 'itemName', index: 'itemName', sortable: false,align:'center',resizable:true,fixed:false ,width:80},
@@ -83,24 +83,17 @@ function closeSubLayer(name){
     layer.close(index);
 }
 
-function uploadFile(){
+
+function addDict(){
     layer.open({
         type: 2,
-        title:"上传文件",
-        area: ['700px', '600px'],
+        title:"字典编辑",
+        area: ['700px', '250px'],
         fix: false, //不固定
         maxmin: true,
-        content: GLOBAL.WEBROOT + "/makeCardDataMgt/page/uploadData.html",
+        content: GLOBAL.WEBROOT + "/dictMgt/page/edit.html",
         closeBtn:0
     });
-}
-
-
-function dwlZipFile(fileName,oldName){
-    $("#oldName").val(oldName);
-    $("#fileName").val(fileName);
-    $("#dwlForm").attr("action" , GLOBAL.WEBROOT + "/common/downloadFile.ajax");
-    $("#dwlForm").submit();
 }
 
 function initDicts() {
