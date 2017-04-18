@@ -21,7 +21,7 @@ import java.io.IOException;
  * To change this template use File | Settings | File Templates.
  */
 @Controller
-@RequestMapping("/com/zx/whm/common/checkCode/")
+@RequestMapping("/whm/common/checkCode/")
 public class CheckCodeController {
 
     private Logger logger = LoggerFactory.getLogger(CheckCodeController.class);

@@ -113,7 +113,7 @@
   <!--<location>/cowrys/common/404.jsp</location>-->
   <!--</error-page>-->
   <welcome-file-list>
-    <welcome-file>/WEB-INF/pages/index.jsp</welcome-file>
+    <welcome-file>/WEB-INF/pages/login.jsp</welcome-file>
   </welcome-file-list>
 
   <servlet-mapping>

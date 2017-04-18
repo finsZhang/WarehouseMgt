@@ -1,5 +1,6 @@
 package com.zx.whm.common.util;
 
+import com.zx.whm.common.util.Encrypt;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
@@ -17,7 +18,7 @@ import java.util.Properties;
  */
 public class PropertiesUtils extends
         PropertyPlaceholderConfigurer {
-    private String[] encryptPropNames = {};
+    private String[] encryptPropNames = {"whm.jdbc.password"};
 
     private static Map<String, String> ctxPropertiesMap;
     @Override
@@ -26,7 +27,7 @@ public class PropertiesUtils extends
         if (isEncryptProp(propertyName))
         {
             if(propertyValue.startsWith("{o}")){
-               return  propertyValue.substring(3);
+                return  propertyValue.substring(3);
             }else{
                 return Encrypt.DoDecrypt(propertyValue);
             }

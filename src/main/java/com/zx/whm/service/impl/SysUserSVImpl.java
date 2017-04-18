@@ -21,8 +21,6 @@ import static org.springframework.data.jpa.domain.Specifications.where;
  */
 @Service
 public class SysUserSVImpl implements SysUserSV{
-
-
     @Autowired
     private SysUserDao userDao;
     @Override
@@ -34,5 +32,13 @@ public class SysUserSVImpl implements SysUserSV{
         resultDTO.setRows(page.getContent());
         resultDTO.setRecords((int)page.getTotalElements());
         return resultDTO;
+    }
+    @Override
+    public SysUser findSysUserByUserName(String userName){
+        return userDao.findSysUserByUserName(userName);
+    }
+    @Override
+    public void save(SysUser sysUser){
+        userDao.save(sysUser);
     }
 }

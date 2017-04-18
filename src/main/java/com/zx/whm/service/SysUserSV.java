@@ -9,4 +9,6 @@ import com.zx.whm.vo.SysUserVo;
  */
 public interface SysUserSV {
     public ResultDTO queryPageList(final SysUserVo shipmentRecordVo, ResultDTO<SysUser> resultDTO) throws Exception;
+    SysUser findSysUserByUserName(String userName);
+    void save(SysUser sysUser);
 }

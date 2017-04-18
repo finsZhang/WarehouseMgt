@@ -2,6 +2,7 @@ package com.zx.whm.web.interceptor;
 
 import com.zx.whm.common.util.AjaxUtil;
 import com.zx.whm.common.util.Constants;
+import com.zx.whm.domain.SysUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.method.HandlerMethod;
@@ -50,7 +51,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 	     */
 	    private boolean execute(String fullUrl, String url, HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
 
-	       /* User user = (User) request.getSession().getAttribute(Constants.SESSION_USER_OBJ);//获取用户登录信息；
+	        SysUser user = (SysUser) request.getSession().getAttribute(Constants.SESSION_USER_OBJ);//获取用户登录信息；
 
 	        if (handler instanceof HandlerMethod) {
 
@@ -63,7 +64,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 	                return goNeedLogin(request, response, url,fullUrl);
 	            }
 
-	        }*/
+	        }
 	        return true;
 	    }
 
@@ -89,7 +90,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 	                printWriter.close();
 	            } else {
 	                //跳转到用户登录页面；
-	                String authUrl = "com/zx/whm/login.html";
+	                String authUrl = "whm/login.html";
 					String basePath = request.getScheme()+"://"+request.getServerName()+":"+
 							request.getServerPort()+request.getContextPath()+"/";
 	                response.sendRedirect(basePath+ authUrl);

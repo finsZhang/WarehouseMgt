@@ -13,4 +13,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  */
 public interface SysUserDao extends JpaRepository<SysUser,Long>,JpaSpecificationExecutor<SysUser> {
     Page<SysUser> findAll(Specification<SysUser> spec, Pageable pageable);
+
+    SysUser findSysUserByUserName(String userName);
 }

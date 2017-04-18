@@ -40,31 +40,27 @@
         </mvc:message-converters>
 
     </mvc:annotation-driven>
-<!--<mvc:interceptors>
+<mvc:interceptors>
     <mvc:interceptor>
-        <mvc:mapping path="/cashbox/**"/>
-        <mvc:mapping path="/cashdeliver/**"/>
-        <mvc:mapping path="/cashInter/**"/>
-        <mvc:mapping path="/prettycashApply/**"/>
-        <mvc:mapping path="/cashReport/**"/>
-        <mvc:mapping path="/recharge/**"/>
+        <mvc:mapping path="/shipmentMgt/**"/>
+        <mvc:mapping path="/dictMgt/**"/>
+        <mvc:mapping path="/userMgt/**"/>
         <mvc:mapping path="/common/**"/>
-        <mvc:mapping path="/comserver/**"/>
 
-        &lt;!&ndash;排除jsp等资源&ndash;&gt;
+        <!--排除jsp等资源-->
         <mvc:exclude-mapping path="/WEB-INF/**"/>
         <mvc:exclude-mapping path="/common/*.jsp"/>
-        &lt;!&ndash;排除js,css等静态资源&ndash;&gt;
-        <mvc:exclude-mapping path="/ecard/statics/**"/>
-        &lt;!&ndash;排除登录页面&ndash;&gt;
-        <mvc:exclude-mapping path="/ecard/login.html"/>
+        <!--排除js,css等静态资源-->
+        <mvc:exclude-mapping path="/whm/statics/**"/>
+        <!--排除登录页面-->
+        <mvc:exclude-mapping path="/whm/login.html"/>
 
         <bean class="com.zx.whm.web.interceptor.LoginInterceptor">
             <property name="appCode" value="${appCode}"/>
             <property name="domain" value="${whm.domain.name}"/>
         </bean>
     </mvc:interceptor>
-</mvc:interceptors>-->
+</mvc:interceptors>
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding" value="UTF-8"/>
         <property name="maxUploadSize" value="104857600"/>

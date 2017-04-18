@@ -1,7 +1,5 @@
 package com.zx.whm.common.util;
 
-import java.io.File;
-
 /**
  * 系统常量
  * @author fangll
@@ -16,12 +14,11 @@ public final class Constants {
 	public static final String VIEWONLY = "_VIEW_ONLY_";			//只有查看权限，没有管理权限
 
 	//员工岗位
-	public static final String STATION_CODE_COMMON = "EMM_COMMON_TELLER";          //普通柜员
-	public static final String STATION_CODE_MANAGER = "EMM_MANAGER";          //管理员
+	public static final String STATION_CODE_COMMON = "COMMON_TELLER";          //普通柜员
+	public static final String STATION_CODE_MANAGER = "MANAGER";          //管理员
 	public static final String SESSION_OPERATOR_STATION = "_OPERATOR_STATION";
-
-
-
-
-	public static final String SESSION_STATION_RESOURCES = "_STATION_RESOURCES";
+	//员工角色
+	public static final String ROLECODE_COMMON = "COMMON_TELLER";          //普通柜员
+	public static final String ROLE_CODE_MANAGER = "MANAGER";          //管理员
+	public static final String SESSION_OPERATOR_ROLE = "_OPERATOR_ROLE";
 }
