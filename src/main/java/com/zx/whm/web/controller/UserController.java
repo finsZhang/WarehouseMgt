@@ -11,11 +11,9 @@ import com.zx.whm.vo.SysUserVo;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -44,5 +42,27 @@ public class UserController {
         return AjaxUtil.jqGridJson(result);
     }
 
+    @RequestMapping("/saveUser.ajax")
+    @ResponseBody
+    public Map saveTerminal(@RequestBody SysUser bean) {
+        Map<String, String> map = new HashMap();
+        map.put("ERRCODE", "0");
+        bean.setStatus(0);//00有效01无效
+        try {
+            sysUserSV.saveUser(bean);
+        } catch (Exception e) {
+            map.put("ERRCODE","1");
+            map.put("ERRINFO","保存失败，请检查参数");
+        }
+        return map;
+    }
 
+    @RequestMapping("/userDel.ajax")
+    @ResponseBody
+    public Map userDel(@RequestParam long id) throws Exception {
+        Map map = new HashMap();
+        sysUserSV.deleteUserById(id);
+        map.put("ERRCODE", 0);
+        return map;
+    }
 }

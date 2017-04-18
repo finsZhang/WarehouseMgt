@@ -59,7 +59,14 @@ function selectList() {
             {name: 'stationCode', index: 'stationCode',  sortable: false,align:'right' ,width:80 },
             {name: 'roleCode', index: 'roleCode',  sortable: false,align:'right',width:80 },
             {name: 'createDate', index: "createDate", sortable: false,align:'right',width:100},
-            {name: 'comment', index: "comment", sortable: false,align:'right',width:80}
+            {name: 'comment', index: "comment", sortable: false,align:'right',width:80},
+            {name: 'id', index: "id",  sortable: false,width:100,align:'center'
+                ,formatter: function (param1, param2, recode) {
+                var id =recode.id;
+                return '<a class="blue" href="javascript:void(0)" onclick="edit(\'' + id + '\')" title="修改"><i class="icon-edit bigger-120"></i></a>&nbsp;' +
+                    '<a class="blue" href="javascript:void(0)" onclick="view(\'' + id + '\')" title="查看"><i class="icon-search bigger-120"></i></a>&nbsp;' +
+                    '<a class="red" href="javascript:void(0)" onclick="del(\'' + id + '\')" title="删除"><i class="icon-trash bigger-120"></i></a>' ;
+            }}
             ],
         viewrecords: false,
         rowNum:10,
@@ -85,25 +92,43 @@ function closeSubLayer(name){
     layer.close(index);
 }
 
-function uploadFile(){
+function addUser(){
     layer.open({
         type: 2,
-        title:"上传文件",
-        area: ['700px', '600px'],
+        title:"用户编辑",
+        area: ['700px', '250px'],
         fix: false, //不固定
         maxmin: true,
-        content: GLOBAL.WEBROOT + "/makeCardDataMgt/page/uploadData.html",
+        content: GLOBAL.WEBROOT + "/userMgt/page/edit.html",
         closeBtn:0
     });
 }
 
 
-function dwlZipFile(fileName,oldName){
-    $("#oldName").val(oldName);
-    $("#fileName").val(fileName);
-    $("#dwlForm").attr("action" , GLOBAL.WEBROOT + "/common/downloadFile.ajax");
-    $("#dwlForm").submit();
+//删除
+function del(id) {
+    layerConfirm('是否删除当前选中记录',function() {
+        var data = "id=" + id;
+        $.ajax({
+            type: "GET",
+            async: true,
+            url: GLOBAL.WEBROOT + "/userMgt/userDel.ajax",
+            dataType: 'json',
+            data: data,
+            success: function (data) {
+                if (data.ERRCODE == "0") {
+                    infoSuccess('温馨提示', '删除成功');
+                    reloadGrid();
+                }
+                else {
+                    info('温馨提示', data.ERRINFO);
+                }
+            }
+        });
+    });
 }
+
+
 
 function initDicts() {
 

@@ -14,6 +14,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.ExecutionException;
+
 import static org.springframework.data.jpa.domain.Specifications.where;
 
 /**
@@ -35,4 +37,14 @@ public class SysUserSVImpl implements SysUserSV{
         resultDTO.setRecords((int)page.getTotalElements());
         return resultDTO;
     }
+
+   public void saveUser(SysUser bean)throws Exception{
+        userDao.save(bean);
+   }
+
+    public void deleteUserById(long id)throws Exception{
+        userDao.delete(id);
+    }
+
+
 }

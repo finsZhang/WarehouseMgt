@@ -76,6 +76,9 @@
                         <a href="javascript:void(0)" onclick="resetCondition()"
                            class="fm-button ui-state-default ui-corner-all fm-button-icon-left ui-search btn btn-sm btn-gray"><span
                                 class="icon-retweet"></span>重 置</a>
+                        <a href="javascript:void(0)" onclick="addUser()"
+                           class="fm-button ui-state-default ui-corner-all fm-button-icon-left ui-search btn btn-sm btn-gray"><span
+                                class="icon-retweet"></span>新 曾</a>
                     </th>
                 </tr>
             </table>

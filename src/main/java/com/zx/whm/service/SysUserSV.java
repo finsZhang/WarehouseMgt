@@ -9,4 +9,6 @@ import com.zx.whm.vo.SysUserVo;
  */
 public interface SysUserSV {
     public ResultDTO queryPageList(final SysUserVo shipmentRecordVo, ResultDTO<SysUser> resultDTO) throws Exception;
+    public void saveUser(SysUser bean)throws Exception;
+    public void deleteUserById(long id)throws Exception;
 }
