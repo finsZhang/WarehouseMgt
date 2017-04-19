@@ -16,7 +16,7 @@ function resetCondition() {
 
 function reloadGrid(){
     var data = $("#searchForm").serializeObject();
-    $("#user_table").jqGrid('setGridParam', {postData: data,page:1,pageSize:10}).trigger("reloadGrid");
+    $("#user_table").jqGrid("setGridParam", {postData: data,page:1,pageSize:10}).trigger("reloadGrid");
 }
 
 //查询列表

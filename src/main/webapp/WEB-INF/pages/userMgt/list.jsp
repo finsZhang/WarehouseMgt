@@ -57,9 +57,13 @@
             <form id="searchForm" action="#">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                        <th width="13%" class="r">用户名：</th>
+                        <th width="10%" class="r">用户名：</th>
                         <td width="13%">
-                            <input name=userName" id="userName" class="inputW160"/>
+                            <input name="userName" id="userName" class="inputW160"/>
+                        </td>
+                        <th width="10%" class="r">用户姓名：</th>
+                        <td width="13%">
+                            <input name="name" id="name" class="inputW160"/>
                         </td>
                     </tr>
                 </table>

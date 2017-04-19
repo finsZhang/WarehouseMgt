@@ -19,6 +19,22 @@ public class SysUserVo {
     private Timestamp createDate;
     private String comment;
 
+    public SysUserVo() {
+    }
+
+    public SysUserVo(long id, String name, Integer sex, String userName, String password, Integer status, String stationCode, String roleCode, Timestamp createDate, String comment) {
+        this.id = id;
+        this.name = name;
+        this.sex = sex;
+        this.userName = userName;
+        this.password = password;
+        this.status = status;
+        this.stationCode = stationCode;
+        this.roleCode = roleCode;
+        this.createDate = createDate;
+        this.comment = comment;
+    }
+
     public long getId() {
         return id;
     }

@@ -59,7 +59,11 @@
                     <tr>
                         <th width="13%" class="r">字典名称：</th>
                         <td width="13%">
-                            <input name=dictName" id="dictName" class="inputW160"/>
+                            <input name="dictName" id="dictName" class="inputW160"/>
+                        </td>
+                        <th width="13%" class="r">字典项描述：</th>
+                        <td width="13%">
+                            <input name="itemDesc" id="itemDesc" class="inputW160"/>
                         </td>
                     </tr>
                 </table>
