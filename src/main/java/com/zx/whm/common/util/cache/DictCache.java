@@ -206,6 +206,7 @@ public  class DictCache {
 		Map newMap  = loadDictData("");
 		Map tmp = dictMap;
 		synchronized (dictMap) {
+
 			dictMap = newMap;
 		}
 		

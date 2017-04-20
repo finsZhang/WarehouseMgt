@@ -1,40 +1,53 @@
-var masterTypeMap;
-var daughterTypeMap;
-var statusMap;
-var sexMap;
+var typeMap;
+var payTypeMap;
+var dispatchClerkMap;
 
 $(function () {
     selectList();
     initDicts();
+    initQueryDicts();
     resetCondition();
 });
 
+function initQueryDicts() {
+    $.ajax({
+        type: "POST",
+        async:false,
+        data:{"type":"SHIPMENT_RECORD_TYPE","payType":"SHIPMENT_RECORD_PAY_TYPE","dispatchClerk":"SHIPMENT_RECORD_CLERK"},
+        datatype: "json",
+        url: GLOBAL.WEBROOT + "/common/dictItem/getDictItemCondition.ajax",
+        success: function (data) {
+            var jsonType = eval(data.type);
+            var typeSelect = $("#type");
+            typeSelect.empty();
+            typeSelect.append("<option value='-1'>请选择类型</option>");
+            for (var i = 0; i < jsonType.length; i++) {
+                typeSelect.append("<option value='" + jsonType[i].itemNo + "'>" + jsonType[i].itemName + "</option>");
+            }
+            $('#type').val(-1);
+            $('#type').select2();
+
+            var jsonPayType = eval(data.payType);
+            var payTypeSelect = $("#payType");
+            payTypeSelect.empty();
+            payTypeSelect.append("<option value='-1'>请选择付款方式</option>");
+            for (var i = 0; i < jsonPayType.length; i++) {
+                payTypeSelect.append("<option value='" + jsonPayType[i].itemNo + "'>" + jsonPayType[i].itemName + "</option>");
+            }
+            $('#payType').val(-1);
+            $('#payType').select2();
+        }
+    });
+}
+
 function resetCondition() {
     com.ai.bdx.util.reset('searchForm');
-    if (userStation == 'EMM_ADMIN') {
-        com.ai.bdx.util.ztreeComp("orgNames", true, top.optionForMulti, callFuncForOrgNames);
-    } else {
-        $('#orgCodes').val(orgCode);
-        $('#orgNames').val(orgName);
-    }
     reloadGrid();
 }
-function callFuncForOrgNames(zTree) {
-    var nodes = zTree.getCheckedNodes(true);
-    var v = "";
-    var n = "";
-    for (var i = 0, l = nodes.length; i < l; i++) {
-        v += nodes[i].orgCode + ",";
-        n += nodes[i].orgName + ",";
-    }
-    if (v.length > 0) v = v.substring(0, v.length - 1);
-    if (n.length > 0) n = n.substring(0, n.length - 1);
-    $('#orgCodes').val(v);
-    $('#orgNames').val(n);
-}
+
 function reloadGrid(){
     var data = $("#searchForm").serializeObject();
-	$("#makeCard").jqGrid('setGridParam', {postData: data,page:1,pageSize:10}).trigger("reloadGrid");
+	$("#shipment").jqGrid('setGridParam', {postData: data,page:1,pageSize:10}).trigger("reloadGrid");
 }
 
 //查询列表
@@ -51,14 +64,39 @@ function selectList() {
         colNames: ['当日编号','类型','商品明细','金额', '行数', '付款方式', '客户信息','备注','派单员','后期更改','创建时间','创建星期','创建人姓名'],
         colModel: [
             {name: 'dayNo', index: 'dayNo', sortable: false,fixed:false,width:130,align:'center'},
-            {name: 'type', index: 'type', sortable: false,align:'center',resizable:true,fixed:false ,width:80},
+            {
+                name: 'type', index: 'type', sortable: false, align: 'center', resizable: true, fixed: false, width: 80,
+                formatter: function (cellvalue, options, rowObject) {
+                    if (typeMap.containsKey(cellvalue)) {
+                        return typeMap.get(cellvalue);
+                    } else {
+                        return "";
+                    }
+                }
+            },
             {name: 'prodDetail', index: 'prodDetail', sortable: false,resizable:true,fixed:false,width:80,align:'center'},
             {name: 'amount', index: 'amount',  sortable: false,align:'center',resizable:true,fixed:false,width:150},
             {name: 'lineNum', index: 'lineNum', sortable: false,align:'center',resizable:true,fixed:false ,width:80},
-            {name: 'payType', index: 'payType', sortable: false,width:100},
+            {name: 'payType', index: 'payType', sortable: false,width:100,
+                formatter: function (cellvalue, options, rowObject) {
+                    if (payTypeMap.containsKey(cellvalue)) {
+                        return payTypeMap.get(cellvalue);
+                    } else {
+                        return "";
+                    }
+                }
+            },
             {name: 'custInfo', index: 'custInfo',  sortable: false,align:'right' ,width:80 },
             {name: 'comment', index: 'comment',  sortable: false,align:'right',width:80 },
-            {name: 'dispatchClerk', index: "dispatchClerk", sortable: false,align:'right',width:100},
+            {name: 'dispatchClerk', index: "dispatchClerk", sortable: false,align:'right',width:100,
+                formatter: function (cellvalue, options, rowObject) {
+                    if (dispatchClerkMap.containsKey(cellvalue)) {
+                        return dispatchClerkMap.get(cellvalue);
+                    } else {
+                        return "";
+                    }
+                }
+            },
             {name: 'modifyConent', index: "modifyConent", sortable: false,align:'right',width:80},
             {name: 'createDate', index: "createDate", sortable: false,align:'right',width:100},
             {name: 'weekNo', index: "weekNo", sortable: false,align:'right',width:100},
@@ -113,32 +151,26 @@ function initDicts() {
     $.ajax({
         type: "POST",
         async:false,
-        data:{"masterType":"CARD_MAIN_TYPE","daughterType":"CARD_SUB_TYPE","status":"MAKE_CARD_STATUS","sex":"CARD_SEX"},
+        data:{"type":"SHIPMENT_RECORD_TYPE","payType":"SHIPMENT_RECORD_PAY_TYPE","dispatchClerk":"SHIPMENT_RECORD_CLERK"},
         datatype: "json",
         url: GLOBAL.WEBROOT + "/common/dictItem/getDictItemCondition.ajax",
         success: function (data) {
-            var masterType = eval(data.masterType);
-            masterTypeMap = new Map();
-            for (var i = 0; i < masterType.length; i++) {
-                masterTypeMap.put(masterType[i].itemNo,masterType[i].itemName);
+            var type = eval(data.type);
+            typeMap = new Map();
+            for (var i = 0; i < type.length; i++) {
+                typeMap.put(type[i].itemNo,type[i].itemName);
             }
 
-            var daughterType = eval(data.daughterType);
-            daughterTypeMap = new Map();
-            for (var i = 0; i < daughterType.length; i++) {
-                daughterTypeMap.put(daughterType[i].itemNo,daughterType[i].itemName);
+            var payType = eval(data.payType);
+            payTypeMap = new Map();
+            for (var i = 0; i < payType.length; i++) {
+                payTypeMap.put(payType[i].itemNo,payType[i].itemName);
             }
 
-            var status = eval(data.status);
-            statusMap = new Map();
-            for (var i = 0; i < status.length; i++) {
-                statusMap.put(status[i].itemNo,status[i].itemName);
-            }
-
-            var sex = eval(data.sex);
-            sexMap = new Map();
-            for (var i = 0; i < sex.length; i++) {
-                sexMap.put(sex[i].itemNo,sex[i].itemName);
+            var dispatchClerk = eval(data.dispatchClerk);
+            dispatchClerkMap = new Map();
+            for (var i = 0; i < dispatchClerk.length; i++) {
+                dispatchClerkMap.put(dispatchClerk[i].itemNo,dispatchClerk[i].itemName);
             }
         }
     });

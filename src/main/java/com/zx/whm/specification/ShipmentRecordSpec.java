@@ -31,8 +31,11 @@ public class ShipmentRecordSpec implements Specification<ShipmentRecord> {
 
     public Predicate toPredicate(Root<ShipmentRecord> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
         List<Predicate> predicates = new ArrayList<Predicate>();
-        if(StringUtils.isNotBlank(shipmentRecordVo.getCreatorName())){
-            predicates.add(cb.like(root.get("creatorName").as(String.class), "%"+shipmentRecordVo.getCreatorName().trim()+"%"));
+        if(!"-1".equals(shipmentRecordVo.getType())){
+            predicates.add(cb.equal(root.get("type"),shipmentRecordVo.getType()));//.like(root.get("type").as(String.class), "%"+shipmentRecordVo.getCreatorName().trim()+"%"));
+        }
+        if(!"-1".equals(shipmentRecordVo.getPayType())){
+            predicates.add(cb.equal(root.get("payType"),shipmentRecordVo.getPayType()));
         }
         Predicate[] p = new Predicate[predicates.size()];
         return cb.and(predicates.toArray(p));

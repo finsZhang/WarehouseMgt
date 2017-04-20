@@ -57,11 +57,29 @@
             <form id="searchForm" action="#">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                        <th width="13%" class="r">创建人姓名：</th>
+                        <th width="13%" class="r">类型：</th>
                         <td width="13%">
-                            <input name=creatorName" id="creatorName" class="inputW160"/>
+                            <select name="type" id="type">
+                                <option value="-1">请选择类型</option>
+                            </select>
+                        </td>
+                        <th width="13%" class="r">付款方式：</th>
+                        <td width="13%">
+                            <select name="payType" id="payType">
+                                <option value="-1">请选择付款方式</option>
+                            </select>
                         </td>
                     </tr>
+                    <%--<tr>
+                        <th class="r" width="12%">查询创建时间段：</th>
+                        <td width="50%">
+                            <input id="startOperateDate" name="startOperateDate" class="inputW180"
+                                   onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+                            -
+                            <input id="endOperateDate" name="endOperateDate" class="inputW180"
+                                   onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+                        </td>
+                    </tr>--%>
                 </table>
             </form>
             <table width="100%" border="0" cellspacing="0" cellpadding="0">

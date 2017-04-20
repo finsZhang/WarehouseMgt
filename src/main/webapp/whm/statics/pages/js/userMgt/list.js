@@ -1,5 +1,5 @@
-var masterTypeMap;
-var daughterTypeMap;
+var roleCodeMap;
+var stationCodeMap;
 var statusMap;
 var sexMap;
 
@@ -34,35 +34,43 @@ function selectList() {
         colModel: [
             {name: 'id', index: 'id', sortable: false,fixed:false,width:130,align:'center'},
             {name: 'name', index: 'name', sortable: false,align:'center',resizable:true,fixed:false ,width:80},
-            {name: 'sex', index: 'sex', sortable: false,resizable:true,fixed:false,width:80,align:'center',formatter:function (param1, param2, recode) {
-                if('1'==recode.sex){
-                    return '男';
-                }else{
-                    return '女';
+            {name: 'sex', index: 'sex', sortable: false,resizable:true,fixed:false,width:80,align:'center',
+                formatter: function (cellvalue, options, rowObject) {
+                    if (sexMap.containsKey(cellvalue)) {
+                        return sexMap.get(cellvalue);
+                    }else{
+                        return "";
+                    }
                 }
-            }},
+            },
             {name: 'userName', index: 'userName',  sortable: false,align:'center',resizable:true,fixed:false,width:150},
-            {name: 'status', index: 'status', sortable: false,width:100,formatter:function (param1, param2, recode) {
-                if('1'==recode.status){
-                    return '可用';
-                }else{
-                    return '禁用';
+            {name: 'status', index: 'status', sortable: false,width:100,
+                formatter: function (cellvalue, options, rowObject) {
+                    if (statusMap.containsKey(cellvalue)) {
+                        return statusMap.get(cellvalue);
+                    }else{
+                        return "";
+                    }
                 }
-            }},
-            {name: 'stationCode', index: 'stationCode',  sortable: false,align:'right' ,width:80,formatter:function (param1, param2, recode) {
-                if('MANAGER'==recode.stationCode){
-                    return '管理员';
-                }else{
-                    return '业务员';
+            },
+            {name: 'stationCode', index: 'stationCode',  sortable: false,align:'right' ,width:80,
+                formatter: function (cellvalue, options, rowObject) {
+                    if (stationCodeMap.containsKey(cellvalue)) {
+                        return stationCodeMap.get(cellvalue);
+                    }else{
+                        return "";
+                    }
                 }
-            }},
-            {name: 'roleCode', index: 'roleCode',  sortable: false,align:'right',width:80,formatter:function (param1, param2, recode) {
-                if('MANAGER'==recode.roleCode){
-                    return '管理员';
-                }else{
-                    return '业务员';
+            },
+            {name: 'roleCode', index: 'roleCode',  sortable: false,align:'right',width:80,
+                formatter: function (cellvalue, options, rowObject) {
+                    if (roleCodeMap.containsKey(cellvalue)) {
+                        return roleCodeMap.get(cellvalue);
+                    }else{
+                        return "";
+                    }
                 }
-            }  },
+             },
             {name: 'createDate', index: "createDate", sortable: false,align:'right',width:100},
             {name: 'comment', index: "comment", sortable: false,align:'right',width:80},
             {name: 'id', index: "id",  sortable: false,width:100,align:'center'
@@ -139,20 +147,20 @@ function initDicts() {
     $.ajax({
         type: "POST",
         async:false,
-        data:{"masterType":"CARD_MAIN_TYPE","daughterType":"CARD_SUB_TYPE","status":"MAKE_CARD_STATUS","sex":"CARD_SEX"},
+        data:{"stationCode":"SYS_USER_STATION_CODE","roleCode":"SYS_USER_ROLE_CODE","status":"SYS_USER_STATUS","sex":"SYS_USER_SEX"},
         datatype: "json",
         url: GLOBAL.WEBROOT + "/common/dictItem/getDictItemCondition.ajax",
         success: function (data) {
-            var masterType = eval(data.masterType);
-            masterTypeMap = new Map();
-            for (var i = 0; i < masterType.length; i++) {
-                masterTypeMap.put(masterType[i].itemNo,masterType[i].itemName);
+            var stationCode = eval(data.stationCode);
+            stationCodeMap = new Map();
+            for (var i = 0; i < stationCode.length; i++) {
+                stationCodeMap.put(stationCode[i].itemNo,stationCode[i].itemName);
             }
 
-            var daughterType = eval(data.daughterType);
-            daughterTypeMap = new Map();
-            for (var i = 0; i < daughterType.length; i++) {
-                daughterTypeMap.put(daughterType[i].itemNo,daughterType[i].itemName);
+            var roleCode = eval(data.roleCode);
+            roleCodeMap = new Map();
+            for (var i = 0; i < roleCode.length; i++) {
+                roleCodeMap.put(roleCode[i].itemNo,roleCode[i].itemName);
             }
 
             var status = eval(data.status);

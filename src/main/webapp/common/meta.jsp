@@ -28,9 +28,9 @@
     var GLOBAL = {
         WEBROOT: "${ctx}"
     };
-    var org = eval("(" + '${_USER_ORG_JSON}' + ")");
     var user = eval("(" + '${_USER_INFO_MAP_}' + ")");
     var userStation = "${_OPERATOR_STATION}";
+    var userRole = "${_OPERATOR_ROLE}";
 </script>
 
 <script type="text/javascript" src="${ctx}/whm/statics/ace/js/ace-extra.min.js"></script>

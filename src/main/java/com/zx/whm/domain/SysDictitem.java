@@ -1,6 +1,7 @@
 package com.zx.whm.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -14,7 +15,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "sys_dictitem", schema = "warehouse", catalog = "")
 @IdClass(SysDictitemPK.class)
-public class SysDictitem {
+public class SysDictitem implements Serializable{
     private String dictName;
     private String itemName;
     private String itemNo;
