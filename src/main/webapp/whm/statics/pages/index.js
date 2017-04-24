@@ -14,6 +14,8 @@ $(function () {
     divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="03"><a href="javascript:void(0)" onclick="queryMenuByParent(\'03\',\'03\')">用户管理</a></div></li></ul></div>');
     queryMenuByParent('03','03');
     divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="04"><a href="javascript:void(0)" onclick="queryMenuByParent(\'04\',\'04\')">基础管理</a></div></li></ul></div>');
+    queryMenuByParent('04','04');
+    divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="05"><a href="javascript:void(0)" onclick="queryMenuByParent(\'05\',\'05\')">报表管理</a></div></li></ul></div>');
 
 
     /*$.ajax({
@@ -113,7 +115,9 @@ function loadMenuTree(topId){
         menuTree.append("<dl><h5><a href='userMgt/list.html' target='view_frame'><i class='fM-l-icon2'>用户管理</i></a></h5><dl>");
     }else if(topId=='04'){
         menuTree.append("<dl><h5><a href='dictMgt/list.html' target='view_frame'><i class='fM-l-icon2'>字典管理</i></a></h5><dl>");
-	}
+	}else if(topId=='05'){
+        menuTree.append("<dl><h5><a href='reportMgt/list.html' target='view_frame'><i class='fM-l-icon2'>报表管理</i></a></h5><dl>");
+    }
    /* for(var i=0;i<menus.length;i++){
         //直接子节点
         if(topId == menus[i].parentMenuId) {

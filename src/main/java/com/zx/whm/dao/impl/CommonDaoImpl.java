@@ -53,6 +53,27 @@ public class CommonDaoImpl implements CommonDao {
        }
        return resultDTO;
     }
+
+    @Transactional(readOnly = true)
+    public <T> ResultDTO<T> findPageListBySql(String sql, ResultDTO<T> resultDTO , Class<T> clz,boolean isMySql) {
+        int startNum = resultDTO.getStart()-1;
+        int endNum = resultDTO.getEnd();
+        String pageSql = "select * from ("+sql+") _X LIMIT "+startNum+","+endNum;
+        String countSql = "select count(1) from ("+sql+") _X";
+
+        Query countQuery = em.createNativeQuery(countSql);
+        int total = countQuery.getResultList().size();
+        resultDTO.setRecords(total);
+        if(total>0){
+            List<T> datas = queryListEntity(pageSql,clz);
+            resultDTO.setRows(datas);
+            return resultDTO;
+        }
+        return resultDTO;
+    }
+
+
+
     @Transactional(readOnly = true)
     public <T>List<T> queryListEntity(String sql, Class<T> clz){
         Query query = em.createNativeQuery(sql);

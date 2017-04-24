@@ -37,4 +37,19 @@ public class ShipmentRecordSVImpl implements ShipmentRecordSV {
         resultDTO.setRecords((int)page.getTotalElements());
         return resultDTO;
     }
+
+
+//    SELECT
+//    A.`CREATE_DATE`,
+//    A.`WEEK_NO`,
+//    A.`DISPATCH_CLERK`,
+//    SUM(A.`AMOUNT`) AMT,
+//    COUNT(1) NUM
+//    FROM
+//    shipment_record A
+//    GROUP BY A.`DISPATCH_CLERK`,A.`CREATE_DATE`
+//    ;
+
+
+
 }

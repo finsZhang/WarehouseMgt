@@ -21,4 +21,9 @@ public class CommonSVImpl  implements CommonSV {
     public <T> ResultDTO<T> findPageListBySql(String sql, ResultDTO<T> resultDTO, Class<T> clz)throws DBException{
         return commonDao.findPageListBySql(sql,resultDTO,clz);
     }
+
+    public <T> ResultDTO<T> findPageListBySql(String sql, ResultDTO<T> resultDTO, Class<T> clz,boolean isMysql)throws DBException{
+        return commonDao.findPageListBySql(sql,resultDTO,clz,isMysql);
+    }
+
 }
