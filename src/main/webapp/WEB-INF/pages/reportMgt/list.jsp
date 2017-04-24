@@ -1,34 +1,28 @@
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ include file="/common/taglibs.jsp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" " http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns=" http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="cache-control" content="no-cache">
+    <%@ include file="/common/taglibs.jsp" %>
     <%@ include file="/common/meta.jsp" %>
     <title>出货列表管理</title>
 
-    <link rel="stylesheet" href="${ctx}/whm/statics/common/plugins/ztree/css/zTreeStyle/zTreeStyle.css"
-          type="text/css">
-    <link rel="stylesheet" href="${ctx}/whm/statics/common/plugins/ztree/css/selectTree.css" type="text/css">
-    <link rel="stylesheet" href="${ctx}/whm/statics/common/css/execute.css" type="text/css">
+    <%--<link href="${ctx}/whm/statics/pages/css/index/css/manage.css" rel="stylesheet" type="text/css">--%>
+    <link href="${ctx}/whm/statics/common/css/css.css" rel="stylesheet" type="text/css"/>
 
+
+    <link type="text/css" rel="stylesheet" href="${ctx}/whm/statics/common/js/jquery-easyui/themes/default/easyui.css"/>
     <script type="text/javascript" src="${ctx}/whm/statics/common/js/jquery-easyui/jquery.easyui.min.js"></script>
-    <link type="text/css" rel="stylesheet"
-          href="${ctx}/whm/statics/common/js/jquery-easyui/themes/default/easyui.css"/>
 
-    <script type="text/javascript" src="${ctx}/whm/statics/common/plugins/ztree/js/jquery.ztree.core-3.5.js"></script>
-    <script type="text/javascript"
-            src="${ctx}/whm/statics/common/plugins/ztree/js/jquery.ztree.excheck-3.5.js"></script>
-    <script type="text/javascript"
-            src="${ctx}/whm/statics/common/plugins/ztree/js/jquery.ztree.exedit-3.5.js"></script>
-    <script type="text/javascript" src="${ctx}/whm/statics/common/plugins/date/WdatePicker.js"></script>
+    <link type="text/css" rel="stylesheet" href="${ctx}/whm/statics/common/js/date/skin/WdatePicker.css"/>
+    <script type="text/javascript" src="${ctx}/whm/statics/common/js/date/WdatePicker.js"></script>
 
     <script type="text/javascript" src="${ctx}/whm/statics/ace/plugins/jqGrid/jquery.jqGrid.min.js"></script>
     <script type="text/javascript" src="${ctx}/whm/statics/ace/plugins/jqGrid/grid.locale-cn.js"></script>
-    <script type="text/javascript"
-            src="${ctx}/whm/statics/common/js/jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="${ctx}/whm/statics/common/js/jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
 
-    <script type="text/javascript" src="${ctx}/whm/statics/pages/js/userMgt/list.js?_dc=${staticVersion}"></script>
+
+    <script type="text/javascript" src="${ctx}/whm/statics/pages/js/reportMgt/list.js?_dc=${staticVersion}"></script>
     <style type="text/css">
 
     </style>
@@ -46,9 +40,9 @@
         <ul class="breadcrumb" style="margin-top: 8px;">
             <li>
                 <i class="icon-home home-icon"></i>
-                <a href="${ctx}/userMgt/list.html">用户管理</a>
+                <a href="${ctx}/userMgt/list.html">报表管理</a>
             </li>
-            <li class="active">用户信息查询</li>
+            <li class="active">派单汇总记录表</li>
         </ul>
         <!-- .breadcrumb -->
     </div>
@@ -58,13 +52,20 @@
             <form id="searchForm" action="#">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
-                        <th width="10%" class="r">用户名：</th>
+                        <th width="10%" class="r">用户：</th>
                         <td width="13%">
-                            <input name="userName" id="userName" class="inputW160"/>
+                            <%--<input name="dispatchClerk" id="dispatchClerk" class="inputW160"/>--%>
+                                <select name="dispatchClerk" id="dispatchClerk" multiple="multiple" class="js-example-basic-multiple">
+
+                                </select>
                         </td>
-                        <th width="10%" class="r">用户姓名：</th>
-                        <td width="13%">
-                            <input name="name" id="name" class="inputW160"/>
+                        <th width="10%" class="r">时间段：</th>
+                        <td>
+                        <input id="startDate" name="startDate" class="inputW180"
+                               onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+                        -
+                        <input id="endDate" name="endDate" class="inputW180"
+                               onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
                         </td>
                     </tr>
                 </table>
@@ -81,9 +82,9 @@
                         <a href="javascript:void(0)" onclick="resetCondition()"
                            class="fm-button ui-state-default ui-corner-all fm-button-icon-left ui-search btn btn-sm btn-gray"><span
                                 class="icon-retweet"></span>重 置</a>
-                        <a href="javascript:void(0)" onclick="addUser('')"
+                        <a href="javascript:void(0)" onclick="exportRecordTotalRcds()"
                            class="fm-button ui-state-default ui-corner-all fm-button-icon-left ui-search btn btn-sm btn-gray"><span
-                                class="icon-retweet"></span>新 曾</a>
+                                class="icon-retweet"></span>导 出</a>
                     </th>
                 </tr>
             </table>
@@ -97,5 +98,8 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(".select_gallery-multiple").select2();
+</script>
 </body>
 </html>

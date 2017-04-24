@@ -10,4 +10,5 @@ import com.zx.whm.exception.DBException;
 public interface CommonSV {
     public long getIdBySeqName(String seqName)throws DBException;
     <T> ResultDTO<T>  findPageListBySql(String sql, ResultDTO<T> resultDTO, Class<T> clz)throws DBException;
+    <T> ResultDTO<T>  findPageListBySql(String sql, ResultDTO<T> resultDTO, Class<T> clz,boolean isMysql)throws DBException;
 }

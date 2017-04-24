@@ -2721,10 +2721,10 @@ the specific language governing permissions and limitations under the Apache Lic
                 $('.select2-highlighted').remove();
                 $(next).addClass('select2-highlighted');
             }
-            if(data.indexOf("/font") > -1) {
-                data = $(data).html();
-                flag = true;
-            }
+            // if(data.indexOf("/font") > -1) {
+            //     data = $(data).html();
+            //     flag = true;
+            // }
             var id = this.id(data),
             formatted=this.opts.formatSelection(data, choice.find("div"), this.opts.escapeMarkup);
             if (formatted != undefined) {

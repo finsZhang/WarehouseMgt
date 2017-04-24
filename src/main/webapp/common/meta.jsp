@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="${ctx}/whm/statics/ace/plugins/jqGrid/ui.jqgrid-zb.css"/>
 
 <link rel="stylesheet" href="${ctx}/whm/statics/ace/css/bootstrap.min.css"/>
+
 <link rel="stylesheet" href="${ctx}/whm/statics/ace/css/font-awesome.min.css"/>
 <link rel="stylesheet" href="${ctx}/whm/statics/ace/css/ace.min.css"/>
 <link rel="stylesheet" href="${ctx}/whm/statics/ace/css/ace-rtl.min.css"/>
@@ -47,10 +48,17 @@
 <script type="text/javascript" src="${ctx}/whm/statics/common/js/util.js?_dc=${staticVersion}"></script>
 <script type="text/javascript" src="${ctx}/whm/statics/common/js/map.js"></script>
 <script type="text/javascript" src="${ctx}/whm/statics/common/js/jquery-migrate-1.0.0.js"></script>
-<script type="text/javascript" src="${ctx}/whm/statics/common/js/ajaxfileupload.js"></script>
 
-<script type="text/javascript" src="${ctx}/whm/statics/common/js/mathcontext.js"></script>
+<%--<script type="text/javascript" src="${ctx}/whm/statics/common/js/ajaxfileupload.js"></script>--%>
 
-<script type="text/javascript" src="${ctx}/whm/statics/common/js/FloatCalculator.js"></script>
-<script type="text/javascript" src="${ctx}/whm/statics/common/js/bigdecimal.js"></script>
+<%--<script type="text/javascript" src="${ctx}/whm/statics/common/js/mathcontext.js"></script>--%>
 
+<%--<script type="text/javascript" src="${ctx}/whm/statics/common/js/FloatCalculator.js"></script>--%>
+<%--<script type="text/javascript" src="${ctx}/whm/statics/common/js/bigdecimal.js"></script>--%>
+
+<script type="text/javascript">
+    $(function(){
+        // $("select").select2();
+    })
+
+</script>

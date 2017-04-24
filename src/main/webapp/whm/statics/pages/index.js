@@ -12,6 +12,8 @@ $(function () {
     divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="03"><a href="javascript:void(0)" onclick="queryMenuByParent(\'03\',\'03\')">用户管理</a></div></li></ul></div>');
     divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="04"><a href="javascript:void(0)" onclick="queryMenuByParent(\'04\',\'04\')">基础管理</a></div></li></ul></div>');
     queryMenuByParent('01','01');
+    divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="05"><a href="javascript:void(0)" onclick="queryMenuByParent(\'05\',\'05\')">报表管理</a></div></li></ul></div>');
+
 
     /*$.ajax({
         type: "POST",

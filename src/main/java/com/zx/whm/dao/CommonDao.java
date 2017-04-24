@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface CommonDao{
         long getIdBySeqName(String seqName);
         <T> ResultDTO<T> findPageListBySql(String sql, ResultDTO<T> resultDTO, Class<T> clz);
+        public <T> ResultDTO<T> findPageListBySql(String sql, ResultDTO<T> resultDTO , Class<T> clz,boolean isMySql);
 }
