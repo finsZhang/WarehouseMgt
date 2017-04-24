@@ -8,13 +8,10 @@ $(function () {
     $("#userinfo").html('<small>Welcome,</small>'+ '小张');
     var divMenuHeader = $("#menuHeader");
     divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="01"><a href="javascript:void(0)" onclick="queryMenuByParent(\'01\',\'01\')">出货记录管理</a></div></li></ul></div>');
-    queryMenuByParent('01','01');
     divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="02"><a href="javascript:void(0)" onclick="queryMenuByParent(\'02\',\'02\')">出货报表管理</a></div></li></ul></div>');
-    queryMenuByParent('02','02');
     divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="03"><a href="javascript:void(0)" onclick="queryMenuByParent(\'03\',\'03\')">用户管理</a></div></li></ul></div>');
-    queryMenuByParent('03','03');
     divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="04"><a href="javascript:void(0)" onclick="queryMenuByParent(\'04\',\'04\')">基础管理</a></div></li></ul></div>');
-
+    queryMenuByParent('01','01');
 
     /*$.ajax({
         type: "POST",

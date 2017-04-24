@@ -383,4 +383,11 @@ public class DateUtils {
 
 		return Integer.parseInt(String.valueOf(between_days));
 	}
+
+	public static String getCurWeekOfDate() {
+		String[] weekDaysName = { "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" };
+		Calendar calendar = Calendar.getInstance();
+		int intWeek = calendar.get(Calendar.DAY_OF_WEEK) - 1;
+		return weekDaysName[intWeek];
+	}
 }

@@ -88,6 +88,9 @@
                     <td class="n_b_b">&nbsp;</td>
                     <th class="r n_b_b">&nbsp;</th>
                     <th colspan="3" class="r n_b_b">
+                        <a href="javascript:void(0)" onclick="openEdit()" id="fbox_grid-table_search"
+                           class="fm-button ui-state-default ui-corner-all fm-button-icon-right ui-reset btn btn-sm btn-primary"><span
+                                class="icon-credit-card"></span>新增</a>
                         <a href="javascript:void(0)" onclick="reloadGrid();"
                            class="fm-button ui-state-default ui-corner-all fm-button-icon-right ui-reset btn btn-sm btn-success"><span
                                 class="icon-search"></span>查 询</a>

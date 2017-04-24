@@ -61,7 +61,7 @@ function selectList() {
         datatype: "json",
         height: '100%',
         width : '100%',
-        colNames: ['当日编号','类型','商品明细','金额', '行数', '付款方式', '客户信息','备注','派单员','后期更改','创建时间','创建星期','创建人姓名'],
+        colNames: ['当日编号','类型','商品明细','金额', '行数', '付款方式', '客户信息','备注','派单员','后期更改','创建时间','创建星期','创建人姓名', '操作'],
         colModel: [
             {name: 'dayNo', index: 'dayNo', sortable: false,fixed:false,width:130,align:'center'},
             {
@@ -100,7 +100,15 @@ function selectList() {
             {name: 'modifyConent', index: "modifyConent", sortable: false,align:'right',width:80},
             {name: 'createDate', index: "createDate", sortable: false,align:'right',width:100},
             {name: 'weekNo', index: "weekNo", sortable: false,align:'right',width:100},
-            {name: 'creatorName', index: "creatorName",  sortable: false,width:100,align:'center'}
+            {name: 'creatorName', index: "creatorName",  sortable: false,width:100,align:'center'},
+            {
+                name: 'id', index: "id", sortable: false,width:100,align:'center'
+                , formatter: function (cellvalue, options, rowObject) {
+                return '<a class="blue" href="javascript:void(0)" onclick="openEdit(\'' + cellvalue + '\')" title="编辑"><i class="icon-pencil bigger-130"></i></a>&nbsp;&nbsp;' +
+                    '<a class="red" href="javascript:void(0)" onclick="deleteRecord(\'' + cellvalue + '\')" title="删除"><i class="icon-trash bigger-130"></i></a>';
+
+            }
+            }
             ],
         viewrecords: false,
         rowNum:10,
@@ -124,26 +132,6 @@ function afterProcessUpload(windowName){
 function closeSubLayer(name){
     var index = layer.getFrameIndex(name);
     layer.close(index);
-}
-
-function uploadFile(){
-    layer.open({
-        type: 2,
-        title:"上传文件",
-        area: ['700px', '600px'],
-        fix: false, //不固定
-        maxmin: true,
-        content: GLOBAL.WEBROOT + "/makeCardDataMgt/page/uploadData.html",
-        closeBtn:0
-    });
-}
-
-
-function dwlZipFile(fileName,oldName){
-    $("#oldName").val(oldName);
-    $("#fileName").val(fileName);
-    $("#dwlForm").attr("action" , GLOBAL.WEBROOT + "/common/downloadFile.ajax");
-    $("#dwlForm").submit();
 }
 
 function initDicts() {
@@ -173,5 +161,50 @@ function initDicts() {
                 dispatchClerkMap.put(dispatchClerk[i].itemNo,dispatchClerk[i].itemName);
             }
         }
+    });
+}
+
+function deleteRecord(id) {
+    layerConfirm('是否删除当前选中记录',function() {
+        var data = "id=" + id;
+        $.ajax({
+            type: "GET",
+            async: true,
+            cache:false,
+            url: GLOBAL.WEBROOT + "/shipmentMgt/deleteRecord",
+            dataType: 'json',
+            data: data,
+            success: function (data) {
+                if (data.ERRCODE == "0") {
+                    infoSuccess('温馨提示', '删除成功');
+                    reloadGrid();
+                }
+                else {
+                    info('温馨提示', data.ERRINFO);
+                }
+            }
+        });
+    });
+}
+
+function edit(id){
+
+}
+
+function openEdit(id) {
+    var url;
+    if(id){
+        url = GLOBAL.WEBROOT + "/shipmentMgt/page/edit.html?id="+id;
+    }else{
+        url = GLOBAL.WEBROOT + "/shipmentMgt/page/edit.html";
+    }
+    layer.open({
+        type: 2,
+        title:"现金上缴",
+        area: ['620px', '410px'],
+        fix: false, //不固定
+        maxmin: true,
+        content: url,
+        closeBtn: 0
     });
 }

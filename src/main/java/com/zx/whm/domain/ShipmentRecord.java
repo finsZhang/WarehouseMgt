@@ -33,6 +33,7 @@ public class ShipmentRecord {
     private Timestamp modifyDate;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID", nullable = false)
     public long getId() {
         return id;
