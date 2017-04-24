@@ -43,6 +43,11 @@ function resetCondition() {
 
 function reloadGrid(){
     var data = $("#searchForm").serializeObject();
+    data.dispatchClerk = getDispatchClerk();
+    $("#user_table").jqGrid("setGridParam", {postData: data,page:1,pageSize:10}).trigger("reloadGrid");
+}
+
+function getDispatchClerk() {
     var dispatchClerkArray = $("#dispatchClerk").select2("val");
     var dispatchClerk = "";
     for(var i=0;i<dispatchClerkArray.length;i++){
@@ -56,11 +61,8 @@ function reloadGrid(){
             }
         }
     }
-    data.dispatchClerk = dispatchClerk;
-    $("#user_table").jqGrid("setGridParam", {postData: data,page:1,pageSize:10}).trigger("reloadGrid");
+    return dispatchClerk;
 }
-
-
 
 //查询列表
 function selectList() {
@@ -88,7 +90,8 @@ function selectList() {
         multiboxonly: true,
         pager: pager_selector,
         altRows: true,
-        loadComplete: function () {
+        loadComplete: function (data) {
+            records = data.records;
             com.ai.bdx.util.updatePagerIcons(this);
         },
         autowidth: true
@@ -105,43 +108,19 @@ function closeSubLayer(name){
     layer.close(index);
 }
 
-function addUser(id){
-    layer.open({
-        type: 2,
-        title:"用户编辑",
-        area: ['700px', '250px'],
-        fix: false, //不固定
-        maxmin: true,
-        content: GLOBAL.WEBROOT + "/userMgt/edit.html?id="+id,
-        closeBtn:0
-    });
+var records;
+/**
+ * 导出统计记录
+ */
+function exportRecordTotalRcds(){
+    if(!records){
+        info("温馨提示","导出条数为空！");
+        return;
+    }
+    var  startDate=$("#startDate").val();
+    var  dispatchClerk=getDispatchClerk();
+    window.location.href= GLOBAL.WEBROOT+"/reportMgt/exportRecordTotalRcds.html?startDate="+startDate+"&dispatchClerk="+dispatchClerk;
 }
-
-
-//删除
-function del(id) {
-    layerConfirm('是否删除当前选中记录',function() {
-        var data = "id=" + id;
-        $.ajax({
-            type: "GET",
-            async: true,
-            url: GLOBAL.WEBROOT + "/userMgt/userDel.ajax",
-            dataType: 'json',
-            data: data,
-            success: function (data) {
-                if (data.ERRCODE == "0") {
-                    infoSuccess('温馨提示', '删除成功');
-                    reloadGrid();
-                }
-                else {
-                    info('温馨提示', data.ERRINFO);
-                }
-            }
-        });
-    });
-}
-
-
 
 function initDicts() {
 

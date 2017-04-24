@@ -56,7 +56,7 @@
                         <td width="13%">
                             <%--<input name="dispatchClerk" id="dispatchClerk" class="inputW160"/>--%>
                                 <select name="dispatchClerk" id="dispatchClerk" multiple="multiple" class="js-example-basic-multiple">
-                                    <option value="xiaowang">xiaowang</option>
+
                                 </select>
                         </td>
                         <th width="10%" class="r">时间段：</th>
@@ -82,9 +82,9 @@
                         <a href="javascript:void(0)" onclick="resetCondition()"
                            class="fm-button ui-state-default ui-corner-all fm-button-icon-left ui-search btn btn-sm btn-gray"><span
                                 class="icon-retweet"></span>重 置</a>
-                        <a href="javascript:void(0)" onclick="addUser('')"
+                        <a href="javascript:void(0)" onclick="exportRecordTotalRcds()"
                            class="fm-button ui-state-default ui-corner-all fm-button-icon-left ui-search btn btn-sm btn-gray"><span
-                                class="icon-retweet"></span>新 曾</a>
+                                class="icon-retweet"></span>导 出</a>
                     </th>
                 </tr>
             </table>
