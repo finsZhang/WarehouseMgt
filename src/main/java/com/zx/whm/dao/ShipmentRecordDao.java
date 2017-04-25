@@ -19,6 +19,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ShipmentRecordDao extends JpaRepository<ShipmentRecord,Long>,JpaSpecificationExecutor<ShipmentRecord> {
     Page<ShipmentRecord> findAll(Specification<ShipmentRecord> spec, Pageable pageable);
-    @Query(value = "select * from SHIPMENT_RECORD  t where t.creator_user_name =?1 and date_format(t.create_date,'%Y%m%d')=date_format(sysdate(),'%Y%m%d') order by t.create_date desc",nativeQuery = true)
+    @Query(value = "select * from SHIPMENT_RECORD  t where t.creator_user_name =?1 and date_format(t.create_date,'%Y%m%d')=date_format(sysdate(),'%Y%m%d') order by t.create_date desc  LIMIT 0,1",nativeQuery = true)
     ShipmentRecord findOneByCreatorUserNameOrderByCreateDateDesc(String creatorUserName);
 }

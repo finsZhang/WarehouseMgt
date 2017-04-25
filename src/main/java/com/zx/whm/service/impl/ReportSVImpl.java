@@ -19,11 +19,11 @@ public class ReportSVImpl implements ReportSV {
 
     public ResultDTO queryPageList(final ShipmentRecordTotalVo shipmentRecordTotalVo, ResultDTO<ShipmentRecordTotalVo> resultDTO) throws Exception {
        StringBuilder sb = new StringBuilder("SELECT \n" +
-               "  A.`CREATE_DATE`,\n" +
+               "  STR_TO_DATE(A.`CREATE_DATE`,'%Y-%m-%d') AS CREATE_DATE,\n" +
                "  A.`WEEK_NO`,\n" +
                "  A.`DISPATCH_CLERK`,\n" +
                "  SUM(A.`AMOUNT`) AMT,\n" +
-               "  COUNT(1) NUM \n" +
+               "  SUM(A.`LINE_NUM`) NUM \n" +
                "FROM\n" +
                "  shipment_record A \n" +
                "WHERE 1 = 1 ");
@@ -36,7 +36,7 @@ public class ReportSVImpl implements ReportSV {
                 if(StringUtils.isNotBlank(shipmentRecordTotalVo.getStartDate())){
                     sb.append("AND A.`CREATE_DATE` <= STR_TO_DATE('"+shipmentRecordTotalVo.getEndDate()+"','%Y-%m-%d')");
                 }
-               sb.append(" GROUP BY A.`DISPATCH_CLERK`,A.`CREATE_DATE`");
+               sb.append(" GROUP BY A.`DISPATCH_CLERK`,STR_TO_DATE(A.`CREATE_DATE`,'%Y-%m-%d') ");
         return commonDao.findPageListBySql(sb.toString(), resultDTO, ShipmentRecordTotalVo.class,true);
     }
 

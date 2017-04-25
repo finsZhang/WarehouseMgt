@@ -112,7 +112,9 @@ function loadMenuTree(topId){
         menuTree.append("<dl><h5><a href='userMgt/list.html' target='view_frame'><i class='fM-l-icon2'>用户管理</i></a></h5><dl>");
     }else if(topId=='04'){
         menuTree.append("<dl><h5><a href='dictMgt/list.html' target='view_frame'><i class='fM-l-icon2'>字典管理</i></a></h5><dl>");
-	}
+	}else if(topId=='05'){
+        menuTree.append("<dl><h5><a href='reportMgt/list.html' target='view_frame'><i class='fM-l-icon2'>报表统计</i></a></h5><dl>");
+    }
    /* for(var i=0;i<menus.length;i++){
         //直接子节点
         if(topId == menus[i].parentMenuId) {

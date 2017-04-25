@@ -2,34 +2,13 @@ var masterTypeMap;
 var daughterTypeMap;
 var statusMap;
 var sexMap;
+var dispatchClerkMap;
 
 $(function () {
-
-    //检查状态下拉列表
-    $.ajax({
-        type: "POST",
-        async: true,
-        url: GLOBAL.WEBROOT+"/reportMgt/getSysUserList.ajax",
-        success: function (data) {
-            $("#dispatchClerk").select2();
-            var jsonStatus = eval(data.SYS_USER);
-            var statusSelect = $("#dispatchClerk");
-            // statusSelect.empty();
-            // statusSelect.append("<option value='-1'>请选择状态</option>");
-            for (var i = 0; i < jsonStatus.length; i++) {
-                statusSelect.append("<option value='" + jsonStatus[i].key  + "'>" + jsonStatus[i].value + "</option>");
-            }
-             $("#dispatchClerk").select2();
-        }
-    });
-
-
-    $("#dispatchClerk").select2();
+    // $("#dispatchClerk").select2();
     selectList();
     initDicts();
     resetCondition();
-
-
 });
 
 
@@ -77,11 +56,24 @@ function selectList() {
         width : '100%',
         colNames: ['日期','星期','派单总数','派单总金额', '派单人'],
         colModel: [
-            {name: 'createDate', index: 'createDate', sortable: false,fixed:false,width:130,align:'center'},
+            {name: 'createDate', index: 'createDate', sortable: false,fixed:false,width:130,align:'center',
+                formatter: function (cellvalue, options, rowObject) {
+                    return cellvalue.substring(0,10);
+                }
+
+            },
             {name: 'weekNo', index: 'weekNo', sortable: false,align:'center',resizable:true,fixed:false ,width:80},
             {name: 'num', index: "num", sortable: false,align:'right',width:100},
             {name: 'amt', index: "amt", sortable: false,align:'right',width:100},
-            {name: 'dispatchClerk', index: "dispatchClerk", sortable: false,align:'right',width:80}
+            {name: 'dispatchClerk', index: "dispatchClerk", sortable: false,align:'right',width:80,
+                formatter: function (cellvalue, options, rowObject) {
+                    if (dispatchClerkMap.containsKey(cellvalue)) {
+                        return dispatchClerkMap.get(cellvalue);
+                    } else {
+                        return "";
+                    }
+                }
+            }
             ],
         viewrecords: false,
         rowNum:10,
@@ -123,37 +115,23 @@ function exportRecordTotalRcds(){
 }
 
 function initDicts() {
-
     $.ajax({
         type: "POST",
         async:false,
-        data:{"masterType":"CARD_MAIN_TYPE","daughterType":"CARD_SUB_TYPE","status":"MAKE_CARD_STATUS","sex":"CARD_SEX"},
+        data:{"dispatchClerk":"SHIPMENT_RECORD_CLERK"},
         datatype: "json",
         url: GLOBAL.WEBROOT + "/common/dictItem/getDictItemCondition.ajax",
         success: function (data) {
-            var masterType = eval(data.masterType);
-            masterTypeMap = new Map();
-            for (var i = 0; i < masterType.length; i++) {
-                masterTypeMap.put(masterType[i].itemNo,masterType[i].itemName);
+            var jsonDispatchClerk = eval(data.dispatchClerk);
+            var dispatchClerkSelect = $("#dispatchClerk");
+            dispatchClerkSelect.empty();
+            dispatchClerkMap = new Map();
+            for (var i = 0; i < jsonDispatchClerk.length; i++) {
+                dispatchClerkMap.put(jsonDispatchClerk[i].itemNo,jsonDispatchClerk[i].itemName);
+                dispatchClerkSelect.append("<option value='" + jsonDispatchClerk[i].itemNo + "'>" + jsonDispatchClerk[i].itemName + "</option>");
             }
-
-            var daughterType = eval(data.daughterType);
-            daughterTypeMap = new Map();
-            for (var i = 0; i < daughterType.length; i++) {
-                daughterTypeMap.put(daughterType[i].itemNo,daughterType[i].itemName);
-            }
-
-            var status = eval(data.status);
-            statusMap = new Map();
-            for (var i = 0; i < status.length; i++) {
-                statusMap.put(status[i].itemNo,status[i].itemName);
-            }
-
-            var sex = eval(data.sex);
-            sexMap = new Map();
-            for (var i = 0; i < sex.length; i++) {
-                sexMap.put(sex[i].itemNo,sex[i].itemName);
-            }
+            $("#dispatchClerk").select2();
         }
     });
 }
+

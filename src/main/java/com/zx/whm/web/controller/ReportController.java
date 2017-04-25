@@ -76,18 +76,13 @@ public class ReportController {
         }
     }
 
-    // 检查状态下拉列表加载
+    //获取用户下拉列表
     @RequestMapping("/getSysUserList.ajax")
     @ResponseBody
     public Map getStudyStatus() throws Exception {
         List<Map> status = new ArrayList<Map>();
         Map tmp = new HashMap();
-        for(int index=0;index<3;index++){
-            tmp = new HashMap();
-            tmp.put("key",index);
-            tmp.put("value",index);
-            status.add(tmp);
-        }
+
         Map map = new HashMap();
         map.put("SYS_USER", JsonUtil.toJson(status));
         return map;
