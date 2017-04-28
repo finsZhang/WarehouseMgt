@@ -1,5 +1,3 @@
-
-
 $(function () {
     var roleCode = $("#_roleCode").val();
     var sex = $("#_sex").val();
@@ -18,29 +16,6 @@ function saveSuccess(){
     parent.reloadGrid();
     closeLayer();
 }
-
-//删除
-function findUserById(id) {
-        var data = "id=" + id;
-        $.ajax({
-            type: "GET",
-            async: true,
-            url: GLOBAL.WEBROOT + "/userMgt/getUserById.ajax",
-            dataType: 'json',
-            data: data,
-            success: function (data) {
-                var user = data.bean;
-                $("#userName").val(user.userName);
-                $("#name").val(user.name);
-                $("#sex").val(user.sex);
-                $("#stationCode").val(user.stationCode);
-                $("#roleCode").val(user.roleCode);
-                $("#comment").val(user.comment);
-                $("#password").val(user.password);
-            }
-        });
-}
-
 
 function save() {
     if($("#userName").val()==""){

@@ -5,7 +5,7 @@ var rootOrgCode;
 
 $(function () {
 	//$("#userinfo").html('<small>Welcome,</small>'+ user.operatorName);
-    $("#userinfo").html('<small>Welcome,</small>'+ '小张');
+    $("#userinfo").html('<small>Welcome,</small>'+ user.name);
     var divMenuHeader = $("#menuHeader");
     divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="01"><a href="javascript:void(0)" onclick="queryMenuByParent(\'01\',\'01\')">出货记录管理</a></div></li></ul></div>');
     divMenuHeader.append('<div class="nav-item dropdown"><ul><li><div class="nav01" id="02"><a href="javascript:void(0)" onclick="queryMenuByParent(\'02\',\'02\')">出货报表管理</a></div></li></ul></div>');
