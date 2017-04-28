@@ -12,7 +12,7 @@ import java.sql.Timestamp;
  * Email:zhangfz3@asiainfo.com
  */
 @Entity
-@Table(name = "sys_user", schema = "warehouse", catalog = "")
+@Table(name = "sys_user")
 public class SysUser {
     private long id;
     private String name;

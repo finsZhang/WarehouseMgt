@@ -13,7 +13,7 @@ import java.sql.Timestamp;
  * Email:zhangfz3@asiainfo.com
  */
 @Entity
-@Table(name = "shipment_record", schema = "warehouse", catalog = "")
+@Table(name = "shipment_record")
 public class ShipmentRecord {
     private long id;
     private String dayNo;

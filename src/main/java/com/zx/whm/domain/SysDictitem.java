@@ -13,7 +13,7 @@ import java.sql.Timestamp;
  * Email:zhangfz3@asiainfo.com
  */
 @Entity
-@Table(name = "sys_dictitem", schema = "warehouse", catalog = "")
+@Table(name = "sys_dictitem")
 @IdClass(SysDictitemPK.class)
 public class SysDictitem implements Serializable{
     private String dictName;
