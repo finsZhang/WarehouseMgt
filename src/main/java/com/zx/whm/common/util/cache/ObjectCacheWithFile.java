@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class ObjectCacheWithFile {
 
-	private static String CACHE_DIR = "/home/gs580123123vggsh5v80041g2v341s2r3/others/object_cache/";
+	private static String CACHE_DIR = "object_cache/";
 	private static Logger logger = LoggerFactory.getLogger(ObjectCacheWithFile.class);
 	
 		
