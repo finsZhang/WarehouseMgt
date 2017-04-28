@@ -19,11 +19,11 @@ public class ReportSVImpl implements ReportSV {
 
     public ResultDTO queryPageList(final ShipmentRecordTotalVo shipmentRecordTotalVo, ResultDTO<ShipmentRecordTotalVo> resultDTO) throws Exception {
        StringBuilder sb = new StringBuilder("SELECT \n" +
-               "  STR_TO_DATE(A.`CREATE_DATE`,'%Y-%m-%d') AS CREATE_DATE,\n" +
+               "  DATE_FORMAT(A.`CREATE_DATE`,'%Y-%m-%d') AS CREATE_DATE,\n" +
                "  A.`WEEK_NO`,\n" +
                "  A.`DISPATCH_CLERK`,\n" +
                "  SUM(A.`AMOUNT`) AMT,\n" +
-               "  SUM(A.`LINE_NUM`) NUM \n" +
+               "  COUNT(A.`LINE_NUM`) NUM \n" +
                "FROM\n" +
                "  shipment_record A \n" +
                "WHERE 1 = 1 ");

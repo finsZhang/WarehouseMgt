@@ -4,6 +4,8 @@ import com.zx.whm.common.domain.ResultDTO;
 import com.zx.whm.domain.SysUser;
 import com.zx.whm.vo.SysUserVo;
 
+import java.util.List;
+
 /**
  * Created by Walter on 2017/4/17.
  */
@@ -12,6 +14,7 @@ public interface SysUserSV {
     public void saveUser(SysUser bean)throws Exception;
     public void deleteUserById(long id)throws Exception;
     public SysUser findUserById(long id)throws Exception;
+    public List<SysUser> findAllUser() throws Exception;
     SysUser findSysUserByUserName(String userName);
     void save(SysUser sysUser);
 }

@@ -5,6 +5,7 @@ import com.zx.whm.common.util.AjaxUtil;
 import com.zx.whm.common.util.ExportExcelUtil;
 import com.zx.whm.common.util.JsonUtil;
 import com.zx.whm.service.ReportSV;
+import com.zx.whm.service.SysUserSV;
 import com.zx.whm.vo.ShipmentRecordTotalVo;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class ReportController {
 
     @Autowired
     private ReportSV reportSV;
+
+    @Autowired
+    private SysUserSV sysUserSV;
 
     @RequestMapping("list.html")
     public String init() {
@@ -79,12 +83,9 @@ public class ReportController {
     //获取用户下拉列表
     @RequestMapping("/getSysUserList.ajax")
     @ResponseBody
-    public Map getStudyStatus() throws Exception {
-        List<Map> status = new ArrayList<Map>();
-        Map tmp = new HashMap();
-
+    public Map getSysUserList() throws Exception {
         Map map = new HashMap();
-        map.put("SYS_USER", JsonUtil.toJson(status));
+        map.put("userList", sysUserSV.findAllUser());
         return map;
     }
 

@@ -14,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import static org.springframework.data.jpa.domain.Specifications.where;
@@ -50,6 +51,9 @@ public class SysUserSVImpl implements SysUserSV{
         return userDao.findOne(id);
     }
 
+    public List<SysUser> findAllUser() throws Exception{
+        return userDao.findAll();
+    }
     @Override
     public SysUser findSysUserByUserName(String userName){
         return userDao.findSysUserByUserName(userName);

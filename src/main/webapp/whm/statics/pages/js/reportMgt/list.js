@@ -7,12 +7,9 @@ var dispatchClerkMap;
 $(function () {
     // $("#dispatchClerk").select2();
     selectList();
-    initDicts();
+    initUserList();
     resetCondition();
 });
-
-
-
 
 
 function resetCondition() {
@@ -113,6 +110,26 @@ function exportRecordTotalRcds(){
     var  dispatchClerk=getDispatchClerk();
     window.location.href= GLOBAL.WEBROOT+"/reportMgt/exportRecordTotalRcds.html?startDate="+startDate+"&dispatchClerk="+dispatchClerk;
 }
+
+//初始化用户下拉列表
+function initUserList() {
+    //检查状态下拉列表
+    $.ajax({
+        type: "POST",
+        async: true,
+        url: GLOBAL.WEBROOT+"/reportMgt/getSysUserList.ajax",
+        success: function (data) {
+            $("#dispatchClerk").select2();
+            var jsonStatus = eval(data.userList);
+            var statusSelect = $("#dispatchClerk");
+            for (var i = 0; i < jsonStatus.length; i++) {
+                statusSelect.append("<option value='" + jsonStatus[i].name  + "'>" + jsonStatus[i].name + "</option>");
+            }
+            $("#dispatchClerk").select2();
+        }
+    });
+}
+
 
 function initDicts() {
     $.ajax({
