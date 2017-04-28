@@ -45,7 +45,7 @@
         <ul class="breadcrumb" style="margin-top: 8px;">
             <li>
                 <i class="icon-home home-icon"></i>
-                <a href="${ctx}/makeCardDataMgt/page/list.html">出货记录管理</a>
+                <a href="${ctx}/shipmentMgt/page/list.html">出货记录管理</a>
             </li>
             <li class="active">出货记录查询</li>
         </ul>
