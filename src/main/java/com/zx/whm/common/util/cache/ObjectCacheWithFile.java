@@ -11,6 +11,7 @@ import java.util.HashMap;
 public class ObjectCacheWithFile {
 
 	private static String CACHE_DIR = "object_cache/";
+	private static String CACHE_DIR_TMPFILE = "TEMP_FILE";
 	private static Logger logger = LoggerFactory.getLogger(ObjectCacheWithFile.class);
 	
 		
@@ -20,6 +21,7 @@ public class ObjectCacheWithFile {
 			if(tmp != null){
 				CACHE_DIR = tmp;
 			}
+			CACHE_DIR_TMPFILE=CACHE_DIR+CACHE_DIR_TMPFILE;
 		} catch (Exception e) {
 		} 
 		
@@ -107,7 +109,8 @@ public class ObjectCacheWithFile {
 		File tempFile;
 		File formFile ;
 		try { 
-			tempFile = new File(TempFileManager.getTmpFileName( ));
+			tempFile = new File(CACHE_DIR_TMPFILE);
+
 			if(tempFile.getParentFile()!= null	&& tempFile.getParentFile().exists() == false){
 				tempFile.getParentFile().mkdirs();
 			}
