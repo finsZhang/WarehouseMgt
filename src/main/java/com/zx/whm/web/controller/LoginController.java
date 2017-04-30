@@ -102,7 +102,7 @@ public class LoginController {
      */
     @RequestMapping("ModifyPassword.html")
     public String ModifyPassword(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
-        return "/logMgr/ModifyPassword";
+        return "/userMgt/ModifyPassword";
     }
     @RequestMapping("PasswordChange.ajax")
     @ResponseBody
@@ -110,13 +110,12 @@ public class LoginController {
         Map<String,String> map = new HashMap<>();
         // 先获取当前登陆用户
         SysUser userSession = (SysUser) request.getSession().getAttribute(Constants.SESSION_USER_OBJ);
-        SysUser user = sysUserSV.findSysUserByUserName(userSession.getUserName());
-        if(!MD5.toMD5(passwordOld).equals(user.getPassword())){
+        if(!MD5.toMD5(passwordOld).equals(userSession.getPassword())){
             map.put("code","1");
             map.put("message","原密码输入错误!");
         }
-        user.setPassword(MD5.toMD5(passwordNew));
-        sysUserSV.save(user);
+        userSession.setPassword(MD5.toMD5(passwordNew));
+        sysUserSV.save(userSession);
         map.put("code","0");
         map.put("message","密码修改成功!");
 

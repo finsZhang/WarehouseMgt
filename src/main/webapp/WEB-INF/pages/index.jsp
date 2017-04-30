@@ -33,19 +33,7 @@
 
                     <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                         <li>
-                            <a href="${ctx}/whm/logout.html">
-                            <i class="icon-cog"></i>
-                            使用卷
-                        </a>
-                        </li>
-                        <li>
-                            <a href="${ctx}/whm/logout.html">
-                                <i class="icon-user"></i>
-                                联系人
-                            </a>
-                        </li>
-                        <li>
-                            <a href="${ctx}/whm/ModifyPassword.html">
+                            <a onclick="modifyPassord()">
                                 <i class="icon-pencil"></i>
                                 修改密码
                             </a>

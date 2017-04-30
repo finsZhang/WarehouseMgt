@@ -222,3 +222,15 @@ function switchBarl(){
 		 $("#menuTree").show(); 
 	 }
 }
+
+function modifyPassord(){
+    layer.open({
+        type: 2,
+        title:"修改密码",
+        area: ['700px', '250px'],
+        fix: false, //不固定
+        maxmin: true,
+        content: GLOBAL.WEBROOT + "/whm/ModifyPassword.html",
+        closeBtn:0
+    });
+}
