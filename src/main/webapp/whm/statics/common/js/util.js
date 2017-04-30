@@ -294,6 +294,19 @@ $.fn.serializeObject = function () {
     return o;
 };
 
+$.fn.appendParam = function () {
+    var o = "";
+    var a = this.serializeArray();
+    $.each(a, function () {
+        if(this.value)
+            o += this.name+"="+this.value+"&";
+    });
+    if(o){
+        o = o.substr(0,o.length-1);
+    }
+    return o;
+};
+
 Date.prototype.format = function(format)
 {
     var o =

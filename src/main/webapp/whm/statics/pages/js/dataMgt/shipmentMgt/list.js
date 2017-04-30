@@ -118,20 +118,11 @@ function selectList() {
         pager: pager_selector,
         altRows: true,
         loadComplete: function () {
+            records = data.records;
             com.ai.bdx.util.updatePagerIcons(this);
         },
         autowidth: true
     }).jqGrid("navGrid",pager_selector,{refresh: true});
-}
-
-function afterProcessUpload(windowName){
-    closeSubLayer(windowName);
-    reloadGrid();
-}
-
-function closeSubLayer(name){
-    var index = layer.getFrameIndex(name);
-    layer.close(index);
 }
 
 function initDicts() {
@@ -187,10 +178,6 @@ function deleteRecord(id) {
     });
 }
 
-function edit(id){
-
-}
-
 function openEdit(id) {
     var url;
     if(id){
@@ -207,4 +194,14 @@ function openEdit(id) {
         content: url,
         closeBtn: 0
     });
+}
+var records;
+function  exportAll(){
+    if(!records){
+        info("温馨提示","导出条数为空！");
+        return;
+    }
+    var  startDate=$("#startDate").val();
+    var  orgCodes=$("#orgCodes").val();
+    window.location.href= GLOBAL.WEBROOT+"/report/exportAll.html?startDate="+startDate+"&orgCodes="+orgCodes;
 }

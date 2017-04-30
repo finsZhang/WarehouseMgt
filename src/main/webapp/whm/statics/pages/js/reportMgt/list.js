@@ -1,7 +1,3 @@
-var masterTypeMap;
-var daughterTypeMap;
-var statusMap;
-var sexMap;
 var dispatchClerkMap;
 
 $(function () {
@@ -9,6 +5,7 @@ $(function () {
     selectList();
     initUserList();
     resetCondition();
+    initDicts();
 });
 
 
@@ -45,12 +42,14 @@ function selectList() {
 	var grid_selector = "#user_table";
     var pager_selector = "#user_pager";
     var data = $("#searchForm").serializeObject();
+
 	$(grid_selector).jqGrid({
         url: GLOBAL.WEBROOT + "/reportMgt/queryShipmenRcdAllList.ajax",
         mtype : "post",
         datatype: "json",
         height: '100%',
         width : '100%',
+        postData :data,
         colNames: ['日期','星期','派单总数','派单总金额', '派单人'],
         colModel: [
             {name: 'createDate', index: 'createDate', sortable: false,fixed:false,width:130,align:'center',
@@ -87,16 +86,6 @@ function selectList() {
     }).jqGrid("navGrid",pager_selector,{refresh: true});
 }
 
-function afterProcessUpload(windowName){
-    closeSubLayer(windowName);
-    reloadGrid();
-}
-
-function closeSubLayer(name){
-    var index = layer.getFrameIndex(name);
-    layer.close(index);
-}
-
 var records;
 /**
  * 导出统计记录
@@ -106,9 +95,12 @@ function exportRecordTotalRcds(){
         info("温馨提示","导出条数为空！");
         return;
     }
-    var  startDate=$("#startDate").val();
-    var  dispatchClerk=getDispatchClerk();
-    window.location.href= GLOBAL.WEBROOT+"/reportMgt/exportRecordTotalRcds.html?startDate="+startDate+"&dispatchClerk="+dispatchClerk;
+    var data = $("#searchForm").appendParam();
+    if(data){
+        window.location.href= GLOBAL.WEBROOT+"/reportMgt/exportRecordTotalRcds.html?"+data;
+    }else{
+        window.location.href= GLOBAL.WEBROOT+"/reportMgt/exportRecordTotalRcds.html";
+    }
 }
 
 //初始化用户下拉列表

@@ -33,10 +33,10 @@ public class ReportSVImpl implements ReportSV {
                 if(StringUtils.isNotBlank(shipmentRecordTotalVo.getStartDate())){
                     sb.append("AND A.`CREATE_DATE` >= STR_TO_DATE('"+shipmentRecordTotalVo.getStartDate()+"','%Y-%m-%d')");
                 }
-                if(StringUtils.isNotBlank(shipmentRecordTotalVo.getStartDate())){
+                if(StringUtils.isNotBlank(shipmentRecordTotalVo.getEndDate())){
                     sb.append("AND A.`CREATE_DATE` <= STR_TO_DATE('"+shipmentRecordTotalVo.getEndDate()+"','%Y-%m-%d')");
                 }
-               sb.append(" GROUP BY A.`DISPATCH_CLERK`,STR_TO_DATE(A.`CREATE_DATE`,'%Y-%m-%d') ");
+               sb.append(" GROUP BY A.`DISPATCH_CLERK`,DATE_FORMAT(A.`CREATE_DATE`,'%Y-%m-%d') ");
         return commonDao.findPageListBySql(sb.toString(), resultDTO, ShipmentRecordTotalVo.class,true);
     }
 

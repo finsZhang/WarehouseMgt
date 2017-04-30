@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * 派单统计
  */
 public class ShipmentRecordTotalVo {
-    private Timestamp createDate;
+    private String createDate;
     private String weekNo;
     private String dispatchClerk;
     private String startDate;
@@ -29,16 +29,6 @@ public class ShipmentRecordTotalVo {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
-    }
-
-
-
-    public Timestamp getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Timestamp createDate) {
-        this.createDate = createDate;
     }
 
     public String getWeekNo() {
@@ -74,6 +64,11 @@ public class ShipmentRecordTotalVo {
     }
 
 
+    public String getCreateDate() {
+        return createDate;
+    }
 
-
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
 }

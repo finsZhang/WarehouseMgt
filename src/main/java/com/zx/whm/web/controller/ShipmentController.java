@@ -3,9 +3,7 @@ package com.zx.whm.web.controller;
 import com.zx.whm.common.domain.ResultDTO;
 import com.zx.whm.common.util.AjaxUtil;
 import com.zx.whm.common.util.Constants;
-import com.zx.whm.common.util.cache.DictCache;
 import com.zx.whm.domain.ShipmentRecord;
-import com.zx.whm.domain.SysDictitem;
 import com.zx.whm.domain.SysUser;
 import com.zx.whm.service.ShipmentRecordSV;
 import com.zx.whm.vo.ShipmentRecordVo;
@@ -15,8 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -85,5 +83,35 @@ public class ShipmentController {
         Map<String,String> map = new HashMap();
         map.put("ERRCODE", "0");
         return map;
+    }
+
+    //导出汇总记录
+    @RequestMapping("/exportRecord.ajax")
+    public void exportExcelIn(HttpServletRequest request, HttpServletResponse response, @RequestParam Map param)throws Exception{
+
+      /*  ResultDTO<ShipmentRecord> result = new ResultDTO<>(1,99999);
+        result = shipmentRecordSV.queryPageList(shipmentRecordVo, result);
+        String title="汇总记录表";
+        String[]  head={"日期","星期","派单总数","派单金额","派单人"};
+        String[]  headColumn={"createDate","weekNo","num","amt","dispatchClerk"};
+        String[] sumColum = {"amt"};
+        String[] intColum = {"num"};
+        try{
+            ShipmentRecordTotalVo shipmentRecordTotalVo = new ShipmentRecordTotalVo();
+            if(param.get("startDate")!=null){
+                shipmentRecordTotalVo.setStartDate(param.get("startDate").toString());
+            }
+            if(param.get("endDate")!=null){
+                shipmentRecordTotalVo.setEndDate(param.get("endDate").toString());
+            }
+            if(param.get("dispatchClerk")!=null){
+                shipmentRecordTotalVo.setDispatchClerk(param.get("dispatchClerk").toString());
+            }
+            result=reportSV.queryPageList(shipmentRecordTotalVo,result);
+            ExportExcelUtil excel=new ExportExcelUtil();
+            excel.exportExcelForTotal(title,head,headColumn,sumColum,result.getRows(),response,intColum,"amt");
+        }catch(Exception e){
+            e.printStackTrace();
+        }*/
     }
 }

@@ -53,7 +53,7 @@ public class ReportController {
 
     //导出汇总记录
     @RequestMapping("/exportRecordTotalRcds.html")
-    public void exportExcelIn(HttpServletRequest request, HttpServletResponse response, @RequestParam Map param)throws Exception{
+    public void exportExcelIn(HttpServletResponse response,  ShipmentRecordTotalVo shipmentRecordTotalVo)throws Exception{
 
         ResultDTO result = new ResultDTO(1,99999);
         String title="汇总记录表";
@@ -62,16 +62,6 @@ public class ReportController {
         String[] sumColum = {"amt"};
         String[] intColum = {"num"};
         try{
-            ShipmentRecordTotalVo shipmentRecordTotalVo = new ShipmentRecordTotalVo();
-            if(param.get("startDate")!=null){
-                shipmentRecordTotalVo.setStartDate(param.get("startDate").toString());
-            }
-            if(param.get("endDate")!=null){
-                shipmentRecordTotalVo.setEndDate(param.get("endDate").toString());
-            }
-            if(param.get("dispatchClerk")!=null){
-                shipmentRecordTotalVo.setDispatchClerk(param.get("dispatchClerk").toString());
-            }
             result=reportSV.queryPageList(shipmentRecordTotalVo,result);
             ExportExcelUtil excel=new ExportExcelUtil();
             excel.exportExcelForTotal(title,head,headColumn,sumColum,result.getRows(),response,intColum,"amt");
