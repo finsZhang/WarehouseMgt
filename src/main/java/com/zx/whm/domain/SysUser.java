@@ -26,7 +26,7 @@ public class SysUser {
     private String comment;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ID", nullable = false)
     public long getId() {
         return id;

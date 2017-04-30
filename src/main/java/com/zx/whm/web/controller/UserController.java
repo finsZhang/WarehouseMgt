@@ -60,6 +60,9 @@ public class UserController {
         return AjaxUtil.jqGridJson(result);
     }
 
+
+
+
     @RequestMapping("/saveUser.ajax")
     @ResponseBody
     public Map saveTerminal(@RequestBody SysUser bean,@RequestParam String isUpdatePwd) {
