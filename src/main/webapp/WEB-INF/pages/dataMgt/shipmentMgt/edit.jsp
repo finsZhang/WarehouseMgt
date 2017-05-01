@@ -51,7 +51,7 @@
                         <div class="col-xs-4">
                             <input id="amount" name="amount"/>
                         </div>
-                        <label class="col-xs-2 control-label no-padding-right must"> 行数： </label>
+                        <label class="col-xs-2 control-label no-padding-right"> 行数： </label>
 
                         <div class="col-xs-4">
                             <input id="lineNum" name="lineNum" class="inputW150"/>
@@ -65,7 +65,7 @@
                             </select>
                             <label id="payTypeView" class="formlabel"></label>
                         </div>
-                        <label class="col-xs-2 control-label no-padding-right must"> 派单员： </label>
+                        <label class="col-xs-2 control-label no-padding-right"> 派单员： </label>
 
                         <div class="col-xs-4">
                             <select name="dispatchClerk" id="dispatchClerk">

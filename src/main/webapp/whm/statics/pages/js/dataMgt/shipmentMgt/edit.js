@@ -77,6 +77,8 @@ function setForm(data) {
             $(this).attr("selected", true);
         }
     });
+
+    $("#custInfo").val(data.custInfo);
     $("#comment").val(data.comment);
     $("#modifyConent").val(data.modifyConent);
 }
@@ -129,6 +131,7 @@ function initDicts() {
             var jsonDispatchClerk = eval(data.dispatchClerk);
             var dispatchClerkSelect = $("#dispatchClerk");
             dispatchClerkSelect.empty();
+            dispatchClerkSelect.append("<option value=''></option>");
             for (var i = 0; i < jsonDispatchClerk.length; i++) {
                 dispatchClerkSelect.append("<option value='" + jsonDispatchClerk[i].itemNo + "'>" + jsonDispatchClerk[i].itemName + "</option>");
             }
