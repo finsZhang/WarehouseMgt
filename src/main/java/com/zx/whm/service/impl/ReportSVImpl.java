@@ -21,14 +21,15 @@ public class ReportSVImpl implements ReportSV {
        StringBuilder sb = new StringBuilder("SELECT \n" +
                "  DATE_FORMAT(A.`CREATE_DATE`,'%Y-%m-%d') AS CREATE_DATE,\n" +
                "  A.`WEEK_NO`,\n" +
-               "  A.`DISPATCH_CLERK`,\n" +
+               "  A.creator_User_Name,\n" +
                "  SUM(A.`AMOUNT`) AMT,\n" +
-               "  COUNT(A.`LINE_NUM`) NUM \n" +
+               "  SUM(A.`LINE_NUM`) LINE_NUM, \n" +
+               "  COUNT(1) NUM \n" +
                "FROM\n" +
                "  shipment_record A \n" +
                "WHERE 1 = 1 ");
                 if(StringUtils.isNotBlank(shipmentRecordTotalVo.getDispatchClerk())&&!"-1".equals(shipmentRecordTotalVo.getDispatchClerk())){
-                    sb.append("AND A.`DISPATCH_CLERK` IN("+shipmentRecordTotalVo.getDispatchClerk()+") ");
+                    sb.append("AND A.creator_User_Name IN("+shipmentRecordTotalVo.getDispatchClerk()+") ");
                 }
                 if(StringUtils.isNotBlank(shipmentRecordTotalVo.getStartDate())){
                     sb.append("AND A.`CREATE_DATE` >= STR_TO_DATE('"+shipmentRecordTotalVo.getStartDate()+"','%Y-%m-%d')");
@@ -36,7 +37,7 @@ public class ReportSVImpl implements ReportSV {
                 if(StringUtils.isNotBlank(shipmentRecordTotalVo.getEndDate())){
                     sb.append("AND A.`CREATE_DATE` <= STR_TO_DATE('"+shipmentRecordTotalVo.getEndDate()+"','%Y-%m-%d')");
                 }
-               sb.append(" GROUP BY A.`DISPATCH_CLERK`,DATE_FORMAT(A.`CREATE_DATE`,'%Y-%m-%d') ");
+               sb.append(" GROUP BY DATE_FORMAT(A.`CREATE_DATE`,'%Y-%m-%d') ");
         return commonDao.findPageListBySql(sb.toString(), resultDTO, ShipmentRecordTotalVo.class,true);
     }
 

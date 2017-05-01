@@ -5,7 +5,6 @@ $(function () {
     selectList();
     initUserList();
     resetCondition();
-    initDicts();
 });
 
 
@@ -50,26 +49,13 @@ function selectList() {
         height: '100%',
         width : '100%',
         postData :data,
-        colNames: ['日期','星期','派单总数','派单总金额', '派单人'],
+        colNames: ['日期','星期','日派单总金额','日派单总行数','日派单总个数'],
         colModel: [
-            {name: 'createDate', index: 'createDate', sortable: false,fixed:false,width:130,align:'center',
-                formatter: function (cellvalue, options, rowObject) {
-                    return cellvalue.substring(0,10);
-                }
-
-            },
+            {name: 'createDate', index: 'createDate', sortable: false,fixed:false,width:130,align:'center' },
             {name: 'weekNo', index: 'weekNo', sortable: false,align:'center',resizable:true,fixed:false ,width:80},
-            {name: 'num', index: "num", sortable: false,align:'right',width:100},
             {name: 'amt', index: "amt", sortable: false,align:'right',width:100},
-            {name: 'dispatchClerk', index: "dispatchClerk", sortable: false,align:'right',width:80,
-                formatter: function (cellvalue, options, rowObject) {
-                    if (dispatchClerkMap.containsKey(cellvalue)) {
-                        return dispatchClerkMap.get(cellvalue);
-                    } else {
-                        return "";
-                    }
-                }
-            }
+            {name: 'lineNum', index: "lineNum", sortable: false,align:'right',width:100},
+            {name: 'num', index: "num", sortable: false,align:'right',width:100}
             ],
         viewrecords: false,
         rowNum:10,
@@ -115,29 +101,7 @@ function initUserList() {
             var jsonStatus = eval(data.userList);
             var statusSelect = $("#dispatchClerk");
             for (var i = 0; i < jsonStatus.length; i++) {
-                statusSelect.append("<option value='" + jsonStatus[i].name  + "'>" + jsonStatus[i].name + "</option>");
-            }
-            $("#dispatchClerk").select2();
-        }
-    });
-}
-
-
-function initDicts() {
-    $.ajax({
-        type: "POST",
-        async:false,
-        data:{"dispatchClerk":"SHIPMENT_RECORD_CLERK"},
-        datatype: "json",
-        url: GLOBAL.WEBROOT + "/common/dictItem/getDictItemCondition.ajax",
-        success: function (data) {
-            var jsonDispatchClerk = eval(data.dispatchClerk);
-            var dispatchClerkSelect = $("#dispatchClerk");
-            dispatchClerkSelect.empty();
-            dispatchClerkMap = new Map();
-            for (var i = 0; i < jsonDispatchClerk.length; i++) {
-                dispatchClerkMap.put(jsonDispatchClerk[i].itemNo,jsonDispatchClerk[i].itemName);
-                dispatchClerkSelect.append("<option value='" + jsonDispatchClerk[i].itemNo + "'>" + jsonDispatchClerk[i].itemName + "</option>");
+                statusSelect.append("<option value='" + jsonStatus[i].userName  + "'>" + jsonStatus[i].name + "</option>");
             }
             $("#dispatchClerk").select2();
         }

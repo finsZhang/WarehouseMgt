@@ -14,6 +14,7 @@ public class ShipmentRecordTotalVo {
     private String endDate;
     private double amt;
     private long  num;
+    private long lineNum;
 
     public String getStartDate() {
         return startDate;
@@ -70,5 +71,13 @@ public class ShipmentRecordTotalVo {
 
     public void setCreateDate(String createDate) {
         this.createDate = createDate;
+    }
+
+    public long getLineNum() {
+        return lineNum;
+    }
+
+    public void setLineNum(long lineNum) {
+        this.lineNum = lineNum;
     }
 }
