@@ -45,7 +45,7 @@ public class ReportController {
                                         @RequestParam(value = "rows", defaultValue = "10") int rows,
                                         ShipmentRecordTotalVo shipmentRecordTotalVo) throws Exception {
 
-        ResultDTO<ShipmentRecordTotalVo> result = new ResultDTO<ShipmentRecordTotalVo>(page,rows);
+        ResultDTO result = new ResultDTO(page,rows);
         result = reportSV.queryPageList(shipmentRecordTotalVo, result);
         return AjaxUtil.jqGridJson(result);
     }
@@ -55,16 +55,15 @@ public class ReportController {
     @RequestMapping("/exportRecordTotalRcds.html")
     public void exportExcelIn(HttpServletResponse response,  ShipmentRecordTotalVo shipmentRecordTotalVo)throws Exception{
 
-        ResultDTO result = new ResultDTO(1,99999);
         String title="汇总记录表";
         String[]  head={"日期","星期","派单总数","派单金额","派单人"};
         String[]  headColumn={"createDate","weekNo","num","amt","dispatchClerk"};
         String[] sumColum = {"amt"};
         String[] intColum = {"num"};
         try{
-            result=reportSV.queryPageList(shipmentRecordTotalVo,result);
+            List<ShipmentRecordTotalVo> result=reportSV.queryReportList(shipmentRecordTotalVo);
             ExportExcelUtil excel=new ExportExcelUtil();
-            excel.exportExcelForTotal(title,head,headColumn,sumColum,result.getRows(),response,intColum,"amt");
+            //excel.exportExcelForTotal(title,head,headColumn,sumColum,result,response,intColum,"amt");
         }catch(Exception e){
             e.printStackTrace();
         }

@@ -1,6 +1,7 @@
 package com.zx.whm.vo;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created by Walter on 2017/4/20.
@@ -15,6 +16,7 @@ public class ShipmentRecordTotalVo {
     private double amt;
     private long  num;
     private long lineNum;
+    private List<ShipmentRecordPersonTotal> shipmentRecordPersonTotals;
 
     public String getStartDate() {
         return startDate;
@@ -79,5 +81,13 @@ public class ShipmentRecordTotalVo {
 
     public void setLineNum(long lineNum) {
         this.lineNum = lineNum;
+    }
+
+    public List<ShipmentRecordPersonTotal> getShipmentRecordPersonTotals() {
+        return shipmentRecordPersonTotals;
+    }
+
+    public void setShipmentRecordPersonTotals(List<ShipmentRecordPersonTotal> shipmentRecordPersonTotals) {
+        this.shipmentRecordPersonTotals = shipmentRecordPersonTotals;
     }
 }
