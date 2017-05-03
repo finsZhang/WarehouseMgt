@@ -3,7 +3,10 @@ package com.zx.whm.service;
 import com.zx.whm.common.domain.ResultDTO;
 import com.zx.whm.domain.ShipmentRecord;
 import com.zx.whm.domain.SysUser;
+import com.zx.whm.vo.ShipmentRecordStats;
 import com.zx.whm.vo.ShipmentRecordVo;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,4 +22,5 @@ public interface ShipmentRecordSV {
     ShipmentRecord getRecord(long id);
     void save(SysUser user,ShipmentRecord shipmentRecord);
     ShipmentRecord getRecordByCreatorUserName(String  creatorName);
+    List<ShipmentRecordStats> getRecordsByCreatorUserName(String  creatorName);
 }

@@ -16,6 +16,7 @@ public class ShipmentRecordTotalVo {
     private double amt;
     private long  num;
     private long lineNum;
+    private String dispatchClerkName;
     private List<ShipmentRecordPersonTotal> shipmentRecordPersonTotals;
 
     public String getStartDate() {
@@ -89,5 +90,13 @@ public class ShipmentRecordTotalVo {
 
     public void setShipmentRecordPersonTotals(List<ShipmentRecordPersonTotal> shipmentRecordPersonTotals) {
         this.shipmentRecordPersonTotals = shipmentRecordPersonTotals;
+    }
+
+    public String getDispatchClerkName() {
+        return dispatchClerkName;
+    }
+
+    public void setDispatchClerkName(String dispatchClerkName) {
+        this.dispatchClerkName = dispatchClerkName;
     }
 }

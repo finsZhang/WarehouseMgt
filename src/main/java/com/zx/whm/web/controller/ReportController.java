@@ -3,11 +3,16 @@ package com.zx.whm.web.controller;
 import com.zx.whm.common.domain.ResultDTO;
 import com.zx.whm.common.util.AjaxUtil;
 import com.zx.whm.common.util.ExportExcelUtil;
+import com.zx.whm.common.util.ExportExcelUtils;
 import com.zx.whm.common.util.JsonUtil;
 import com.zx.whm.service.ReportSV;
+import com.zx.whm.service.ShipmentRecordSV;
 import com.zx.whm.service.SysUserSV;
+import com.zx.whm.vo.ShipmentRecordStats;
 import com.zx.whm.vo.ShipmentRecordTotalVo;
 import net.sf.json.JSONObject;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.OutputStream;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,6 +40,9 @@ public class ReportController {
 
     @Autowired
     private SysUserSV sysUserSV;
+
+    @Autowired
+    private ShipmentRecordSV shipmentRecordSV;
 
     @RequestMapping("list.html")
     public String init() {
@@ -54,19 +64,35 @@ public class ReportController {
     //导出汇总记录
     @RequestMapping("/exportRecordTotalRcds.html")
     public void exportExcelIn(HttpServletResponse response,  ShipmentRecordTotalVo shipmentRecordTotalVo)throws Exception{
+        String dispatchClerk = shipmentRecordTotalVo.getDispatchClerk();
+        String dispatchClerkName = shipmentRecordTotalVo.getDispatchClerkName();
+        String[]dispatchClerks = dispatchClerk.split(",");
+        String[]dispatchClerkNames = dispatchClerkName.split(",");
+        String[]columnNames ={"日期","星期","当日编号","类型","商品明细","金额（元）","行数","付款方式","客户姓名，联系方式","备注","派单员","后期更改"};
+        String[]propertyNames={"createDate","weekNo","dayNo","type","prodDetail","amount","lineNum","payType","custInfo","comment","dispatchClerk","modifyConent"};
+        String[] sumColum = {"amount"};
+        String[] intColum = {""};
+        String title= null;
+        HSSFWorkbook wb = new HSSFWorkbook();
+        ExportExcelUtils.initStyle(wb);
+        HSSFSheet sheet;
+        for(int i=0;i<dispatchClerks.length;i++){
+            title = dispatchClerkNames[i];
+            List shipmentRecordStats = shipmentRecordSV.getRecordsByCreatorUserName(dispatchClerks[i]);
 
-        String title="汇总记录表";
-        String[]  head={"日期","星期","派单总数","派单金额","派单人"};
-        String[]  headColumn={"createDate","weekNo","num","amt","dispatchClerk"};
-        String[] sumColum = {"amt"};
-        String[] intColum = {"num"};
-        try{
-            List<ShipmentRecordTotalVo> result=reportSV.queryReportList(shipmentRecordTotalVo);
-            ExportExcelUtil excel=new ExportExcelUtil();
-            //excel.exportExcelForTotal(title,head,headColumn,sumColum,result,response,intColum,"amt");
-        }catch(Exception e){
-            e.printStackTrace();
+
+            sheet = wb.createSheet(title);
+            ExportExcelUtils.exportExcelForTotal(wb,sheet,title, columnNames,propertyNames,sumColum,shipmentRecordStats, response,intColum,"amount");
         }
+
+        response.reset();
+        response.setContentType("application/vnd.ms-excel");
+        title = URLEncoder.encode(title, "utf-8");
+        response.addHeader("Content-Disposition", "attachment; filename=\"" + "仓库出货统计" + ".xls\"");
+        OutputStream os=response.getOutputStream();
+        wb.write(os);
+        os.flush();
+        os.close();
     }
 
     //获取用户下拉列表

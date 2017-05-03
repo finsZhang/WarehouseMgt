@@ -18,18 +18,15 @@ import java.util.*;
  * @author yong
  *
  */
-public class ExportExcelUtil {
+public class ExportExcelUtils {
 	private static final DecimalFormat format = new DecimalFormat("####,###,###,###,###,##0.00");
-
-	private static HSSFWorkbook wb = null;
-	private static HSSFSheet sheet = null;//Excel工作表对象
 	private static  HSSFCellStyle  HEADER_STYLE;
 	private static  HSSFCellStyle  CONTENT_STYLE;
 	private static  HSSFCellStyle  TITLE_STYLE;
 	private static  HSSFCellStyle  DEFAULT_STYLE;
 	private static  HSSFCellStyle  CONTENT_STYLE_FLOAT;
 
-	private void initStyle(){
+	public static void initStyle(HSSFWorkbook wb){
 		//===== 创建单元格样式====
 		HEADER_STYLE = wb.createCellStyle();
 		HSSFFont headerFont = wb.createFont();
@@ -93,50 +90,13 @@ public class ExportExcelUtil {
 		CONTENT_STYLE_FLOAT.setFont(contentFloatFont);
 	}
 
-	public ExportExcelUtil() {
-		super();
-		wb = new HSSFWorkbook();//文档对象
-		sheet = wb.createSheet();//创建Excel工作表对象
-		initStyle();
-	}
-
-	/**
-	 * @return the sheet
-	 */
-	public HSSFSheet getSheet() {
-		return sheet;
-	}
-
-	/**
-	 * @param sheet
-	 *            the sheet to set
-	 */
-	public void setSheet(HSSFSheet sheet) {
-		this.sheet = sheet;
-	}
-
-	/**
-	 * @return the wb
-	 */
-	public HSSFWorkbook getWb() {
-		return wb;
-	}
-
-	/**
-	 * @param wb
-	 *            the wb to set
-	 */
-	public void setWb(HSSFWorkbook wb) {
-		this.wb = wb;
-	}
-
 	/**
 	 * 创建通用EXCEL头部
 	 * @param rowStart 开始列
 	 * @param titleName 标题头
 	 * @param colSum 总列数
 	 */
-	public void createTitle(int rowStart, String titleName,int colSum,HSSFCellStyle cellStyle) {
+	public static void createTitle(HSSFSheet sheet,int rowStart, String titleName,int colSum,HSSFCellStyle cellStyle) {
 
 		HSSFRow row = sheet.createRow(rowStart);//创建Excel工作表的行
 		// 设置第一列
@@ -157,7 +117,7 @@ public class ExportExcelUtil {
 	 * @param titleName 标题头
 	 * @param colSum 总列数
 	 */
-	public void createTwoTitle(int rowStart, String titleName,Object[] codes, int colSum,HSSFCellStyle cellStyle) {
+	public static void createTwoTitle(HSSFSheet sheet,int rowStart, String titleName,Object[] codes, int colSum,HSSFCellStyle cellStyle) {
 		HSSFRow row = sheet.createRow(rowStart);//创建Excel工作表的行
 		// 设置第一列
 		HSSFCell cell = row.createCell(0);
@@ -191,7 +151,7 @@ public class ExportExcelUtil {
 	 * @param titleName 标题头
 	 * @param colSum 总列数
 	 */
-	public void createAnotherTitle(int rowStart, String titleName,int colSum,HSSFCellStyle cellStyle) {
+	public static void createAnotherTitle(HSSFSheet sheet,int rowStart, String titleName,int colSum,HSSFCellStyle cellStyle) {
 
 		HSSFRow row = sheet.createRow(rowStart);//创建Excel工作表的行
 		// 设置第rowStart列
@@ -215,7 +175,7 @@ public class ExportExcelUtil {
 	 * @param colSum
 	 *            需要合并到的列索引
 	 */
-	public void createNormalTwoRow(String[] params, int colSum) {
+	public static void createNormalTwoRow(HSSFWorkbook wb,HSSFSheet sheet,String[] params, int colSum) {
 		HSSFRow row1 = sheet.createRow(1);
 		row1.setHeight((short) 300);
 
@@ -249,7 +209,7 @@ public class ExportExcelUtil {
 	 * @param startRow 开始行
 	 * @param columHeader  列标题字符串数组
 	 */
-	public void createHeader(int startRow,String[] columHeader,HSSFCellStyle cellStyle) {
+	public static void createHeader(HSSFSheet sheet,int startRow,String[] columHeader,HSSFCellStyle cellStyle) {
 
 		// 设置列头
 		HSSFRow row2 = sheet.createRow(startRow);//创建Excel工作表的行
@@ -274,7 +234,7 @@ public class ExportExcelUtil {
 	 * @param col 列索引
 	 * @param val 值对象
 	 */
-	public void cteateCell(HSSFRow row,boolean isInt,boolean isFloat,int col,Object val,HSSFCellStyle cellStyle) {
+	public static void cteateCell(HSSFRow row,boolean isInt,boolean isFloat,int col,Object val,HSSFCellStyle cellStyle) {
 
 		HSSFCell cell = row.createCell(col);
 		String value = val==null?"0":val.toString().replaceAll(",","");
@@ -304,7 +264,7 @@ public class ExportExcelUtil {
 	 * @param contents 内容列表
 	 * @throws Exception
 	 */
-	public <T> void createContentBody(int startRow,String[] headColumn,List<T> contents,HSSFCellStyle cellStyle) throws Exception{
+	public static <T> void createContentBody(HSSFSheet sheet,int startRow,String[] headColumn,List<T> contents,HSSFCellStyle cellStyle) throws Exception{
 		// 循环创建中间的单元格的各项的值
 		Object value=null;
 		for (int i =startRow; i < contents.size()+startRow; i++) {
@@ -313,7 +273,7 @@ public class ExportExcelUtil {
 				String fieldName=headColumn[j];
 				Method getMethod= contents.get(i-startRow).getClass().getMethod(BeanUtils.getGetMethodNameFromFiledName(fieldName));
 				value = getMethod.invoke(contents.get(i-startRow), null);
-				this.cteateCell(row,false,false, j,value,cellStyle);
+				cteateCell(row,false,false, j,value,cellStyle);
 				//设置列的宽度
 				sheet.setColumnWidth(j, 20 * 256);
 			}
@@ -329,7 +289,7 @@ public class ExportExcelUtil {
 	 * @param contents 内容列表
 	 * @throws Exception
 	 */
-	public void createBody(int startRow,String[] headColumn,String[] sumColum,List<Object> contents,HSSFCellStyle cellStyle,String[] intCol,String...floatCol) throws Exception{
+	public static void createBody(HSSFSheet sheet,int startRow,String[] headColumn,String[] sumColum,List<Object> contents,HSSFCellStyle cellStyle,String[] intCol,String...floatCol) throws Exception{
 
 		// 循环创建中间的单元格的各项的值
 		Object value=null;
@@ -337,6 +297,9 @@ public class ExportExcelUtil {
 		boolean sumflag=false;
 		boolean floatFlag = false;
 		boolean intFlag = false;
+		if(contents==null){
+			return;
+		}
 		for (int i =startRow; i < contents.size()+startRow; i++) {
 			HSSFRow row = sheet.createRow((short) i);
 			for (int j =0; j <headColumn.length; j++) {
@@ -369,11 +332,11 @@ public class ExportExcelUtil {
 					}
 				}
 				if(floatFlag){
-					this.cteateCell(row,false,true,j,format.format(value),cellStyle);
+					cteateCell(row,false,true,j,format.format(value),cellStyle);
 				}else if(intFlag){
-					this.cteateCell(row,true,false,j,value,cellStyle);
+					cteateCell(row,true,false,j,value,cellStyle);
 				} else{
-					this.cteateCell(row,false,false,j, value, cellStyle);
+					cteateCell(row,false,false,j, value, cellStyle);
 				}
 				//设置列的宽度
 				sheet.setColumnWidth(j, 20 * 256);
@@ -384,17 +347,17 @@ public class ExportExcelUtil {
 		}
 		if(sumColum!=null&&sumColum.length!=0){
 			HSSFRow row = sheet.createRow((short)contents.size()+startRow);
-			this.cteateCell(row,false,false,0, "合计", cellStyle);
+			cteateCell(row,false,false,0, "合计", cellStyle);
 			String fieldName;
 			for (int j =1; j <headColumn.length; j++) {
 				fieldName=headColumn[j];
 				if(floatCol!=null&&floatCol.length!=0) {
 					if (Arrays.asList(floatCol).contains(fieldName)) {
-						this.cteateCell(row,false,false, j, map.get(j)==null?"":format.format(map.get(j)), cellStyle);
+						cteateCell(row,false,false, j, map.get(j)==null?"":format.format(map.get(j)), cellStyle);
 						continue;
 					}
 				}
-				this.cteateCell(row,false,false, j, map.get(j)==null?"":map.get(j), cellStyle);
+				cteateCell(row,false,false, j, map.get(j)==null?"":map.get(j), cellStyle);
 			}
 		}
 	}
@@ -407,7 +370,7 @@ public class ExportExcelUtil {
 	 * @param contents 内容列表
 	 * @throws Exception
 	 */
-	public <T> void createTwoBody(int startRow,String[] headColumn,String[] sumColum,List<Object> contents,HSSFCellStyle cellStyle,String nTitle,String[] nHeadTitle,String[] nHeadColumn,List<T> contentBody,String[] intCol,String...floatCol) throws Exception{
+	public static <T> void createTwoBody(HSSFSheet sheet,int startRow,String[] headColumn,String[] sumColum,List<Object> contents,HSSFCellStyle cellStyle,String nTitle,String[] nHeadTitle,String[] nHeadColumn,List<T> contentBody,String[] intCol,String...floatCol) throws Exception{
 
 		// 循环创建中间的单元格的各项的值
 		Object value=null;
@@ -449,11 +412,11 @@ public class ExportExcelUtil {
 					}
 				}
 				if(floatFlag){
-					this.cteateCell(row,false,true, j,format.format(value),cellStyle);
+					cteateCell(row,false,true, j,format.format(value),cellStyle);
 				}else if(intFlag){
-					this.cteateCell(row,true,false,j,value,cellStyle);
+					cteateCell(row,true,false,j,value,cellStyle);
 				}else {
-					this.cteateCell(row,false,false,j, value, cellStyle);
+					cteateCell(row,false,false,j, value, cellStyle);
 				}
 				//设置列的宽度
 				sheet.setColumnWidth(j, 20 * 256);
@@ -465,23 +428,23 @@ public class ExportExcelUtil {
 		}
 		if(sumColum!=null&&sumColum.length!=0){
 			HSSFRow row = sheet.createRow((short)contents.size()+startRow);
-			this.cteateCell(row,false,false, 0, "合计", cellStyle);
+			cteateCell(row,false,false, 0, "合计", cellStyle);
 			String fieldName;
 			for (int j =1; j <headColumn.length; j++) {
 				fieldName=headColumn[j];
 				if(floatCol!=null&&floatCol.length!=0) {
 					if (Arrays.asList(floatCol).contains(fieldName)) {
-						this.cteateCell(row,false,true, j, map.get(j)==null?"":format.format(map.get(j)), cellStyle);
+						cteateCell(row,false,true, j, map.get(j)==null?"":format.format(map.get(j)), cellStyle);
 						continue;
 					}
 				}
-				this.cteateCell(row,false,false, j, map.get(j)==null?"":map.get(j), cellStyle);
+				cteateCell(row,false,false, j, map.get(j)==null?"":map.get(j), cellStyle);
 			}
 		}
 		num += 4;
-		createAnotherTitle(num,nTitle,nHeadColumn.length,ExportExcelUtil.TITLE_STYLE);
-		createHeader(num+1,nHeadTitle,ExportExcelUtil.HEADER_STYLE);
-		createContentBody(num+2,nHeadColumn,contentBody,ExportExcelUtil.CONTENT_STYLE);
+		createAnotherTitle(sheet,num,nTitle,nHeadColumn.length, ExportExcelUtils.TITLE_STYLE);
+		createHeader(sheet,num+1,nHeadTitle, ExportExcelUtils.HEADER_STYLE);
+		createContentBody(sheet,num+2,nHeadColumn,contentBody, ExportExcelUtils.CONTENT_STYLE);
 
 	}
 
@@ -492,7 +455,7 @@ public class ExportExcelUtil {
 	 * @param contents 内容列表
 	 * @throws Exception
 	 */
-	public <T> void createTwoBody(int startRow,String[] headColumn,List<Object> contents,HSSFCellStyle cellStyle,String[] nHeadTitle,String[] nHeadColumn,List<T> contentBody,String[] intCol,String...floatCol) throws Exception{
+	public static <T> void createTwoBody(HSSFSheet sheet,int startRow,String[] headColumn,List<Object> contents,HSSFCellStyle cellStyle,String[] nHeadTitle,String[] nHeadColumn,List<T> contentBody,String[] intCol,String...floatCol) throws Exception{
 		// 循环创建中间的单元格的各项的值
 		Object value=null;
 		Map<Integer,BigDecimal> map=new HashMap<Integer,BigDecimal>();
@@ -521,11 +484,11 @@ public class ExportExcelUtil {
 				value = getMethod.invoke(contents.get(i-startRow), null);
 
 				if(floatFlag){
-					this.cteateCell(row,false,true,j,format.format(value),cellStyle);
+					cteateCell(row,false,true,j,format.format(value),cellStyle);
 				}else if(intFlag){
-					this.cteateCell(row,true,false, j, value, cellStyle);
+					cteateCell(row,true,false, j, value, cellStyle);
 				}else{
-					this.cteateCell(row,false,false, j, value, cellStyle);
+					cteateCell(row,false,false, j, value, cellStyle);
 				}
 
 				//设置列的宽度
@@ -538,7 +501,7 @@ public class ExportExcelUtil {
 		num += 2;
 		//createAnotherTitle(num,nTitle,nHeadColumn.length,ExportExcelUtil.TITLE_STYLE);
 //		createHeader(num+1,nHeadTitle,ExportExcelUtil.TITLE_STYLE);
-		createContentBody(num,nHeadColumn,contentBody,ExportExcelUtil.CONTENT_STYLE);
+		createContentBody(sheet,num,nHeadColumn,contentBody, ExportExcelUtils.CONTENT_STYLE);
 	}
 
 	/**
@@ -548,7 +511,7 @@ public class ExportExcelUtil {
 	 *            需要合并到的列索引
 	 * @param cellValue
 	 */
-	public void createLastSumRow(int colSum, String[] cellValue) {
+	public static void createLastSumRow(HSSFWorkbook wb,HSSFSheet sheet,int colSum, String[] cellValue) {
 
 		HSSFCellStyle cellStyle = wb.createCellStyle();
 		cellStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER); // 指定单元格居中对齐
@@ -585,7 +548,7 @@ public class ExportExcelUtil {
 	 * @param fileName
 	 *            文件名
 	 */
-	public void outputExcel(String fileName) {
+	public static void outputExcel(HSSFWorkbook wb,String fileName) {
 		FileOutputStream fos = null;
 		try {
 			fos = new FileOutputStream(new File(fileName));
@@ -607,223 +570,39 @@ public class ExportExcelUtil {
 	 * @param response
      * @throws Exception
      */
-	public void exportExcelForWeb(String title,String[] headTitle,String[] headColumn, List<Object> contentBody,HttpServletResponse response) throws Exception{
-		ExportExcelUtil exportExcel = new ExportExcelUtil();
-		exportExcel.createTitle(0,title,headTitle.length,ExportExcelUtil.TITLE_STYLE);
-		exportExcel.createHeader(1,headTitle,ExportExcelUtil.HEADER_STYLE);
-		exportExcel.createContentBody(2,headColumn,contentBody,ExportExcelUtil.CONTENT_STYLE);
+	public static void exportExcelForWeb(HSSFWorkbook wb,HSSFSheet sheet,String title,String[] headTitle,String[] headColumn, List<Object> contentBody,HttpServletResponse response) throws Exception{
+		ExportExcelUtils exportExcel = new ExportExcelUtils();
+		exportExcel.createTitle(sheet,0,title,headTitle.length, ExportExcelUtils.TITLE_STYLE);
+		exportExcel.createHeader(sheet,1,headTitle, ExportExcelUtils.HEADER_STYLE);
+		exportExcel.createContentBody(sheet,2,headColumn,contentBody, ExportExcelUtils.CONTENT_STYLE);
 		//exportExcel.outputExcel("e:\\cc.xls");
 		response.reset();
 		response.setContentType("application/vnd.ms-excel");
 		title = URLEncoder.encode(title, "utf-8");
 		response.addHeader("Content-Disposition", "attachment; filename=\"" + title + ".xls\"");
 		OutputStream  os=response.getOutputStream();
-		exportExcel.wb.write(os);
+		wb.write(os);
 		os.flush();
 		os.close();
 
 	}
 
 	//带合计统计
-	public void exportExcelForTotal(String title,String[] headTitle,String[] headColumn,String[] sumColum,List<Object> contentBody,HttpServletResponse response,String[] intCol,String...floatCol) throws Exception{
-		ExportExcelUtil exportExcel = new ExportExcelUtil();
-		exportExcel.createTitle(0,title,headTitle.length,ExportExcelUtil.TITLE_STYLE);
-		exportExcel.createHeader(1,headTitle,ExportExcelUtil.HEADER_STYLE);
-		exportExcel.createBody(2,headColumn,sumColum,contentBody,ExportExcelUtil.CONTENT_STYLE,intCol,floatCol);
-		//exportExcel.outputExcel("e:\\cc.xls");
-		response.reset();
-		response.setContentType("application/vnd.ms-excel");
-		title = URLEncoder.encode(title, "utf-8");
-		response.addHeader("Content-Disposition", "attachment; filename=\"" + title + ".xls\"");
-		OutputStream  os=response.getOutputStream();
-		exportExcel.wb.write(os);
-		os.flush();
-		os.close();
-
+	public static void exportExcelForTotal(HSSFWorkbook wb,HSSFSheet sheet,String title,String[] headTitle,String[] headColumn,String[] sumColum,List<Object> contentBody,HttpServletResponse response,String[] intCol,String...floatCol) throws Exception{
+		createTitle(sheet,0,title,headTitle.length, ExportExcelUtils.TITLE_STYLE);
+		createHeader(sheet,1,headTitle, ExportExcelUtils.HEADER_STYLE);
+		createBody(sheet,2,headColumn,sumColum,contentBody, ExportExcelUtils.CONTENT_STYLE,intCol,floatCol);
 	}
 
-	//带合计统计（表头有统计数列的）
-	public void exportExcelForTotalTwo(String title,String[] headTitle,Object[] codes,String[] headColumn,String[] sumColum,List<Object> contentBody,HttpServletResponse response,String[] intCol,String...floatCol) throws Exception{
-		ExportExcelUtil exportExcel = new ExportExcelUtil();
-		exportExcel.createTwoTitle(0,title,codes,headTitle.length,ExportExcelUtil.TITLE_STYLE);
-		exportExcel.createHeader(2,headTitle,ExportExcelUtil.HEADER_STYLE);
-		exportExcel.createBody(3,headColumn,sumColum,contentBody,ExportExcelUtil.CONTENT_STYLE,intCol,floatCol);
-		//exportExcel.outputExcel("e:\\cc.xls");
-		response.reset();
-		response.setContentType("application/vnd.ms-excel");
-		title = URLEncoder.encode(title, "utf-8");
-		response.addHeader("Content-Disposition", "attachment; filename=\"" + title + ".xls\"");
-		OutputStream  os=response.getOutputStream();
-		exportExcel.wb.write(os);
-		os.flush();
-		os.close();
-
-	}
-
-
-	//带合计统计(两个表)
-	public <T> void exportTwoExcelForTotal(String title,String[] headTitle,String[] headColumn,String[] sumColum,List<Object> contentBody,HttpServletResponse response,String nTitle,String[] nHeadTitle,String[] nHeadColumn,List<T> nContentBody,String[] intCol, String...floatCol) throws Exception{
-		ExportExcelUtil exportExcel = new ExportExcelUtil();
-		exportExcel.createTitle(0,title,headTitle.length,ExportExcelUtil.TITLE_STYLE);
-//		exportExcel.createTitle(1,title,headTitle.length,ExportExcelUtil.TITLE_STYLE);
-		exportExcel.createHeader(1,headTitle,ExportExcelUtil.HEADER_STYLE);
-		exportExcel.createTwoBody(2,headColumn,sumColum,contentBody,ExportExcelUtil.CONTENT_STYLE,nTitle,nHeadTitle,nHeadColumn,nContentBody,intCol,floatCol);
-
-		//exportExcel.outputExcel("e:\\cc.xls");
-		response.reset();
-		response.setContentType("application/vnd.ms-excel");
-		title = URLEncoder.encode(title, "utf-8");
-		response.addHeader("Content-Disposition", "attachment; filename=\"" + title + ".xls\"");
-//		nTitle = URLEncoder.encode(nTitle, "utf-8");
-//		response.addHeader("Content-Disposition", "attachment; filename=\"" + nTitle + ".xls\"");
-		OutputStream  os=response.getOutputStream();
-		exportExcel.wb.write(os);
-		os.flush();
-		os.close();
-
-	}
 
 	//创建一个边框
-	public void createBorder(){
+	public static void createBorder(HSSFWorkbook wb){
 		HSSFCellStyle setBorder = wb.createCellStyle();
 		setBorder.setBorderBottom(HSSFCellStyle.BORDER_DASH_DOT);
 		setBorder.setBorderLeft(HSSFCellStyle.BORDER_DASH_DOT);
 		setBorder.setBorderRight(HSSFCellStyle.BORDER_DASH_DOT);
 		setBorder.setBorderTop(HSSFCellStyle.BORDER_DASH_DOT);
 
-	}
-
-	//带合计统计(两个表)
-	public <T> void exportTwoExcel(String title,String[] headTitle,String[] headColumn,List<Object> contentBody,HttpServletResponse response,String[] nHeadTitle,String[] nHeadColumn,List<T> nContentBody, String[] intCol,String...floatCol) throws Exception{
-		ExportExcelUtil exportExcel = new ExportExcelUtil();
-		exportExcel.createTitle(0,title,headTitle.length,ExportExcelUtil.TITLE_STYLE);
-//		exportExcel.createTitle(1,title,headTitle.length,ExportExcelUtil.TITLE_STYLE);
-		exportExcel.createHeader(1,headTitle,ExportExcelUtil.HEADER_STYLE);
-		exportExcel.createTwoBody(2,headColumn,contentBody,ExportExcelUtil.CONTENT_STYLE,nHeadTitle,nHeadColumn,nContentBody,intCol,floatCol);
-		//exportExcel.createBorder(0,0,headTitle.length,8);
-		//exportExcel.createBorder();
-
-		//exportExcel.outputExcel("e:\\cc.xls");
-		response.reset();
-		response.setContentType("application/vnd.ms-excel");
-		title = URLEncoder.encode(title, "utf-8");
-		response.addHeader("Content-Disposition", "attachment; filename=\"" + title + ".xls\"");
-//		nTitle = URLEncoder.encode(nTitle, "utf-8");
-//		response.addHeader("Content-Disposition", "attachment; filename=\"" + nTitle + ".xls\"");
-		OutputStream  os=response.getOutputStream();
-		exportExcel.wb.write(os);
-		os.flush();
-		os.close();
-
-	}
-
-	//创建一个边框,尚未使用
-	public void createBorder(int leftTopX,int leftTopY, int rightBottomX,int rightBottomY){
-		HSSFRow topRow = this.sheet.getRow(leftTopY);
-		for(int i=leftTopX;i<rightBottomX;i++){ //设置上边框
-			if(topRow!=null){
-				HSSFCell cell = topRow.getCell(i);
-				if(cell==null){
-					cell = topRow.createCell(i);
-					HSSFCellStyle cellStyle = wb.createCellStyle();
-					cellStyle.setBorderTop(HSSFCellStyle.BORDER_THIN); //
-					cell.setCellStyle(cellStyle);
-				}else {
-					HSSFCellStyle cellStyle = cell.getCellStyle();
-					cellStyle.setBorderTop(HSSFCellStyle.BORDER_THIN);
-					cell.setCellStyle(cellStyle);
-				}
-			}
-		}
-
-		for(int i=leftTopY;i<rightBottomY;i++){ //设置左边框
-			HSSFRow row = sheet.getRow(i);
-			if(row!=null){
-				HSSFCell cell = row.getCell(leftTopX);
-				if(cell==null){
-					cell = row.createCell(leftTopX);
-					HSSFCellStyle cellStyle = wb.createCellStyle();
-					cellStyle.setBorderLeft(HSSFCellStyle.BORDER_THIN); //
-					cell.setCellStyle(cellStyle);
-				}else {
-//					HSSFCellStyle cellStyle = cell.getCellStyle();
-					HSSFCellStyle cellStyle = wb.createCellStyle();
-					cellStyle.setBorderLeft(HSSFCellStyle.BORDER_THIN);
-					cell.setCellStyle(cellStyle);
-				}
-			}
-		}
-		HSSFRow bottomRow = sheet.getRow(rightBottomY);
-		for(int i=leftTopX;i<rightBottomX;i++){ //设置下边框
-			if(bottomRow!=null){
-				HSSFCell cell = bottomRow.getCell(i);
-				if(cell==null){
-					cell = bottomRow.createCell(i);
-					HSSFCellStyle cellStyle = wb.createCellStyle();
-					cellStyle.setBorderBottom(HSSFCellStyle.BORDER_THIN); //
-					cell.setCellStyle(cellStyle);
-				}else {
-					HSSFCellStyle cellStyle = cell.getCellStyle();
-					cellStyle.setBorderBottom(HSSFCellStyle.BORDER_THIN);
-					cell.setCellStyle(cellStyle);
-				}
-			}
-		}
-
-		for(int i=leftTopY;i<rightBottomY;i++){ //设置右边框
-			HSSFRow row = sheet.getRow(i);
-			if(row!=null){
-				HSSFCell cell = row.getCell(rightBottomX-1);
-				if(cell==null){
-					cell = row.createCell(rightBottomX-1);
-					HSSFCellStyle cellStyle = wb.createCellStyle();
-					cellStyle.setBorderRight(HSSFCellStyle.BORDER_THIN); //
-					cell.setCellStyle(cellStyle);
-				}else {
-					//HSSFCellStyle cellStyle = cell.getCellStyle();
-					HSSFCellStyle cellStyle = wb.createCellStyle();
-					cellStyle.setBorderRight(HSSFCellStyle.BORDER_THIN);
-					cell.setCellStyle(cellStyle);
-				}
-			}
-		}
-	}
-
-	public static void exportExcel(HSSFWorkbook wb,ExcelEntity object, OutputStream outStream) throws Exception {
-		HSSFSheet sheet = wb.createSheet(object.getSheetName());
-		HSSFRow row = sheet.createRow(0);// 创建第一行
-		String[] colNames = object.getColumnNames();
-		String[] propertys = object.getPropertyNames();
-		for (int i = 0; i < colNames.length; i++) { // 添加列名，从第一行的第一个单元格开始添加
-			row.createCell(i).setCellValue(colNames[i]);
-		}
-		Iterator it = object.getResultList().iterator();
-		int rowNum = 1; // 从第二行开始添加数据
-		while (it.hasNext()) {
-			Map map = (Map) it.next();
-			HSSFRow rw = sheet.createRow(rowNum);
-			rowNum++;
-			for (int x = 0; x < propertys.length; x++) {
-				String property = propertys[x];
-				if (map.containsKey(property)) {
-					Object value = map.get(propertys[x]); // 根据属性名称得到属性值
-					if (value == null || "null".equalsIgnoreCase(value.toString())) {
-						value = "";
-					}
-					rw.createCell(x ).setCellValue(value + "");
-				} else {
-					rw.createCell(x ).setCellValue("");
-				}
-			}
-		}
-	}
-
-	//带合计统计
-	public HSSFSheet exportSheetForTotal(String title,String[] headTitle,String[] headColumn,String[] sumColum,List<Object> contentBody,HttpServletResponse response,String[] intCol,String...floatCol) throws Exception{
-		this.createTitle(0,title,headTitle.length,ExportExcelUtil.TITLE_STYLE);
-		this.createHeader(1,headTitle,ExportExcelUtil.HEADER_STYLE);
-		this.createBody(2,headColumn,sumColum,contentBody,ExportExcelUtil.CONTENT_STYLE,intCol,floatCol);
-		return sheet;
 	}
 
 }

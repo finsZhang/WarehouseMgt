@@ -92,6 +92,7 @@ public class CommonDaoImpl implements CommonDao {
         return resultDTO;
     }
 
+
     @Transactional(readOnly = true)
     public <T>List<T> queryListEntity(String sql, Class<T> clz){
         Query query = em.createNativeQuery(sql);

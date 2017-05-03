@@ -46,6 +46,7 @@
 <script type="text/javascript" src="${ctx}/whm/statics/ace/plugins/layer/layer.js"></script>
 <script type="text/javascript" src="${ctx}/whm/statics/ace/plugins/select2-3.4.1/select2.js"></script>
 <script type="text/javascript" src="${ctx}/whm/statics/common/js/util.js?_dc=${staticVersion}"></script>
+<script type="text/javascript" src="${ctx}/whm/statics/common/js/util2.js?_dc=${staticVersion}"></script>
 <script type="text/javascript" src="${ctx}/whm/statics/common/js/map.js"></script>
 <script type="text/javascript" src="${ctx}/whm/statics/common/js/jquery-migrate-1.0.0.js"></script>
 

@@ -13,8 +13,9 @@ function resetCondition() {
 }
 
 function reloadGrid(){
-    if(dispatchClerkGlobal!=getDispatchClerk()){//动态改变表格列
-        var dispatchClerk = getDispatchClerkOrderByUsername();
+    if(dispatchClerkGlobal!=getDispatchClerkUsernameOrderByUsername()){//动态改变表格列
+        dispatchClerkGlobal = getDispatchClerkUsernameOrderByUsername();
+        var dispatchClerkNames = getDispatchClerkNameArray();
         $("#user_table").GridUnload();
         var colNames = ['日期','星期','日派单总金额','日派单总行数','日派单总个数'];
         var colModel = [
@@ -27,7 +28,7 @@ function reloadGrid(){
         var groupHeaders = [
             {startColumnName: 'createDate', numberOfColumns: 5, titleText: '<bold>统计汇总</bold>'}
         ];
-        for(var i=0;i<dispatchClerk.length;i++){
+        for(var i=0;i<dispatchClerkNames.length;i++){
             colNames.push("派单总金额");
             colNames.push("派单总行数");
             colNames.push("派单总个数");
@@ -36,37 +37,17 @@ function reloadGrid(){
             colModel.push({name: 'lineNum_'+(i+1), index: "lineNum_"+(i+1), sortable: false,align:'right',width:100});
             colModel.push({name: 'num_'+(i+1), index: "num_"+(i+1), sortable: false,align:'right',width:100});
 
-            groupHeaders.push({startColumnName: 'amt_'+(i+1), numberOfColumns: 3, titleText: '<bold>'+dispatchClerk[i]+'</bold>'});
+            groupHeaders.push({startColumnName: 'amt_'+(i+1), numberOfColumns: 3, titleText: '<bold>'+dispatchClerkNames[i]+'</bold>'});
         }
 
         initGrid(groupHeaders,colNames,colModel);
 
     }else{//无需处理
         var data = $("#searchForm").serializeObject();
-        data.dispatchClerk = getDispatchClerk();
+        data.dispatchClerk = getDispatchClerkUsernameOrderByUsername();
         $("#user_table").jqGrid("setGridParam", {postData: data,page:1,pageSize:10}).trigger("reloadGrid");
     }
 
-}
-
-function getDispatchClerk() {
-    var dispatchClerkArray = $("#dispatchClerk").select2("val");
-    //按用户名从小到大排序
-    dispatchClerkArray.sort(function(a,b){
-        return a>b?1:-1;});
-    var dispatchClerk = "";
-    for(var i=0;i<dispatchClerkArray.length;i++){
-        if(dispatchClerkArray.length==1){
-            dispatchClerk = "'"+dispatchClerkArray[i]+"'";
-        }else{
-            if(i==dispatchClerkArray.length-1){
-                dispatchClerk = dispatchClerk + "'"+dispatchClerkArray[i]+"'";
-            }else{
-                dispatchClerk = dispatchClerk + "'"+dispatchClerkArray[i]+"',";
-            }
-        }
-    }
-    return dispatchClerk;
 }
 
 //查询列表
@@ -93,11 +74,11 @@ function exportRecordTotalRcds(){
         return;
     }
     var data = $("#searchForm").appendParam();
-    if(data){
-        window.location.href= GLOBAL.WEBROOT+"/reportMgt/exportRecordTotalRcds.html?"+data;
-    }else{
-        window.location.href= GLOBAL.WEBROOT+"/reportMgt/exportRecordTotalRcds.html";
+    if(!data) {
+        data = "dispatchClerk="+getDispatchClerkUsernameOrderByUsername(1);
     }
+    data += "&dispatchClerkName="+getDispatchClerkNameOrderByUsername();
+    window.location.href= GLOBAL.WEBROOT+"/reportMgt/exportRecordTotalRcds.html?"+data;
 }
 
 var obj;
@@ -135,22 +116,7 @@ function initGrid(groupHeaders,colNames,colModel){
     var grid_selector = "#user_table";
     var pager_selector = "#user_pager";
     var data = $("#searchForm").serializeObject();
-    if(data.dispatchClerk){//选择了
-        data.dispatchClerk = getDispatchClerk();
-    }else{
-        var dispatchClerk = "";
-        for(var i=0;i<objs.length;i++) {
-            if (objs.length == 1) {
-                dispatchClerk = "'" + objs[i].userName + "'";
-            } else {
-                if (i == objs.length - 1) {
-                    dispatchClerk = dispatchClerk + "'" + objs[i].userName + "'";
-                } else {
-                    dispatchClerk = dispatchClerk + "'" + objs[i].userName + "',";
-                }
-            }
-        }
-
+    if(!data.dispatchClerk){//未选择
         for(var i=0;i<objs.length;i++){
             colNames.push("派单总金额");
             colNames.push("派单总行数");
@@ -162,8 +128,8 @@ function initGrid(groupHeaders,colNames,colModel){
 
             groupHeaders.push({startColumnName: 'amt_'+(i+1), numberOfColumns: 3, titleText: '<bold>'+objs[i].name+'</bold>'});
         }
-        data.dispatchClerk = dispatchClerk;
     }
+    data.dispatchClerk = getDispatchClerkUsernameOrderByUsername();
     $(grid_selector).jqGrid({
         url: GLOBAL.WEBROOT + "/reportMgt/queryShipmenRcdAllList.ajax",
         mtype : "post",
@@ -196,17 +162,82 @@ function initGrid(groupHeaders,colNames,colModel){
     }
 }
 
-function getDispatchClerkOrderByUsername(){
-    var dispatchClerkArray = $("#dispatchClerk").select2("data");
-    //按用户名从小到大排序
-    dispatchClerkArray.sort(function(a,b){
-        return a.id>b.id?1:-1;});
+function getDispatchClerkObjOrderByUsername(){//返回对象数组 username,name
+    if($("#dispatchClerk").val()){//有选择值
+        var dispatchClerkArray = $("#dispatchClerk").select2("data");
+        //按用户名从小到大排序
+        dispatchClerkArray.sort(function(a,b){
+            return a.id>b.id?1:-1;});
 
-    var dispatchClerk = new Array();
+        var dispatchClerks = new Array();
+        var dispatchClerk;
+        for(var i=0;i<dispatchClerkArray.length;i++){
+            dispatchClerk = new Object();;
+            dispatchClerk.userName = dispatchClerkArray[i].id;
+            dispatchClerk.name = dispatchClerkArray[i].text;
+            dispatchClerks.push(dispatchClerk);
+        }
+        return dispatchClerks;
+    }else{ //无选择值，取列表全部
+        return objs;
+    }
+}
+
+function getDispatchClerkUsername(){//获取用户名列表,形式
+    var dispatchClerkArray = getDispatchClerkObjOrderByUsername();
+    var dispatchClerk = "";
     for(var i=0;i<dispatchClerkArray.length;i++){
-        dispatchClerk.push(dispatchClerkArray[i].text);
+        if(dispatchClerkArray.length==1){
+            dispatchClerk = dispatchClerkArray[i].userName;
+        }else{
+            if(i==dispatchClerkArray.length-1){
+                dispatchClerk = dispatchClerk +dispatchClerkArray[i].userName;
+            }else{
+                dispatchClerk = dispatchClerk +dispatchClerkArray[i].userName+",";
+            }
+        }
+    }
+    return dispatchClerk;
+}
+
+function getDispatchClerkUsernameOrderByUsername(flag){//获取用户名列表,形式
+    var dispatchClerk;
+    if(flag){
+        dispatchClerk = getDispatchClerkUsername();
+    }else{
+        dispatchClerk = getDispatchClerkUsername();
+        if(dispatchClerk){
+            dispatchClerk = WEB.replaceAll(dispatchClerk,",","','");
+            dispatchClerk = "'"+dispatchClerk+"'";
+        }
+    }
+
+    return dispatchClerk;
+}
+
+function getDispatchClerkNameOrderByUsername(){
+    var dispatchClerkArray = getDispatchClerkObjOrderByUsername();
+    var dispatchClerk = "";
+    for(var i=0;i<dispatchClerkArray.length;i++){
+        if(dispatchClerkArray.length==1){
+            dispatchClerk = dispatchClerkArray[i].name;
+        }else{
+            if(i==dispatchClerkArray.length-1){
+                dispatchClerk = dispatchClerk +dispatchClerkArray[i].name;
+            }else{
+                dispatchClerk = dispatchClerk +dispatchClerkArray[i].name+",";
+            }
+        }
     }
     return dispatchClerk;
 }
 
 
+function getDispatchClerkNameArray(){
+    var dispatchClerk = getDispatchClerkNameOrderByUsername();
+    if(dispatchClerk){
+        return dispatchClerk.split(",");
+    }else{
+        return null;
+    }
+}
