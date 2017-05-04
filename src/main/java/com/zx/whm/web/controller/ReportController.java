@@ -87,8 +87,7 @@ public class ReportController {
 
         response.reset();
         response.setContentType("application/vnd.ms-excel");
-        title = URLEncoder.encode(title, "utf-8");
-        response.addHeader("Content-Disposition", "attachment; filename=\"" + "仓库出货统计" + ".xls\"");
+        response.addHeader("Content-Disposition", "attachment; filename="+ URLEncoder.encode("仓库出货报表统计.xls", "UTF-8"));
         OutputStream os=response.getOutputStream();
         wb.write(os);
         os.flush();
