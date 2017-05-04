@@ -8,7 +8,7 @@
 	<meta http-equiv="Cache-Control" content="no-store"/>
 	<meta http-equiv="Pragma" content="no-cache"/>
 	<meta http-equiv="Expires" content="0"/>
-    <title>咸阳加密机中间件系统</title>
+    <title>仓库出货管理系统</title>
     <link href="${ctx}/whm/statics/pages/css/index/css/public.css" rel="stylesheet" type="text/css">
     <link href="${ctx}/whm/statics/pages/css/index/css/detail.css" rel="stylesheet" type="text/css">
     <script src="${ctx}/whm/statics/pages/index.js?_dc=${staticVersion}"></script>
