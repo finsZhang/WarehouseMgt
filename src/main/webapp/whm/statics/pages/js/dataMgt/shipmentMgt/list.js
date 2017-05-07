@@ -36,6 +36,17 @@ function initQueryDicts() {
             }
             $('#payType').val(-1);
             $('#payType').select2();
+
+
+            var jsonDispatchClerk = eval(data.dispatchClerk);
+            var dispatchClerkSelect = $("#dispatchClerk");
+            dispatchClerkSelect.empty();
+            dispatchClerkSelect.append("<option value='-1'>请选择送货人</option>");
+            for (var i = 0; i < jsonDispatchClerk.length; i++) {
+                dispatchClerkSelect.append("<option value='" + jsonDispatchClerk[i].itemNo + "'>" + jsonDispatchClerk[i].itemName + "</option>");
+            }
+            $('#dispatchClerk').val(-1);
+            $('#dispatchClerk').select2();
         }
     });
 }
@@ -61,9 +72,9 @@ function selectList() {
         datatype: "json",
         height: '100%',
         width : '100%',
-        colNames: ['当日编号','类型','商品明细','金额', '行数', '付款方式', '客户信息','备注','派单员','后期更改','创建时间','创建星期','创建人姓名', '操作'],
+        colNames: ['当日编号','类型','商品明细','金额', '行数', '付款方式', '客户信息','备注','送货员','后期更改','创建时间','创建星期','创建人姓名', '操作'],
         colModel: [
-            {name: 'dayNo', index: 'dayNo', sortable: false,fixed:false,width:130,align:'center'},
+            {name: 'dayNo', index: 'dayNo', sortable: false,fixed:false,width:80,align:'center'},
             {
                 name: 'type', index: 'type', sortable: false, align: 'center', resizable: true, fixed: false, width: 80,
                 formatter: function (cellvalue, options, rowObject) {
@@ -74,10 +85,10 @@ function selectList() {
                     }
                 }
             },
-            {name: 'prodDetail', index: 'prodDetail', sortable: false,resizable:true,fixed:false,width:80,align:'center'},
-            {name: 'amount', index: 'amount',  sortable: false,align:'center',resizable:true,fixed:false,width:150},
+            {name: 'prodDetail', index: 'prodDetail', sortable: false,resizable:true,fixed:false,width:200,align:'center'},
+            {name: 'amount', index: 'amount',  sortable: false,align:'center',resizable:true,fixed:false,width:80},
             {name: 'lineNum', index: 'lineNum', sortable: false,align:'center',resizable:true,fixed:false ,width:80},
-            {name: 'payType', index: 'payType', sortable: false,width:100,
+            {name: 'payType', index: 'payType', sortable: false,width:100,align:'center',
                 formatter: function (cellvalue, options, rowObject) {
                     if (payTypeMap.containsKey(cellvalue)) {
                         return payTypeMap.get(cellvalue);
@@ -86,9 +97,9 @@ function selectList() {
                     }
                 }
             },
-            {name: 'custInfo', index: 'custInfo',  sortable: false,align:'right' ,width:80 },
-            {name: 'comment', index: 'comment',  sortable: false,align:'right',width:80 },
-            {name: 'dispatchClerk', index: "dispatchClerk", sortable: false,align:'right',width:100,
+            {name: 'custInfo', index: 'custInfo',  sortable: false,align:'center' ,width:80 },
+            {name: 'comment', index: 'comment',  sortable: false,align:'center',width:80 },
+            {name: 'dispatchClerk', index: "dispatchClerk", sortable: false,align:'center',width:80,
                 formatter: function (cellvalue, options, rowObject) {
                     if (dispatchClerkMap.containsKey(cellvalue)) {
                         return dispatchClerkMap.get(cellvalue);
@@ -97,9 +108,9 @@ function selectList() {
                     }
                 }
             },
-            {name: 'modifyConent', index: "modifyConent", sortable: false,align:'right',width:80},
-            {name: 'createDate', index: "createDate", sortable: false,align:'right',width:100},
-            {name: 'weekNo', index: "weekNo", sortable: false,align:'right',width:100},
+            {name: 'modifyConent', index: "modifyConent", sortable: false,align:'center',width:200},
+            {name: 'createDate', index: "createDate", sortable: false,align:'center',width:150},
+            {name: 'weekNo', index: "weekNo", sortable: false,align:'center',width:100},
             {name: 'creatorName', index: "creatorName",  sortable: false,width:100,align:'center'},
             {
                 name: 'id', index: "id", sortable: false,width:100,align:'center'
@@ -154,6 +165,10 @@ function initDicts() {
         }
     });
 }
+
+
+
+
 
 function deleteRecord(id) {
     layerConfirm('是否删除当前选中记录',function() {

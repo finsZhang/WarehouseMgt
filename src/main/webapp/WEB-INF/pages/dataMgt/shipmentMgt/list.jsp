@@ -63,6 +63,12 @@
                                 <option value="-1">请选择类型</option>
                             </select>
                         </td>
+                        <th width="13%" class="r">送货人：</th>
+                        <td width="13%">
+                            <select name="dispatchClerk" id="dispatchClerk">
+                                <option value="-1">请选择送货人</option>
+                            </select>
+                        </td>
                         <th width="13%" class="r">付款方式：</th>
                         <td width="13%">
                             <select name="payType" id="payType">

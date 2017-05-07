@@ -82,6 +82,8 @@ public class LoginController {
         request.getSession().setAttribute(Constants.LOGIN_TIME_OUT, "false");
         request.getSession().setAttribute(Constants.LOGINPARAM, "false");
         request.getSession().setAttribute(Constants.VIEWONLY, "false");
+
+        model.addAttribute("topuser",user);
         return "index";
     }
     /**
@@ -95,6 +97,17 @@ public class LoginController {
         return "login";
     }
 
+    @RequestMapping("getCurrentUserBean.ajax")
+    @ResponseBody
+    public Map getCurrentUserBean(HttpServletRequest request) throws IOException {
+        Map<String,String> map = new HashMap<>();
+        // 先获取当前登陆用户
+        SysUser userSession = (SysUser) request.getSession().getAttribute(Constants.SESSION_USER_OBJ);
+        map.put("STATION_CODE",userSession.getStationCode());
+        return map;
+    }
+
+
     /**
      * 退出
      *
@@ -104,6 +117,8 @@ public class LoginController {
     public String ModifyPassword(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
         return "/userMgt/ModifyPassword";
     }
+
+
     @RequestMapping("PasswordChange.ajax")
     @ResponseBody
     public Map PasswordChange(String passwordOld,String passwordNew,HttpServletRequest request) throws IOException {

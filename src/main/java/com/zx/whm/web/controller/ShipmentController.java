@@ -8,6 +8,7 @@ import com.zx.whm.domain.SysUser;
 import com.zx.whm.service.ShipmentRecordSV;
 import com.zx.whm.vo.ShipmentRecordVo;
 import net.sf.json.JSONObject;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -48,11 +49,15 @@ public class ShipmentController {
     }
     @RequestMapping("/queryShipmentList.ajax")
     @ResponseBody
-    public JSONObject queryMakeCardList(@RequestParam(value = "page", defaultValue = "1") int page,
+    public JSONObject queryShipmentList(@RequestParam(value = "page", defaultValue = "1") int page,
                                         @RequestParam(value = "rows", defaultValue = "10") int rows,
-                                        ShipmentRecordVo shipmentRecordVo) throws Exception {
+                                        ShipmentRecordVo shipmentRecordVo, HttpServletRequest request) throws Exception {
 
         ResultDTO<ShipmentRecord> result = new ResultDTO<ShipmentRecord>(page,rows);
+        SysUser sysUser = (SysUser) request.getSession().getAttribute(Constants.SESSION_USER_OBJ);
+        if(StringUtils.isNotBlank(sysUser.getRoleCode())&&sysUser.getStationCode().equals("COMMON_TELLER")&&sysUser.getStationCode().equals("COMMON_TELLER")){
+            shipmentRecordVo.setCreatorUserName(sysUser.getUserName());
+        }
         result = shipmentRecordSV.queryPageList(shipmentRecordVo, result);
         return AjaxUtil.jqGridJson(result);
     }

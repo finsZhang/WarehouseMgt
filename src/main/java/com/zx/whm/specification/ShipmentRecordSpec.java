@@ -37,6 +37,12 @@ public class ShipmentRecordSpec implements Specification<ShipmentRecord> {
         if(!"-1".equals(shipmentRecordVo.getPayType())&&shipmentRecordVo.getPayType()!=null){
             predicates.add(cb.equal(root.get("payType"),shipmentRecordVo.getPayType()));
         }
+        if(!"-1".equals(shipmentRecordVo.getDispatchClerk())&&shipmentRecordVo.getDispatchClerk()!=null){
+            predicates.add(cb.equal(root.get("dispatchClerk"),shipmentRecordVo.getDispatchClerk()));
+        }
+        if(shipmentRecordVo.getCreatorUserName()!=null){
+            predicates.add(cb.equal(root.get("creatorUserName"),shipmentRecordVo.getCreatorUserName()));
+        }
         Predicate[] p = new Predicate[predicates.size()];
         return cb.and(predicates.toArray(p));
     }
