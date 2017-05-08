@@ -29,9 +29,9 @@ function reloadGrid(){
             {startColumnName: 'createDate', numberOfColumns: 5, titleText: '<bold>统计汇总</bold>'}
         ];
         for(var i=0;i<dispatchClerkNames.length;i++){
-            colNames.push("派单总金额");
-            colNames.push("派单总行数");
-            colNames.push("派单总个数");
+            colNames.push("总金额");
+            colNames.push("总行数");
+            colNames.push("总个数");
 
             colModel.push({name: 'amt_'+(i+1), index: "amt_"+(i+1), sortable: false,align:'right',width:100});
             colModel.push({name: 'lineNum_'+(i+1), index: "lineNum_"+(i+1), sortable: false,align:'right',width:100});
@@ -118,9 +118,9 @@ function initGrid(groupHeaders,colNames,colModel){
     var data = $("#searchForm").serializeObject();
     if(!data.dispatchClerk){//未选择
         for(var i=0;i<objs.length;i++){
-            colNames.push("派单总金额");
-            colNames.push("派单总行数");
-            colNames.push("派单总个数");
+            colNames.push("总金额");
+            colNames.push("总行数");
+            colNames.push("总个数");
 
             colModel.push({name: 'amt_'+(i+1), index: "amt_"+(i+1), sortable: false,align:'right',width:100});
             colModel.push({name: 'lineNum_'+(i+1), index: "lineNum_"+(i+1), sortable: false,align:'right',width:100});
