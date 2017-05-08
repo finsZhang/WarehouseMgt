@@ -72,8 +72,10 @@ function selectList() {
         datatype: "json",
         height: '100%',
         width : '100%',
-        colNames: ['当日编号','类型','商品明细','金额', '行数', '付款方式', '客户信息','备注','送货员','后期更改','创建时间','创建星期','创建人姓名', '操作'],
+        colNames: ['时间','星期','当日编号','类型','商品明细','金额', '行数', '付款方式', '客户信息','备注','送货员','后期更改','创建人姓名', '操作'],
         colModel: [
+            {name: 'createDate', index: "createDate", sortable: false,align:'center',width:120},
+            {name: 'weekNo', index: "weekNo", sortable: false,align:'center',width:80},
             {name: 'dayNo', index: 'dayNo', sortable: false,fixed:false,width:80,align:'center'},
             {
                 name: 'type', index: 'type', sortable: false, align: 'center', resizable: true, fixed: false, width: 80,
@@ -85,7 +87,7 @@ function selectList() {
                     }
                 }
             },
-            {name: 'prodDetail', index: 'prodDetail', sortable: false,resizable:true,fixed:false,width:200,align:'center'},
+            {name: 'prodDetail', index: 'prodDetail', sortable: false,resizable:true,fixed:false,width:100,align:'center'},
             {name: 'amount', index: 'amount',  sortable: false,align:'center',resizable:true,fixed:false,width:80},
             {name: 'lineNum', index: 'lineNum', sortable: false,align:'center',resizable:true,fixed:false ,width:80},
             {name: 'payType', index: 'payType', sortable: false,width:100,align:'center',
@@ -108,9 +110,7 @@ function selectList() {
                     }
                 }
             },
-            {name: 'modifyConent', index: "modifyConent", sortable: false,align:'center',width:200},
-            {name: 'createDate', index: "createDate", sortable: false,align:'center',width:150},
-            {name: 'weekNo', index: "weekNo", sortable: false,align:'center',width:100},
+            {name: 'modifyConent', index: "modifyConent", sortable: false,align:'center',width:100},
             {name: 'creatorName', index: "creatorName",  sortable: false,width:100,align:'center'},
             {
                 name: 'id', index: "id", sortable: false,width:100,align:'center'
@@ -203,11 +203,11 @@ function openEdit(id) {
     layer.open({
         type: 2,
         title:"现金上缴",
-        area: ['620px', '410px'],
+        area: ['620px', '500px'],
         fix: false, //不固定
         maxmin: true,
         content: url,
-        closeBtn: 0
+        closeBtn: 1
     });
 }
 var records;

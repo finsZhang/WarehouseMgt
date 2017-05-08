@@ -41,7 +41,7 @@
                         <label class="col-xs-2 control-label no-padding-right"> 商品明细： </label>
 
                         <div class="col-xs-10">
-                            <textarea rows="5" cols="60" name="prodDetail" id="prodDetail"></textarea>
+                            <textarea rows="2" cols="60" name="prodDetail" id="prodDetail"></textarea>
                         </div>
                     </div>
 
@@ -76,21 +76,21 @@
                         <label class="col-xs-2 control-label no-padding-right"> 客户信息： </label>
 
                         <div class="col-xs-10">
-                            <textarea rows="3" cols="60" name="custInfo" id="custInfo"></textarea>
+                            <textarea rows="2" cols="60" name="custInfo" id="custInfo"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-xs-2 control-label no-padding-right"> 备注： </label>
 
                         <div class="col-xs-10">
-                            <textarea rows="5" cols="60" name="comment" id="comment"></textarea>
+                            <textarea rows="2" cols="60" name="comment" id="comment"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-xs-2 control-label no-padding-right"> 后期更改： </label>
 
                         <div class="col-xs-10">
-                            <textarea rows="5" cols="60" name="modifyConent" id="modifyConent"></textarea>
+                            <textarea rows="2" cols="60" name="modifyConent" id="modifyConent"></textarea>
                         </div>
                     </div>
                     <div class="clearfix form-actions">

@@ -17,7 +17,7 @@ function reloadGrid(){
         dispatchClerkGlobal = getDispatchClerkUsernameOrderByUsername();
         var dispatchClerkNames = getDispatchClerkNameArray();
         $("#user_table").GridUnload();
-        var colNames = ['日期','星期','日派单总金额','日派单总行数','日派单总个数'];
+        var colNames = ['日期','星期','总金额','总行数','总个数'];
         var colModel = [
             {name: 'createDate', index: 'createDate', sortable: false,fixed:false,width:130,align:'center' },
             {name: 'weekNo', index: 'weekNo', sortable: false,align:'center',resizable:true,fixed:false ,width:80},
@@ -52,7 +52,7 @@ function reloadGrid(){
 
 //查询列表
 function selectList() {
-    var colNames = ['日期','星期','日派单总金额','日派单总行数','日派单总个数'];
+    var colNames = ['日期','星期','总金额','总行数','总个数'];
     var colModel = [
         {name: 'createDate', index: 'createDate', sortable: false,fixed:false,width:130,align:'center' },
         {name: 'weekNo', index: 'weekNo', sortable: false,align:'center',resizable:true,fixed:false ,width:80},
