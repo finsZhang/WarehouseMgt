@@ -77,13 +77,13 @@
                         </td>
                     </tr>
                    <tr>
-                       <th width="13%" class="r">员工名：</th>
+                       <th width="13%" class="r">创建人：</th>
                        <td width="13%">
                             <input id="creatorName" style="width: 150px;" name="creatorName" class="inputW160"/>
                        </td>
                        <th width="13%" class="r">商品明细：</th>
                        <td width="13%">
-                           <input id="proDetail" style="width: 150px;" name="proDetail" class="inputW160"/>
+                           <input id="prodDetail" style="width: 150px;" name="prodDetail" class="inputW160"/>
                        </td>
                         <th class="r" width="12%">查询创建时间段：</th>
                         <td width="50%">
