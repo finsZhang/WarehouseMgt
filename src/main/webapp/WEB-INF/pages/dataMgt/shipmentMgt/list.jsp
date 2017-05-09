@@ -76,7 +76,15 @@
                             </select>
                         </td>
                     </tr>
-                    <%--<tr>
+                   <tr>
+                       <th width="13%" class="r">员工名：</th>
+                       <td width="13%">
+                            <input id="creatorName" style="width: 150px;" name="creatorName" class="inputW160"/>
+                       </td>
+                       <th width="13%" class="r">商品明细：</th>
+                       <td width="13%">
+                           <input id="proDetail" style="width: 150px;" name="proDetail" class="inputW160"/>
+                       </td>
                         <th class="r" width="12%">查询创建时间段：</th>
                         <td width="50%">
                             <input id="startOperateDate" name="startOperateDate" class="inputW180"
@@ -85,7 +93,7 @@
                             <input id="endOperateDate" name="endOperateDate" class="inputW180"
                                    onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
                         </td>
-                    </tr>--%>
+                    </tr>
                 </table>
             </form>
             <table width="100%" border="0" cellspacing="0" cellpadding="0">

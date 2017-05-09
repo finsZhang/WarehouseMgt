@@ -1,7 +1,10 @@
 package com.zx.whm.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
@@ -145,6 +148,7 @@ public class ShipmentRecord {
 
     @Basic
     @Column(name = "CREATE_DATE", nullable = true)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME,pattern = "yyyy-MM-dd HH:mm:ss")
     public Timestamp getCreateDate() {
         return createDate;
     }

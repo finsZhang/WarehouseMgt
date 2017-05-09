@@ -1,6 +1,7 @@
 package com.zx.whm.vo;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
@@ -28,6 +29,24 @@ public class ShipmentRecordVo {
     private String creatorName;
     private String creatorUserName;
     private Timestamp modifyDate;
+    private String startOperateDate;
+    private String endOperateDate;
+
+    public String getStartOperateDate() {
+        return startOperateDate;
+    }
+
+    public void setStartOperateDate(String startOperateDate) {
+        this.startOperateDate = startOperateDate;
+    }
+
+    public String getEndOperateDate() {
+        return endOperateDate;
+    }
+
+    public void setEndOperateDate(String endOperateDate) {
+        this.endOperateDate = endOperateDate;
+    }
 
     public long getId() {
         return id;
