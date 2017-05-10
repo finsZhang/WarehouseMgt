@@ -20,12 +20,12 @@ import java.io.IOException;
  * Time: 下午4:58
  * To change this template use File | Settings | File Templates.
  */
-@Controller
-@RequestMapping("/whm/common/checkCode/")
+@Controller("CheckCodeController")
+@RequestMapping({"/whm/common/checkCode/"})
 public class CheckCodeController {
 
     private Logger logger = LoggerFactory.getLogger(CheckCodeController.class);
-    @RequestMapping("/code")
+    @RequestMapping({"/code"})
     public void getCode(HttpServletResponse response, String page, HttpSession httpSession)
             throws IOException {
         // 设置响应的类型格式为图片格式

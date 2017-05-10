@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Created by fins on 2016/6/23.
  */
-@Controller
+@Controller("DictItemController")
 @RequestMapping("/common/dictItem")
 public class DictItemController {
     private static Logger logger = LoggerFactory.getLogger(DictItemController.class);

@@ -22,7 +22,7 @@ import static org.springframework.data.jpa.domain.Specifications.where;
 /**
  * Created by Walter on 2017/4/17.
  */
-@Service
+@Service("sysUserService")
 public class SysUserSVImpl implements SysUserSV{
 
 

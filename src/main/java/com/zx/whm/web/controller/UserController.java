@@ -23,7 +23,7 @@ import java.util.Map;
 /**
  * Created by Walter on 2017/4/17.
  */
-@Controller
+@Controller("UserController")
 @RequestMapping("/userMgt/")
 public class UserController {
 

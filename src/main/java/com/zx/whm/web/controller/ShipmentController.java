@@ -26,7 +26,7 @@ import java.util.Map;
  * Tel:18665598790
  * Email:zhangfz3@asiainfo.com
  */
-@Controller
+@Controller("ShipmentController")
 @RequestMapping("/shipmentMgt/")
 public class ShipmentController {
     @Autowired

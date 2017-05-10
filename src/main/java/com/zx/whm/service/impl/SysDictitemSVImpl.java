@@ -32,7 +32,7 @@ import static org.springframework.data.jpa.domain.Specifications.where;
  * Tel:18665598790
  * Email:zhangfz3@asiainfo.com
  */
-@Service
+@Service("sysDictitemService")
 public class SysDictitemSVImpl  implements SysDictitemSV {
     @Autowired
     private SysDictitemDao sysDictitemDao;

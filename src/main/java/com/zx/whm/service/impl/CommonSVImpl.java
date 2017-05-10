@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 /**
  * Created by lenovo on 2017/1/3.
  */
-@Service
+@Service("commonService")
 public class CommonSVImpl  implements CommonSV {
     @Autowired
     private CommonDao commonDao;

@@ -31,7 +31,7 @@ import java.util.Map;
 /**
  * Created by Walter on 2017/4/20.
  */
-@Controller
+@Controller("ReportController")
 @RequestMapping("/reportMgt/")
 public class ReportController {
 

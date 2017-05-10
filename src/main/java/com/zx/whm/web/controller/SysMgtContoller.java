@@ -22,7 +22,7 @@ import java.util.Map;
 /**
  * Created by Walter on 2017/4/17.
  */
-@Controller
+@Controller("SysMgtContoller")
 @RequestMapping("/dictMgt/")
 public class SysMgtContoller {
 

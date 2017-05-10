@@ -26,7 +26,7 @@ import java.util.*;
  * Time: 下午7:56
  * To change this template use File | Settings | File Templates.
  */
-@Controller
+@Controller("LoginController")
 @RequestMapping("/whm/")
 public class LoginController {
     @Autowired

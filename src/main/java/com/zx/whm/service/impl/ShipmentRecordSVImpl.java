@@ -32,7 +32,7 @@ import static org.springframework.data.jpa.domain.Specifications.where;
  * Tel:18665598790
  * Email:zhangfz3@asiainfo.com
  */
-@Service
+@Service("shipmentRecordService")
 public class ShipmentRecordSVImpl implements ShipmentRecordSV {
     @Autowired
     private ShipmentRecordDao shipmentRecordDao;

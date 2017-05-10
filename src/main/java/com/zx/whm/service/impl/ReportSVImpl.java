@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by Walter on 2017/4/20.
  */
-@Service
+@Service("reportService")
 public class ReportSVImpl implements ReportSV {
 
     @Autowired
