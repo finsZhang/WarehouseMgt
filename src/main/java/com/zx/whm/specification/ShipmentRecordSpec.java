@@ -1,5 +1,6 @@
 package com.zx.whm.specification;
 
+import com.zx.whm.common.util.DateUtils;
 import com.zx.whm.domain.ShipmentRecord;
 import com.zx.whm.vo.ShipmentRecordVo;
 import org.apache.commons.lang.StringUtils;
@@ -9,6 +10,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,8 +43,20 @@ public class ShipmentRecordSpec implements Specification<ShipmentRecord> {
         if(!"-1".equals(shipmentRecordVo.getDispatchClerk())&&shipmentRecordVo.getDispatchClerk()!=null){
             predicates.add(cb.equal(root.get("dispatchClerk"),shipmentRecordVo.getDispatchClerk()));
         }
-        if(shipmentRecordVo.getCreatorUserName()!=null){
+        if(StringUtils.isNotBlank(shipmentRecordVo.getCreatorUserName())){
             predicates.add(cb.equal(root.get("creatorUserName"),shipmentRecordVo.getCreatorUserName()));
+        }
+        if(StringUtils.isNotBlank(shipmentRecordVo.getStartOperateDate())){
+            predicates.add(cb.greaterThanOrEqualTo(root.get("createDate").as(Timestamp.class), DateUtils.parseTimestamp(shipmentRecordVo.getStartOperateDate(),"yyyy-MM-dd HH:mm:ss")));
+        }
+        if(StringUtils.isNotBlank(shipmentRecordVo.getEndOperateDate())){
+            predicates.add(cb.lessThanOrEqualTo(root.get("createDate").as(Timestamp.class), DateUtils.parseTimestamp(shipmentRecordVo.getEndOperateDate(),"yyyy-MM-dd HH:mm:ss")));
+        }
+        if(StringUtils.isNotBlank(shipmentRecordVo.getCreatorName())){
+            predicates.add(cb.like(root.get("creatorName").as(String.class),"%"+shipmentRecordVo.getCreatorName()+"%"));
+        }
+        if(StringUtils.isNotBlank(shipmentRecordVo.getProdDetail())){
+            predicates.add(cb.like(root.get("prodDetail").as(String.class),"%"+shipmentRecordVo.getProdDetail()+"%"));
         }
         Predicate[] p = new Predicate[predicates.size()];
         return cb.and(predicates.toArray(p));
